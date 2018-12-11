@@ -1,6 +1,6 @@
 from django.contrib import admin
-from LoginSignup.models import UserPrfoile
+from LoginSignup.models import UserProfile
 # Register your models here.
 
-admin.site.register(UserPrfoile)
+admin.site.register(UserProfile)
 
