@@ -24,9 +24,9 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 SECRET_KEY = '$%c76--=hn7p@*n9luk+c%1qdek!^7z%-vl69p(uq6gb3b64hd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://mlab.com']
 
 
 # Application definition
@@ -73,13 +73,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Enigma.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'Enigma_Test',
+        'NAME': 'enigma-5-test',
+        'HOST': 'ds031912.mlab.com',
+        'PORT': 31912,
+        'USER': 'Sameeran',
+        'PASSWORD': 'Sameeran1203',
+        'AUTH_SOURCE': 'enigma-5-test',
+        'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
 }
 
