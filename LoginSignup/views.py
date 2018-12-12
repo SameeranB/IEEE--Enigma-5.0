@@ -1,12 +1,14 @@
 from django.shortcuts import render
-
-from LoginSignup.forms import UserProfileForm
 from .forms import UserForm
 from .forms import UserProfileForm
 from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
-
+# Make template views
 def index_view(request):
     return render(request,'index.html')
 
@@ -45,3 +47,28 @@ def signup_view(request):
 
     return render(request, 'LoginSignup/Signup.html',
                   {'registered': registered, 'user_form': user_form, 'user_profile_form': user_profile_form})
+
+
+def login_view(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username,password=password)
+
+        if user:
+            if user.is_active:
+                login(request,user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("User Inactive")
+        else:
+            return HttpResponse("Invalid Details")
+    else:
+        return render(request,'LoginSignup/Login.html')
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Enter Your Details</h1>
+<form action="{% url 'LoginSignup:Login' %}" method="post">
+    {% csrf_token %}
+    <label for="username">Username</label>
+    <input type="text" name= "username" placeholder = "Enter Username">
+
+    <label for="password" >Password</label>
+    <input type="password" name="password">
+
+    <input type="submit" value="Login">
+</form>
+</body>
+</html>

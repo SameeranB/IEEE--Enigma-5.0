@@ -24,9 +24,9 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 SECRET_KEY = '$%c76--=hn7p@*n9luk+c%1qdek!^7z%-vl69p(uq6gb3b64hd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://mlab.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -150,3 +150,5 @@ STATICFILES_DIRS = [STATIC_DIR]
 #MEDIA
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+LOGIN_URL = 'LoginSignup/Login.html'

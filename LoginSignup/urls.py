@@ -5,5 +5,6 @@ app_name='LoginSignup'
 
 urlpatterns=[
     url(r'^Signup/$',views.signup_view,name='Signup'),
-    # url(r'Login/$',views.login_view,name='Login'),
+    url(r'Login/$',views.login_view,name='Login'),
+    url(r'^Logout/$', views.logout_view, name='Logout'),
 ]
