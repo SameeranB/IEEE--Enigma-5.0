@@ -1,14 +1,17 @@
 from django.shortcuts import render
+
+from LoginSignup.forms import UserProfileForm
 from .forms import UserForm
 from .forms import UserProfileForm
+from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 
 
-def IndexView(request):
+def index_view(request):
     return render(request,'index.html')
 
 
-def SignupView(request):
+def signup_view(request):
 
     registered = False
 
@@ -29,3 +32,16 @@ def SignupView(request):
             # Checking for Profile Pictures
             if 'ProfilePicture' in request.FILES:
                 profile.ProfilePicture = request.FILES['ProfilePicture']
+            # Saving the model-form
+            profile.save()
+
+            registered = True
+
+        else:
+            print(user_form.errors, user_profile_form.errors)
+    else:
+        user_form = UserForm()
+        user_profile_form= UserProfileForm()
+
+    return render(request, 'LoginSignup/Signup.html',
+                  {'registered': registered, 'user_form': user_form, 'user_profile_form': user_profile_form})

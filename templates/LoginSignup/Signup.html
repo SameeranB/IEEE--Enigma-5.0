@@ -9,7 +9,7 @@
 
 {% if registered %}
     <h1>Thank you for Registering</h1>
-    <h3>Click Here to Go Back</h3>
+    <a href="{% url 'index' %}">Click Here to Go Back</a>
 {% else %}
     <h1>Please enter the following details to sign up</h1>
 
@@ -18,10 +18,7 @@
         {{ user_form.as_p }}
         {{ user_profile_form.as_p }}
         <input type="submit" value="Signup">
-{% endif %}
-
-
-
     </form>
+{% endif %}
 </body>
 </html>

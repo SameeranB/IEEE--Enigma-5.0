@@ -4,6 +4,6 @@ from . import views
 app_name='LoginSignup'
 
 urlpatterns=[
-    url(r'^Signup/$',views.Signup,name='Signup'),
-    url(r'Login/$',views.Login,name='Login'),
+    url(r'^Signup/$',views.signup_view,name='Signup'),
+    # url(r'Login/$',views.login_view,name='Login'),
 ]
