@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+</head>
+<body>
+
+
+{% if registered %}
+    <h1>Thank you for Registering</h1>
+    <h3>Click Here to Go Back</h3>
+{% else %}
+    <h1>Please enter the following details to sign up</h1>
+
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ user_profile_form.as_p }}
+        <input type="submit" value="Signup">
+{% endif %}
+
+
+
+    </form>
+</body>
+</html>
