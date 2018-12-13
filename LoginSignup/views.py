@@ -5,18 +5,18 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView, View
 
 # Create your views here.
 
 # Make template views
-def index_view(request):
-    return render(request,'index.html')
+
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 
 def signup_view(request):
-
     registered = False
-
     if request.method == "POST":
         user_form = UserForm(data=request.POST)
         user_profile_form = UserProfileForm(data=request.POST)

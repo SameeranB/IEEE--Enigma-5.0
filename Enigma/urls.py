@@ -18,6 +18,6 @@ from django.conf.urls import url, include
 from LoginSignup import views
 urlpatterns = [
     url(r'admin/', admin.site.urls),
-    url(r'^$', views.index_view, name='index'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^LoginSignup/', include('LoginSignup.urls')),
 ]
