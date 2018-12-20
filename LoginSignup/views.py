@@ -10,6 +10,8 @@ from django.views.generic import TemplateView, View, FormView
 
 # Make template views
 
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 class IndexView(TemplateView):
     template_name = 'index.html'
