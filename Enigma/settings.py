@@ -29,6 +29,15 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+#Setting up email config
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "orangelightvarun@gmail.com"
+EMAIL_HOST_PASSWORD = "crabypaby"
+EMAIL_PORT = 587
+
+
 # Application definition
 
 INSTALLED_APPS = [
