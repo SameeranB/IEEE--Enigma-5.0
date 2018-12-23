@@ -42,22 +42,22 @@ def signup_view(request):
             user = user_form.save()
             user.set_password(user.password)
             user.is_active = False
-            email = ['rushi2000varun@gmail.com']
+            email = user.email
             current_site = get_current_site(request)
             uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
             token = account_activation_token.make_token(user)
             body = ("Dear {}, \n"
                     "Thanks for registering with engima click on the link below to activate your account. \n"
                     "http://{}/activate/{}/{}".format(user.username, current_site.domain,
-                    urlsafe_base64_encode(force_bytes(user.pk)),
-                    account_activation_token.make_token(user)))
+                                                      urlsafe_base64_encode(force_bytes(user.pk)),
+                                                      account_activation_token.make_token(user)))
 
-            send_mail('enigma', str(body), settings.EMAIL_HOST_USER, email, fail_silently = False)
+            send_mail('enigma', str(body), settings.EMAIL_HOST_USER, [email], fail_silently = False)
             user.save()
             # Making the one to one relation
             # Checking for Profile Picture
-            Registered = True
-            return HttpResponse('please comfirm your email address by activating')
+            registered = True
+            return HttpResponse('please confirm your email address by activating')
 
         else:
             print(user_form.errors)
