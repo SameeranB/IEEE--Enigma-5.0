@@ -33,8 +33,8 @@ ALLOWED_HOSTS = []
 #Setting up email config
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "sambanmicro1203@gmail.com"
-EMAIL_HOST_PASSWORD = "Sameeran1203"
+EMAIL_HOST_USER = "ieee.enigma@gmail.com"
+EMAIL_HOST_PASSWORD = "aruisgreat"
 EMAIL_PORT = 587
 
 

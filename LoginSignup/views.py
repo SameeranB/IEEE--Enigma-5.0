@@ -6,13 +6,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, View, FormView
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from .tokens import account_activation_token
 from django.http import HttpResponse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.contrib.auth.models import User
+from django.template.loader import render_to_string
+
 
 
 # Create your views here.
@@ -42,20 +44,18 @@ def signup_view(request):
             user = user_form.save()
             user.set_password(user.password)
             user.is_active = False
-            email = user.email
             current_site = get_current_site(request)
-            uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
-            token = account_activation_token.make_token(user)
-            body = ("Dear {}, \n"
-                    "Thanks for registering with engima click on the link below to activate your account. \n"
-                    "http://{}/activate/{}/{}".format(user.username, current_site.domain,
-                                                      urlsafe_base64_encode(force_bytes(user.pk)),
-                                                      account_activation_token.make_token(user)))
-
-            send_mail('enigma', str(body), settings.EMAIL_HOST_USER, [email], fail_silently = False)
-            user.save()
-            # Making the one to one relation
-            # Checking for Profile Picture
+            message = render_to_string('LoginSignup/acc_active_email.html', {
+                'user':user, 'domain':current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+                'token': account_activation_token.make_token(user),
+            })
+            # Sending activation link in terminal
+            # user.email_user(subject, message)
+            mail_subject = 'Activate your blog account.'
+            to_email = user_form.cleaned_data.get('email')
+            email = EmailMessage(mail_subject, message, to=[to_email])
+            email.send()
             registered = True
             return HttpResponse('please confirm your email address by activating')
 
