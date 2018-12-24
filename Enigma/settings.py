@@ -33,8 +33,8 @@ ALLOWED_HOSTS = []
 #Setting up email config
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "sambanmicro1203@gmail.com"
-EMAIL_HOST_PASSWORD = "Sameeran1203"
+EMAIL_HOST_USER = "ieee.enigma@gmail.com"
+EMAIL_HOST_PASSWORD = "aruisgreat"
 EMAIL_PORT = 587
 
 
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -152,13 +153,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 
-#STATIC
+# STATIC
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR]
 
 
-#MEDIA
+# MEDIA
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 LOGIN_URL = 'LoginSignup/Login.html'
+
+
+# SESSION SETTINGS
+
+SESSION_EXPIRE_SECONDS = 60
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
