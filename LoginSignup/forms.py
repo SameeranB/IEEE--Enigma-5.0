@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 
 
+
 class UserForm(forms.ModelForm):
     confirm_email_id = forms.EmailField(required=True)
     password = forms.CharField(widget=forms.PasswordInput())
@@ -26,3 +27,5 @@ class UserForm(forms.ModelForm):
 class LoginForm(forms.Form):
     Username = forms.CharField(max_length=200)
     Password = forms.CharField(widget=forms.PasswordInput())
+
+

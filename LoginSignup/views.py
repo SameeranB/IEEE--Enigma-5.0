@@ -87,7 +87,7 @@ def activate(request, uidb64, token):
 
 class LoginView(FormView):
     template_name = 'LoginSignup/Login.html'
-    success_url = '/'
+    success_url = ''
     form_class = LoginForm
 
     def form_valid(self, form):
@@ -114,3 +114,4 @@ class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect(reverse("index.html"))
+
