@@ -21,8 +21,7 @@ from django.template.loader import render_to_string
 
 # Make template views
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
+
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -87,14 +86,13 @@ def activate(request, uidb64, token):
 
 class LoginView(FormView):
     template_name = 'LoginSignup/Login.html'
-    success_url = ''
     form_class = LoginForm
 
     def form_valid(self, form):
-        username = form.cleaned_data['Username']
-        password = form.cleaned_data['Password']
-        user = authenticate(username=username, password=password)
+
+        user = authenticate(username=form.cleaned_data['Username'], password=form.cleaned_data['Password'])
         login(self.request, user)
+        return HttpResponseRedirect(reverse('index'))
 
     def get_success_url(self):
         return render(self.request, 'index.html')
@@ -110,8 +108,7 @@ class LogoutView(LoginRequiredMixin, View):
     login_url = '/LoginSignup/Login'
     redirect_field_name = '/index.html'
 
-
     def get(self, request):
         logout(request)
-        return HttpResponseRedirect(reverse("index.html"))
+        return HttpResponseRedirect(reverse('index'))
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enigma</title>
+</head>
+<body>
+<h1>Answer!:</h1>
+<img src="{{ Image }}">
+<p>{{ Question }}</p>
+<form action="{% url 'Questions:Question_Solver' %}" method="post">
+    {% csrf_token %}
+    {{ AnswerForm.as_p }}
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
