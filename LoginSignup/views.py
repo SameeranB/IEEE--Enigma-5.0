@@ -14,6 +14,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
+import requests
+from django.contrib import messages
 
 
 
@@ -39,6 +41,8 @@ def signup_view(request):
         # Check if the forms are valid
         if user_form.is_valid():
 
+
+
             # Hashing the password
             user = user_form.save()
             user.set_password(user.password)
@@ -49,9 +53,29 @@ def signup_view(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 'token': account_activation_token.make_token(user),
             })
+
+
+            # BEGIN RECAPTCHA VALIDATION
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            values = {
+                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data= values)
+            result = r.json()
+            #recapctha ends
+
+            if result['success']:
+                user_form.save()
+                messages.success(request, 'New comment added with success!')
+            else:
+                messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+
+
             # Sending activation link in terminal
             # user.email_user(subject, message)
-            mail_subject = 'Activate your blog account.'
+            mail_subject = 'Activate Your enigma account!!'
             to_email = user_form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
@@ -111,4 +135,3 @@ class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect(reverse('index'))
-

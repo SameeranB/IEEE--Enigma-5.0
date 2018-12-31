@@ -37,6 +37,11 @@ EMAIL_HOST_USER = "ieee.enigma@gmail.com"
 EMAIL_HOST_PASSWORD = "aruisgreat"
 EMAIL_PORT = 587
 
+# Google Recaptcha Credentials
+
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LeDz4UUAAAAAGpnJYAngvUwYJGfnnRyr61pcE0s'
+
+
 
 # Application definition
 
