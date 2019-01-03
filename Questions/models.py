@@ -14,7 +14,7 @@ class Achievement(models.Model):
 class UserProgress(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='progress')
     CurrentQuestion = models.IntegerField(default=1)
-    CurrentAnswer = models.TextField()
+    Answer = models.TextField()
 
 
 class QuestionInfo(models.Model):

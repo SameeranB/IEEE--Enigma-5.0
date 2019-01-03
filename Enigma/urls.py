@@ -16,11 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 from LoginSignup import views
+
+
+
 urlpatterns = [
     url(r'admin/', admin.site.urls),
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^LoginSignup/', include('LoginSignup.urls')),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
-    url('accounts/', include('allauth.urls'))
+    url(r'^Questions/', include('Questions.urls')),
+
 ]

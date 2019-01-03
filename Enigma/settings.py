@@ -56,9 +56,7 @@ INSTALLED_APPS = [
 
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
+
 
     'django_extensions',
 
@@ -70,14 +68,13 @@ INSTALLED_APPS = [
 
 ]
 
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 SITE_ID = 120399
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django_session_timeout.middleware.SessionTimeoutMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -189,9 +186,46 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 LOGIN_URL = 'LoginSignup/Login.html'
+LOGIN_REDIRECT_URL = 'index.html'
+
 
 
 # SESSION SETTINGS
 
 SESSION_EXPIRE_SECONDS = 60
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+
+
+# ALLAUTH SETTINGS
+#
+# ACCOUNT_AUTHENTICATION_METHOD = "username"
+# ACCOUNT_EMAIL_REQUIRED = True
+#
+# ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+# ACCOUNT_EMAIL_CONFIRMATION_HMAC = True
+# ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+# ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = 'index.html'
+# ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'index.html'
+#
+# ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
+# ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+# ACCOUNT_UNIQUE_EMAIL = True
+# ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+# ACCOUNT_PRESERVE_USERNAME_CASING = True
+# ACCOUNT_LOGIN_ATTEMPTS_LIMIT =5
+# ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT =300
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+#
+# ACCOUNT_USER_MODEL_EMAIL_FIELD = "email"
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = "username"
+#
+# ACCOUNT_FORMS = {
+#     'login': 'LoginSignup.forms.LoginForm',
+#     'signup': 'LoginSignup.forms.UserForm',
+#     'change_password': 'allauth.account.forms.ChangePasswordForm',
+#     'reset_password': 'allauth.account.forms.ResetPasswordForm',
+#
+#
+#
+#
+#}

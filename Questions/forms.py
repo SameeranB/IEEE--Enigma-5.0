@@ -6,6 +6,6 @@ from .models import Achievement, QuestionInfo, UserProgress
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = UserProgress
-        fields = {'Answer': 'CurrentAnswer'}
+        fields = ('Answer',)
 
 

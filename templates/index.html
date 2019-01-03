@@ -9,6 +9,7 @@
 
 {% if user.is_authenticated %}
     <a href="{% url 'LoginSignup:Logout' %}">Logout</a>
+    <a href="{% url 'Questions:Dashboard' %}">Dashboard</a>
 {% else %}
     <a href="{% url 'LoginSignup:Signup' %}">Signup</a>
     <a href="{% url 'LoginSignup:Login' %}">Login</a>
