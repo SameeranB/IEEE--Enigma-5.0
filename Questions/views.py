@@ -5,14 +5,19 @@ from Questions.forms import AnswerForm
 from Questions.models import QuestionInfo, Achievement, UserProgress
 from django.contrib.auth.models import User
 from django.urls import reverse
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
-class QuestionView(FormView):
+class QuestionView(LoginRequiredMixin, FormView):
 
     template_name = 'Questions/Current_Question.html'
     form_class = AnswerForm
+
+    # Login-Required Settings:
+    login_url = '/LoginSignup/Login'
+    raise_exception = True
+    redirect_unauthenticated_users = True
 
     def form_valid(self, form):
         user_answer = form.cleaned_data['Answer']
@@ -29,9 +34,15 @@ class QuestionView(FormView):
         context['AnswerForm'] = AnswerForm
         return context
 
-class DashboardView(TemplateView):
+class DashboardView(LoginRequiredMixin, TemplateView):
 
     template_name = 'Questions/Dashboard.html'
+
+    # Login-Required Settings:
+    login_url = '/LoginSignup/Login'
+    raise_exception = True
+    redirect_unauthenticated_users = True
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

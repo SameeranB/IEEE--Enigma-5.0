@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-
-
+from Questions.models import UserProgress
 
 class UserForm(forms.ModelForm):
     confirm_email_id = forms.EmailField(required=True)

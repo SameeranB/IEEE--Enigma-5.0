@@ -23,4 +23,4 @@ class QuestionInfo(models.Model):
     Image = models.URLField(blank= True)
     Answer = ArrayField(models.CharField(max_length=1000), size=10)
     CloseAnswer = ArrayField(models.CharField(max_length=1000), size=20)
-    Answer_Provided = models.TextField()
+

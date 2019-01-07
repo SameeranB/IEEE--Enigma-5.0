@@ -168,7 +168,7 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 
-
+LOGIN_URL = '/'
 
 
 

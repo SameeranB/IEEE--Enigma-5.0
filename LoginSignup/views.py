@@ -16,7 +16,7 @@ from django.contrib.auth.models import User
 from django.template.loader import render_to_string
 import requests
 from django.contrib import messages
-
+from Questions.models import UserProgress
 
 
 # Create your views here.
@@ -53,6 +53,12 @@ def signup_view(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 'token': account_activation_token.make_token(user),
             })
+
+
+            # Setting Up The User Progress Model
+
+            UserProgress.user = user
+
 
 
             # BEGIN RECAPTCHA VALIDATION
