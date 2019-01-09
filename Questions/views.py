@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, View, FormView
+from django.views.generic import TemplateView, View, FormView, ListView, DetailView
 from django.http import HttpResponseRedirect, HttpResponse
 from Questions.forms import AnswerForm
 from Questions.models import QuestionInfo
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth.decorators import login_required
+from Questions.models import Achievements
 # Create your views here.
 
 class QuestionView(LoginRequiredMixin, FormView):
@@ -21,16 +22,25 @@ class QuestionView(LoginRequiredMixin, FormView):
 
     def form_valid(self, form):
         user_answer = form.cleaned_data['Answer']
-        if user_answer in QuestionInfo.Answer.objects.filter(QID__exact=self.request.user.CurrentQuestion):
-            return  HttpResponseRedirect(reverse("Questions/Question_Correct.html"))
-        elif user_answer in QuestionInfo.CloseAnswer.objects.filter(QID__exact=self.request.user.CurrentQuestion):
+
+        question = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
+
+        if user_answer in question[0].Answer:
+            profile = self.request.user
+            profile.CurrentQuestion += 1
+            profile.save()
+           # self.request.user.CurrentQuestion = self.request.user.CurrentQuestion + 1
+            return render(self.request, 'Questions/Question_Correct.html')
+        elif user_answer in question[0].CloseAnswer:
             return HttpResponse("You're Close")
+        else:
+            return HttpResponse("Nahh...Try Again")
 
     def get_context_data(self, **kwargs):
         question_info = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
         context = super().get_context_data(**kwargs)
-        context['Image'] = question_info.Image
-        context['Question'] = question_info.QText
+        context['Image'] = question_info[0].Image
+        context['Question'] = question_info[0].QText
         context['AnswerForm'] = AnswerForm
         return context
 
@@ -53,8 +63,21 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         return context
 
 
+class UnderDevelopment(TemplateView):
+    template_name = 'Under_Development.html'
 
 
-def under_development(request):
-    return render(request, 'Under_Development.html')
+class AllAchievements(ListView):
+    context_object_name = 'AllAchievements'
+    model = Achievements
+    template_name = 'Questions/All_Achievements.html'
 
+    # def get(self, request, *args, **kwargs):
+    #     collected = request.user.Achievements
+    #     return HttpResponse(collected)
+
+
+class AchievementDetail(DetailView):
+    context_object_name = 'AchievementDetail'
+    model = Achievements
+    template_name = 'Questions/Achievement_Detail.html'

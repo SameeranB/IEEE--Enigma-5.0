@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Achievements</title>
+</head>
+<body>
+<h1> This is a list of all available achievements</h1>
+<ul>
+    {% for achievement in AllAchievements %}
+        <li><a href="{{ achievement.AID }}" ><img src="{{ achievement.Image }}"></a></li>
+    {% endfor %}
+
+</ul>
+</body>
+</html>

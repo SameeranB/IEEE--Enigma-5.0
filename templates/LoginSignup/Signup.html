@@ -15,6 +15,12 @@
 
     <form method="post" enctype="multipart/form-data" >
         {% csrf_token %}
+        <p>Please make sure that the password follows the following criteria:</p>
+        <ul>
+            <li>Password should be atleast 8 characters</li>
+            <li>Password should not be too similar to other information</li>
+            <li>Password should not be all numeric</li>
+        </ul>
         {{ user_form.as_p }}
 
         <script src="https://google.com/recaptcha/api.js"></script>

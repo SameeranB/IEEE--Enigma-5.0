@@ -15,5 +15,5 @@ class CustomUserAdmin(UserAdmin):
      list_display_links = ['email', 'username']
 
 
-admin.site.register(CustomUser, UserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
 

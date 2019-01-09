@@ -16,6 +16,10 @@ class QuestionInfo(models.Model):
 class Achievements(models.Model):
 
     AID = models.IntegerField(primary_key=True)
+    AName = models.CharField(max_length=3000)
     AText = models.TextField()
     Image = models.URLField(blank=True)
+
+
+
 

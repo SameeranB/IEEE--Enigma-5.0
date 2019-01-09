@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
 
     CurrentQuestion = models.IntegerField(default=1)
     Answer = models.TextField()
-    Achievements = ArrayField(models.CharField(max_length=1000), size=20)
+    Achievements = ArrayField(models.IntegerField(default=1), size=200)
 
     def __str__(self):
         return self.email

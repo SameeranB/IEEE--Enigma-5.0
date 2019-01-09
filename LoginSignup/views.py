@@ -86,7 +86,8 @@ def signup_view(request):
             return HttpResponse('please confirm your email address by activating')
 
         else:
-            print(user_form.errors)
+
+            return HttpResponse("Invalid!")
     else:
         user_form = UserForm()
 
