@@ -1,11 +1,11 @@
 from django import forms
-from django.contrib.auth.models import User
-from .models import Achievement, QuestionInfo, UserProgress
+from users.models import CustomUser
 
 
 class AnswerForm(forms.ModelForm):
+
     class Meta:
-        model = UserProgress
+        model = CustomUser
         fields = ('Answer',)
 
 

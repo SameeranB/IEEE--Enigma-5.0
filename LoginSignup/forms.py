@@ -1,14 +1,14 @@
 from django import forms
-from django.contrib.auth.models import User
-from Questions.models import UserProgress
+from users.models import CustomUser
 
 class UserForm(forms.ModelForm):
+
     confirm_email_id = forms.EmailField(required=True)
     password = forms.CharField(widget=forms.PasswordInput())
     BotCatcher = forms.CharField(required=False, widget=forms.HiddenInput)
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'email', 'password')
 
     def clean(self):

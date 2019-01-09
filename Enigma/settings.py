@@ -54,8 +54,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'LoginSignup',
     'Questions',
+    'users',
 
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -174,6 +177,6 @@ LOGIN_URL = '/'
 
 # SESSION SETTINGS
 
-SESSION_EXPIRE_SECONDS = 60
+SESSION_EXPIRE_SECONDS = 1800
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 
