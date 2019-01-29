@@ -26,12 +26,12 @@ SECRET_KEY = '$%c76--=hn7p@*n9luk+c%1qdek!^7z%-vl69p(uq6gb3b64hd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+EMAIL_USE_TLS = True
 ALLOWED_HOSTS = []
 
 
 
 #Setting up email config
-EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "ieee.enigma@gmail.com"
 EMAIL_HOST_PASSWORD = "aruisgreat"
@@ -179,4 +179,3 @@ LOGIN_URL = '/'
 
 SESSION_EXPIRE_SECONDS = 1800
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
-
