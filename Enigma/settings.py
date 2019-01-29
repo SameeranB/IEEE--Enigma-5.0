@@ -21,7 +21,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$%c76--=hn7p@*n9luk+c%1qdek!^7z%-vl69p(uq6gb3b64hd'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -33,13 +33,13 @@ ALLOWED_HOSTS = []
 
 #Setting up email config
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "ieee.enigma@gmail.com"
-EMAIL_HOST_PASSWORD = "aruisgreat"
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 
 # Google Recaptcha Credentials
 
-GOOGLE_RECAPTCHA_SECRET_KEY = '6LeDz4UUAAAAAGpnJYAngvUwYJGfnnRyr61pcE0s'
+GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get('GOOGLE_RECAPTCHA_SECRET_KEY')
 
 
 
@@ -99,13 +99,13 @@ WSGI_APPLICATION = 'Enigma.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'enigma-5-test',
-        'HOST': 'ds031912.mlab.com',
+        'NAME': os.environ.get('dbNAME'),
+        'HOST': os.environ.get('dbHOST'),
         'PORT': 31912,
-        'USER': 'Sameeran',
-        'PASSWORD': 'Sameeran1203',
-        'AUTH_SOURCE': 'enigma-5-test',
-        'AUTH_MECHANISM': 'SCRAM-SHA-1',
+        'USER': os.environ.get('dbUSER'),
+        'PASSWORD': os.environ.get('dbPASSWORD'),
+        'AUTH_SOURCE': os.environ.get('dbAUTH_SOURCE'),
+        'AUTH_MECHANISM': os.environ.get('dbAUTH_MECHANISM'),
     }
 }
 
