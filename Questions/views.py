@@ -81,3 +81,11 @@ class AchievementDetail(DetailView):
     context_object_name = 'AchievementDetail'
     model = Achievements
     template_name = 'Questions/Achievement_Detail.html'
+
+
+class Leaderboard(ListView):
+    context_object_name = 'Leaderboard'
+    model = User
+    template_name = 'Questions/Leaderboard.html'
+    ordering = ['Points']
+

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+</head>
+<body>
+<h1>Leaderboard</h1>
+<ul>
+    {% for leader in Leaderboard %}
+        <li>{{ leader.Points }}    {{ leader.Username }}    {{ leader.CurrentQuestion }}</li>
+    {% endfor %}
+
+</ul>
+</body>
+</html>
