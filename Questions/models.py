@@ -20,6 +20,11 @@ class Achievements(models.Model):
     AText = models.TextField()
     Image = models.URLField(blank=True)
 
+class EasterEggs(models.Model):
+    EID = models.IntegerField(primary_key=True)
+    PWeight = models.IntegerField()
+    AID = models.ForeignKey(Achievements, on_delete=models.CASCADE)
+    Desc = models.CharField(max_length=1000)
 
 
 

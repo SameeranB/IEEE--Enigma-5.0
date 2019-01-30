@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from Questions.models import Achievements
+from users.models import CustomUser
 # Create your views here.
 
 class QuestionView(LoginRequiredMixin, FormView):
@@ -85,7 +86,7 @@ class AchievementDetail(DetailView):
 
 class Leaderboard(ListView):
     context_object_name = 'Leaderboard'
-    model = User
+    model = CustomUser
     template_name = 'Questions/Leaderboard.html'
     ordering = ['Points']
 

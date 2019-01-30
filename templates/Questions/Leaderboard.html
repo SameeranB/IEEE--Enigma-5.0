@@ -6,9 +6,11 @@
 </head>
 <body>
 <h1>Leaderboard</h1>
+<h3>Points                Username               Questions Completed</h3>
 <ul>
+
     {% for leader in Leaderboard %}
-        <li>{{ leader.Points }}    {{ leader.Username }}    {{ leader.CurrentQuestion }}</li>
+        <li>{{ leader.Points }}                {{ leader.username }}                {{ leader.CurrentQuestion|add:"-1" }} </li>
     {% endfor %}
 
 </ul>
