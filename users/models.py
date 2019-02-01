@@ -9,14 +9,15 @@ from django.contrib.postgres.fields import ArrayField
 
 class CustomUser(AbstractUser):
 
-
-
     CurrentQuestion = models.IntegerField(default=1)
     Answer = models.TextField()
     Achievements = ArrayField(models.IntegerField(default=1), size=200)
     Points = models.IntegerField(default=0)
     TimeLog = ArrayField(models.DurationField())
+    AttemptLog = ArrayField(models.IntegerField(default=0))
 
     def __str__(self):
         return self.email
 
+# 3 - Bullseye
+# 4 - Quick Skope

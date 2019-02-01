@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from Questions.models import Achievements
 from users.models import CustomUser
+from .ExtraFunctions import achievement_check
 # Create your views here.
 
 class QuestionView(LoginRequiredMixin, FormView):
@@ -21,16 +22,23 @@ class QuestionView(LoginRequiredMixin, FormView):
     raise_exception = True
     redirect_unauthenticated_users = True
 
+
+
     def form_valid(self, form):
         user_answer = form.cleaned_data['Answer']
+        profile = self.request.user
+        qno = profile.CurrentQuestion
+        profile.AttemptLog[qno] += 1
+        profile.save()
 
         question = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
 
         if user_answer in question[0].Answer:
-            profile = self.request.user
+
             profile.CurrentQuestion += 1
+            achievement_check(profile)
+
             profile.save()
-           # self.request.user.CurrentQuestion = self.request.user.CurrentQuestion + 1
             return render(self.request, 'Questions/Question_Correct.html')
         elif user_answer in question[0].CloseAnswer:
             return HttpResponse("You're Close")
@@ -43,6 +51,7 @@ class QuestionView(LoginRequiredMixin, FormView):
         context['Image'] = question_info[0].Image
         context['Question'] = question_info[0].QText
         context['AnswerForm'] = AnswerForm
+        context['Attempts'] = self.request.user.AttemptLog[self.request.user.CurrentQuestion]
         return context
 
 class DashboardView(LoginRequiredMixin, TemplateView):
