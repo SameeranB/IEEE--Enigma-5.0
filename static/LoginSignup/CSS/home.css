@@ -1,0 +1,282 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.navbar-toggler{
+    border: none;
+}
+
+.navbar-toggler:focus{
+    outline: none;
+}
+li{
+    margin-top: none;
+}
+
+body{
+    background-image: url("../img/BG.gif");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#logo{
+    margin-top: 128px; 
+    width: 300px;
+}
+
+#logo-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar{
+    position: fixed;
+    z-index: 1050;
+    width: 100% ;
+    font-size: 12px;
+}
+
+.bg-custom {
+    background-color: transparent;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: #fff;
+    font-weight: 800;
+}
+
+.nav-item{
+    margin: 2px 12px;
+    border-bottom: 2px solid rgba(0,0,0,0);
+}
+
+.nav-item:hover{
+    border-bottom: 2px solid #fff;
+}
+
+#one{
+    height: 100vh;
+    width: auto;
+    background-image: url('../img/Man2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-login{
+    text-align: center;
+    padding: 16px;
+    margin-top: 12px;
+}
+
+#btn-login>a{
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px #000;
+    padding: 6px 8px;
+    transition: 0.1s ease-in;
+}
+
+#btn-login>a:hover{
+    text-decoration: none;
+}
+
+#btn-login>a:hover{
+    border-bottom: 2px solid #fff;
+    border-top: 2px solid #fff;
+}
+
+#main-container{
+    margin-bottom: -240px;
+}
+
+#two{
+    height: 100vh;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+.about-text-box {
+    margin-top: 24px;
+}
+
+#about-text {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    text-align: justify;
+    color: #ffffff;
+    object-fit: contain;
+    word-break: break-word;
+}
+
+.about-text-box>h1{
+    color: #fff;
+    margin-bottom: 68px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #fff;
+    display: inline-block;
+}
+
+#signUpModal{
+    opacity: 1;
+}
+
+.modal-content{
+    background-color: #110c22;
+}
+
+.modal-title{
+    color: #fff;
+}
+
+.modal-header{
+    border: none;
+}
+
+.modal-footer{
+    border-top: none;
+    justify-content: center;
+}
+
+
+
+.btn-secondary{
+    background: none;
+    border-color: rgba(0,0,0,0);
+    font-weight: bold;
+    border-radius: 0;
+}
+
+.btn-secondary:hover{
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    border-left-color: rgba(0,0,0,0);
+    border-right-color: rgba(0,0,0,0);
+    background: none; 
+}
+
+.btn-secondary:focus{
+    box-shadow: none;
+}
+
+.close{
+    color: #fff;
+    text-shadow: none;
+}
+
+#ieee{
+    width: 156px;
+    height: auto;
+}
+
+#input-box{
+    border: none;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 5px;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgba(255,255,255,20%);
+    transition: 0.1s ease-in;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
+}
+
+::placeholder{
+    color: #D3D3D3;
+    font-weight: 100;
+}
+
+#input-box:hover {
+    background-color: rgba(255,255,255,33%);
+}
+
+#input-box:focus {
+    outline: none !important;
+}
+
+#contact-head {
+    display: flex;
+    padding: 5px;
+}
+
+#contact-head h1 {
+    font-family: 'Titillium Web', sans-serif;
+    margin: 8px 0px 0px 10px;
+    font-weight: bolder;
+}
+
+#contact-body-holders {
+    margin: 20px 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+#contact-body-logo {
+    width: 30px;
+    height: auto;
+    margin: 10px;
+}
+
+#contact-body-holders a p {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+#contact-body-holders a {
+    text-decoration: none;
+    color: white;
+}
+
+#about-text-box {
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    padding: 20px;
+    text-align: justify;
+}
+
+@media only screen and (min-width: 760px) and (max-height: 1024px) {
+
+    #two{
+        padding: 0 20vh;
+    }
+
+    #about-text {
+        font-size: 3vh;
+    }
+
+    #logo{
+        margin-left: 16px;
+    }
+}

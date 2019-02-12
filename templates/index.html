@@ -1,22 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel='stylesheet' type='text/css' href='{% static 'LoginSignup/CSS/home.css'%}'>
+
+    <title>Enigma 5.0 | Home</title>
 </head>
 <body>
-<h1>Welcome to Enigma 5.0</h1>
 
-{% if user.is_authenticated %}
-    <a href="{% url 'LoginSignup:Logout' %}">Logout</a>
-    <a href="{% url 'Questions:Dashboard' %}">Dashboard</a>
-{% else %}
-    <a href="{% url 'LoginSignup:Signup' %}">Signup</a>
-    <a href="{% url 'LoginSignup:Login' %}">Login</a>
-    <a href="{% url 'reset_password' %}">Forgot Password</a>
-{% endif %}
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
+                  <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
+                  <div class="navbar-brand"><img id='ieee' src='{% static "LoginSignup/img/ieee_logo.png" %}'/></div>
+                  <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact Us</a>
+                    </li>
+                  </ul>
+                </div>
+        </nav>
+        <div id='one'>
+            <div class='container-fluid' id='main-container'>
+                <div class='row'>
+                    <div class="col-12" id='logo-holder'>
+                        <img id='logo' src="{% static 'LoginSignup/img/enigma_logo.png'%}"/>
+                    </div>
+                </div>
+
+                <div class='row' id='login-row'>
+                        <div class="col-12" id='btn-login'>
+                            <div id='btn-login'>
+                                <a href="{% url 'LoginSignup:Login' %}">Log In</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalScrollableTitle">Create a New Account</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                            <input type="email" placeholder="Email" id="input-box" required>
+                            <br/>
+                            <input type="password" placeholder="Password" id="input-box" required>
+                            <br/>
+                            <input type="password" placeholder="Confirm Password" id="input-box" required>
+                            <br/>
+                            <input type="text" placeholder="Registration Number" id="input-box" required>
+                            <br/>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sign Up</button>
+                    </div>
+                </div>
+                </div>
+        </div>
 
 
+        <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto" id="contact-head">
+                            <h3 class="modal-title" id="exampleModalScrollableTitle">Contact Us:</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mx-auto" id="contact-body-holders">
+                                <img src="{% static "LoginSignup/img/facebook.svg"%}" alt="Facebook-Logo" id="contact-body-logo">
+                                <a href="https://www.facebook.com/IEEEVIT/">
+                                    <p>/IEEEVIT/</p>
+                                </a>
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="mx-auto" id="contact-body-holders">
+                                <img src="{% static "LoginSignup/img/icons8-phone-filled-100.png"%}" alt="Phone-Logo" id="contact-body-logo">
+                                <a>
+                                    <p>9876543210</p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="mx-auto" id="contact-body-holders">
+                                <img src="{% static "LoginSignup/img/computer-screen.svg"%}" alt="Computer-Logo" id="contact-body-logo">
+                                <a>
+                                    <p>ieeevit@gmail.com</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto" id="contact-head">
+                            <h3 class="modal-title" id="exampleModalScrollableTitle">About Us:</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mx-auto" id="contact-body-holders">
+                                <p id="about-text-box">
+                                    ENIGMA is an online cryptic hunt where participants will be given about
+                                    25 questions to be cracked with limited amount of time. Enigma 2017 and
+                                    2018 were enormously successful with cutthroat competition of 1000+
+                                    participants around the globe but a clear winner in the end. However,
+                                    the wolf on the hill is never as hungry as the wolf climbing the hill.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='{% static 'LoginSignup/img/ENIGMA%20logo.png'%}'/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
 </body>
 </html>
