@@ -1,0 +1,239 @@
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-image: url("img/BG.gif");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#ieee{
+    width: 156px;
+    height: auto;
+}
+
+.navbar-toggler{
+    border: none;
+}
+
+.navbar-toggler:focus{
+    outline: none;
+}
+li{
+    margin-top: none;
+}
+
+.navbar{
+    position: fixed;
+    z-index: 1050;
+    width: 100% ;
+    font-size: 12px;
+}
+
+.bg-custom {
+    background-color: transparent;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: #fff;
+    font-weight: 800;
+}
+
+.nav-item{
+    margin: 2px 12px;
+    border-bottom: 2px solid rgba(0,0,0,0);
+}
+
+.nav-item:hover{
+    border-bottom: 2px solid #fff;
+}
+
+#one{
+    height: 100vh;
+    width: auto;
+    background: transparent;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-container{
+    margin-bottom: 0px;
+}
+
+
+#ques-img-holder{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ques-img {
+    margin-top: 0px;
+    width: 300px;
+}
+
+#ques-box {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ques {
+    font-weight: 800;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 32px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+#ans-box {
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+#input-box{
+    display: block;
+    border: none;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 5px;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgba(255,255,255,20%);
+    transition: 0.1s ease-in;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+    height: 100px;
+}
+
+
+::placeholder{
+    color: #D3D3D3;
+    font-weight: 100;
+    text-align: center;
+    font-size: 18px;
+}
+
+#input-box:hover {
+    background-color: rgba(255,255,255,33%);
+}
+
+#input-box:focus {
+    outline: none !important;
+}
+
+
+
+#btn{
+    text-align: center;
+    padding: 16px;
+    margin-top: 12px;
+}
+
+#mover {
+    text-align: center;
+    padding: 16px;
+    margin-top: 12px;
+}
+
+#mover {
+    margin: opx 50px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px #000;
+    padding: 6px 8px;
+    transition: 0.1s ease-in;
+}
+
+#mover:hover{
+    text-decoration: none;
+    border-bottom: 2px solid #fff;
+    border-top: 2px solid #fff;
+}
+
+#hint img {
+    width: 50px;
+    text-decoration: none;
+    border: none;
+}
+
+
+.modal-content{
+    background-color: #110c22;
+}
+
+.modal-title{
+    color: #fff;
+}
+
+.modal-header{
+    border: none;
+}
+
+.modal-footer{
+    border-top: none;
+    justify-content: center;
+}
+
+#hint-head {
+    display: flex;
+    padding: 5px;
+}
+
+#hint-head h3 {
+    font-family: 'Titillium Web', sans-serif;
+    margin: 8px 0px 0px 10px;
+    font-weight: bolder;
+}
+
+#hint-body-holders {
+    margin: 20px 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+#hint-text-box {
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    padding: 20px;
+    text-align: justify;
+}
+
+@media only screen and (min-width: 760px) and (max-height: 1024px) {
+
+    #logo{
+        margin-left: 16px;
+    }
+
+    #about-text {
+        font-size: 3vh;
+    }
+
+
+}

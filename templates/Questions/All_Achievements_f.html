@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="ques-hint-bulb.js"></script>
+    <link rel='stylesheet' type='text/css' href='achieve.css'>
+
+    <title>Enigma 5.0 | Achievements</title>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
+                  <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
+                  <div class="navbar-brand"><img id='ieee' src='img/ieee_logo.png'/></div>
+                  <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+                    <li class="nav-item">
+                      <a class="nav-link" href="ques.html">Question View</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leader.html">Leader Board</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Log Out</a>
+                    </li>
+                  </ul>
+                </div>
+        </nav>
+
+        <div id="one">
+        <div class="container" id="main-container">
+            <div class="row mx-auto">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="#" data-toggle="modal" data-target="#first">
+                                <img class="card-img-top" src="img/achieve/1st-place.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="#" data-toggle="modal" data-target="#second">
+                                <img class="card-img-top" src="img/achieve/2nd-place.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="#" data-toggle="modal" data-target="#third">
+                                <img class="card-img-top" src="img/achieve/3rd-place.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            <div class="row mx-auto">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="#" data-toggle="modal" data-target="#belt">
+                                <img class="card-img-top" src="img/achieve/belt.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="#" data-toggle="modal" data-target="#trophy">
+                                <img class="card-img-top" src="img/achieve/trophy.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="#" data-toggle="modal" data-target="#world-cup">
+                                <img class="card-img-top" src="img/achieve/world-cup.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="modal fade" id="world-cup" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mx-auto" id="badge-logo-holder">
+                            <img src="img/achieve/world-cup.png">
+                        </div>
+                        <div class="row">
+                            <div class="mx-auto" id="modal-body-holders">
+                                <p id="modal-text-box">
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                    -----------------about this badge ---------------
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='img/ENIGMA%20logo.png'/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="trophy" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mx-auto" id="badge-logo-holder">
+                            <img src="img/achieve/trophy.png">
+                        </div>
+                        <div class="row">
+                            <div class="mx-auto" id="modal-body-holders">
+                                <p id="modal-text-box">
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                    -----------------about this badge ---------------
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='img/ENIGMA%20logo.png'/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="belt" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mx-auto" id="badge-logo-holder">
+                            <img src="img/achieve/belt.png">
+                        </div>
+                        <div class="row">
+                            <div class="mx-auto" id="modal-body-holders">
+                                <p id="modal-text-box">
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                    -----------------about this badge ---------------
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='img/ENIGMA%20logo.png'/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="third" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mx-auto" id="badge-logo-holder">
+                            <img src="img/achieve/3rd-place.png">
+                        </div>
+                        <div class="row">
+                            <div class="mx-auto" id="modal-body-holders">
+                                <p id="modal-text-box">
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                    -----------------about this badge ---------------
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='img/ENIGMA%20logo.png'/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="second" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mx-auto" id="badge-logo-holder">
+                            <img src="img/achieve/2nd-place.png">
+                        </div>
+                        <div class="row">
+                            <div class="mx-auto" id="modal-body-holders">
+                                <p id="modal-text-box">
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                    -----------------about this badge ---------------
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='img/ENIGMA%20logo.png'/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="first" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mx-auto" id="badge-logo-holder">
+                            <img src="img/achieve/1st-place.png">
+                        </div>
+                        <div class="row">
+                            <div class="mx-auto" id="modal-body-holders">
+                                <p id="modal-text-box">
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                    -----------------about this badge ---------------
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='img/ENIGMA%20logo.png'/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+</body>
+</html>
