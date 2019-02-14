@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel='stylesheet' type='text/css' href="{% static 'LoginSignup/CSS/home.css' %}">
@@ -15,20 +16,26 @@
     <title>Enigma 5.0 | Home</title>
 </head>
 <body>
-
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" role="collapse" id="navbarTogglerDemo01">
+                <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
                   <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
-                  <div class="navbar-brand"><img id='ieee' alt="" src="{% static 'LoginSignup/img/ieee_logo.png' %}"/></div>
+                  <div class="navbar-brand"><a target="_blank" href='http://ieeevit.com'><img id='ieee' alt= "" src="{% static 'LoginSignup/img/ieee_logo.png' %}"/></a></div>
                   <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
                     <li class="nav-item">
                       <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">About</a>
                     </li>
                     <li class="nav-item">
+                        <!-- only for using with the modal
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
+                        -->
+                        {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'LoginSignup:Logout' %}" >Log Out</a>
+                        {% else %}
+                        <a class="nav-link" href="{% url 'LoginSignup:Signup' %}">Sign Up</a>
+                        {% endif %}
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact Us</a>
@@ -40,48 +47,43 @@
             <div class='container-fluid' id='main-container'>
                 <div class='row'>
                     <div class="col-12" id='logo-holder'>
-                        <img id='logo' alt="" src="{% static 'LoginSignup/img/enigma_logo.png' %}"/>
+                        <img alt="" id='logo' src="{% static 'LoginSignup/img/enigma_logo.png' %}"/>
                     </div>
                 </div>
 
                 <div class='row' id='login-row'>
-                        <div class="col-12" id='btn-login'>
-                            <div id='btn-login'>
-                                {% if user.is_authenticated %}
-                                {% else %}
-                                    <a href="{% url 'LoginSignup:Login' %}">Log In</a>
-                                {% endif %}
-                            </div>
-                        </div>
+                        {% if user.is_authenticated %}
+                        {% else %}
+                        <a class="btn btn-secondary" href='#' data-toggle="modal" data-target="#login">Log In</a>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">Log into your account</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{% url 'LoginSignup:Login' %}" method="post">
+                            {%  csrf_token %}
+                            {{ LoginForm.as_p }}
+
+                        </form>
+
+{#                        <input type="email" placeholder="Email" id="input-box" required>#}
+{#                        <input type="password" placeholder="Password" id="input-box" required>#}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Log In</button>
                     </div>
                 </div>
             </div>
-
-
-        <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalScrollableTitle">Create a New Account</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                            <input type="email" placeholder="Email" id="input-box" required>
-                            <br/>
-                            <input type="password" placeholder="Password" id="input-box" required>
-                            <br/>
-                            <input type="password" placeholder="Confirm Password" id="input-box" required>
-                            <br/>
-                            <input type="text" placeholder="Registration Number" id="input-box" required>
-                            <br/>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sign Up</button>
-                    </div>
-                </div>
-                </div>
         </div>
 
 
@@ -90,7 +92,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="container mx-auto" id="contact-head">
-                            <h3 class="modal-title" id="exampleModalScrollableTitle">Contact Us:</h3>
+                            <h5 class="modal-title" id="exampleModalScrollableTitle">CONTACT</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -135,7 +137,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="container mx-auto" id="contact-head">
-                            <h3 class="modal-title" id="exampleModalScrollableTitle">About Us:</h3>
+                            <h5 class="modal-title" id="exampleModalScrollableTitle">ABOUT</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -160,7 +162,5 @@
                 </div>
             </div>
         </div>
-
-    
 </body>
 </html>

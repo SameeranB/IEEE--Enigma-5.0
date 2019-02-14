@@ -22,7 +22,7 @@ from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, 
 
 urlpatterns = [
     url(r'admin/', admin.site.urls),
-    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^$', views.LoginView.as_view(), name='index'),
     url(r'^LoginSignup/', include('LoginSignup.urls')),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),

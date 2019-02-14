@@ -113,7 +113,7 @@ def activate(request, uidb64, token):
 
 
 class LoginView(FormView):
-    template_name = 'LoginSignup/Login.html'
+    template_name = 'index.html'
     form_class = LoginForm
 
     def form_valid(self, form):
