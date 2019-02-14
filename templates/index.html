@@ -1,6 +1,6 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
-{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <link rel='stylesheet' type='text/css' href='{% static 'LoginSignup/CSS/home.css'%}'>
+    <link rel='stylesheet' type='text/css' href="{% static 'LoginSignup/CSS/home.css' %}">
 
     <title>Enigma 5.0 | Home</title>
 </head>
@@ -20,9 +20,9 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
+                <div class="collapse navbar-collapse" role="collapse" id="navbarTogglerDemo01">
                   <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
-                  <div class="navbar-brand"><img id='ieee' src='{% static "LoginSignup/img/ieee_logo.png" %}'/></div>
+                  <div class="navbar-brand"><img id='ieee' alt="" src="{% static 'LoginSignup/img/ieee_logo.png' %}"/></div>
                   <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
                     <li class="nav-item">
                       <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">About</a>
@@ -40,20 +40,23 @@
             <div class='container-fluid' id='main-container'>
                 <div class='row'>
                     <div class="col-12" id='logo-holder'>
-                        <img id='logo' src="{% static 'LoginSignup/img/enigma_logo.png'%}"/>
+                        <img id='logo' alt="" src="{% static 'LoginSignup/img/enigma_logo.png' %}"/>
                     </div>
                 </div>
 
                 <div class='row' id='login-row'>
                         <div class="col-12" id='btn-login'>
                             <div id='btn-login'>
-                                <a href="{% url 'LoginSignup:Login' %}">Log In</a>
+                                {% if user.is_authenticated %}
+                                {% else %}
+                                    <a href="{% url 'LoginSignup:Login' %}">Log In</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
 
         <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -96,7 +99,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="mx-auto" id="contact-body-holders">
-                                <img src="{% static "LoginSignup/img/facebook.svg"%}" alt="Facebook-Logo" id="contact-body-logo">
+                                <img src="{% static 'LoginSignup/img/facebook.svg' %}" alt="Facebook-Logo" id="contact-body-logo">
                                 <a href="https://www.facebook.com/IEEEVIT/">
                                     <p>/IEEEVIT/</p>
                                 </a>
@@ -105,7 +108,7 @@
 
                         <div class="row">
                             <div class="mx-auto" id="contact-body-holders">
-                                <img src="{% static "LoginSignup/img/icons8-phone-filled-100.png"%}" alt="Phone-Logo" id="contact-body-logo">
+                                <img src="{% static 'LoginSignup/img/icons8-phone-filled-100.png' %}" alt="Phone-Logo" id="contact-body-logo">
                                 <a>
                                     <p>9876543210</p>
                                 </a>
@@ -114,7 +117,7 @@
 
                         <div class="row">
                             <div class="mx-auto" id="contact-body-holders">
-                                <img src="{% static "LoginSignup/img/computer-screen.svg"%}" alt="Computer-Logo" id="contact-body-logo">
+                                <img src="{% static 'LoginSignup/img/computer-screen.svg' %}" alt="Computer-Logo" id="contact-body-logo">
                                 <a>
                                     <p>ieeevit@gmail.com</p>
                                 </a>
@@ -152,7 +155,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div class="mx-auto"><img id='ieee' src='{% static 'LoginSignup/img/ENIGMA%20logo.png'%}'/></div>
+                        <div class="mx-auto"><img id='ieee' alt="" src="{% static 'LoginSignup/img/ENIGMA_logo.png' %}"/></div>
                     </div>
                 </div>
             </div>
