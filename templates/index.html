@@ -15,22 +15,18 @@
 
     <title>Enigma 5.0 | Home</title>
 </head>
-<body>
+<body style="background-image: url('../static/LoginSignup/img/BG.gif');">
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
-                  <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
                   <div class="navbar-brand"><a target="_blank" href='http://ieeevit.com'><img id='ieee' alt= "" src="{% static 'LoginSignup/img/ieee_logo.png' %}"/></a></div>
                   <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
                     <li class="nav-item">
                       <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">About</a>
                     </li>
                     <li class="nav-item">
-                        <!-- only for using with the modal
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
-                        -->
                         {% if user.is_authenticated %}
                         <a class="nav-link" href="{% url 'LoginSignup:Logout' %}" >Log Out</a>
                         {% else %}
@@ -43,7 +39,7 @@
                   </ul>
                 </div>
         </nav>
-        <div id='one'>
+        <div id='one' style="background-image: url('../static/LoginSignup/img/Man2.png');">
             <div class='container-fluid' id='main-container'>
                 <div class='row'>
                     <div class="col-12" id='logo-holder'>
