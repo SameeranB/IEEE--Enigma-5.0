@@ -1,18 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load staticfiles %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Leaderboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel='stylesheet' type='text/css' href='{% static "Questions/CSS/leader.css" %}'>
+
+    <title>Enigma 5.0 | Achievements</title>
 </head>
-<body>
-<h1>Leaderboard</h1>
-<h3>Points                Username               Questions Completed</h3>
-<ul>
+<body style="background-image: url('{% static "Questions/img/BG.gif" %}')">
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
+                  <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
+                  <div class="navbar-brand"><img id='ieee' alt="" src='{% static "Questions/img/ieee_logo.png" %}'/></div>
+                  <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
 
-    {% for leader in Leaderboard %}
-        <li>{{ leader.Points }}                {{ leader.username }}                {{ leader.CurrentQuestion|add:"-1" }} </li>
-    {% endfor %}
+                      <li class="nav-item">
+                      <a class="nav-link" href="{% url 'Questions:Achievements' %}">Achievements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Questions:Question_Solver' %}">Question View</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="{% url 'LoginSignup:Logout' %}">Log Out</a>
+                    </li>
+                  </ul>
+                </div>
+        </nav>
 
-</ul>
+        <div id="one">
+            <div class="container-fluid" id="main-container">
+                <div class="mx-auto table-responsive-md">
+                    <h1 id="lead-text">LEADER BOARD</h1>
+
+                    <table class="mx-auto table table-borderless table-hover">
+                        <thead>
+                                <tr>
+                                        <td>Rank</td>
+                                        <td>Name</td>
+                                        <td>University</td>
+                                        <td>Score</td>
+                                        <td>Solved</td>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>YR</td>
+                                <td>Your Name</td>
+                                <td>Your University</td>
+                                <td>Your Score</td>
+                                <td>Solved</td>
+                            </tr>
+                            <tr>
+                                {% for leader in Leaderboard %}
+                                    <td>Rank</td>
+                                    <td>{{ leader.username }}</td>
+                                    <td>University</td>
+                                    <td>{{ leader.Points }}</td>
+                                    <td>{{ leader.CurrentQuestion|add:"-1" }} </td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
 </body>
 </html>

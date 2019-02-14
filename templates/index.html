@@ -33,6 +33,18 @@
                         <a class="nav-link" href="{% url 'LoginSignup:Signup' %}">Sign Up</a>
                         {% endif %}
                     </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">Leaderboards</a>
+
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{% url 'Questions:Question_Solver' %}">Question View</a>
+
+                        </li>
+                    {% endif %}
                     <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact Us</a>
                     </li>
