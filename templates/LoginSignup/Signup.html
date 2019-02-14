@@ -1,33 +1,123 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Signup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel='stylesheet' type='text/css' href="{% static 'LoginSignup/CSS/signup.css' %}">
+
+    <title>Enigma 5.0 | Sign Up</title>
 </head>
 <body>
-
-
-{% if registered %}
-    <h1>Thank you for Registering</h1>
-    <a href="{% url 'index' %}">Click Here to Go Back</a>
-{% else %}
-    <h1>Please enter the following details to sign up</h1>
-
-    <form method="post" enctype="multipart/form-data" >
-        {% csrf_token %}
-        <p>Please make sure that the password follows the following criteria:</p>
-        <ul>
-            <li>Password should be atleast 8 characters</li>
-            <li>Password should not be too similar to other information</li>
-            <li>Password should not be all numeric</li>
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
+        <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
+        <div class="navbar-brand"><img id='ieee' alt="" src="{% static 'LoginSignup/img/ieee_logo.png' %}"></div>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "index" %}">Home</a>
+            </li>
         </ul>
-        {{ user_form.as_p }}
+    </div>
+</nav>
 
-        <script src="https://google.com/recaptcha/api.js"></script>
-        <div class="g-recaptcha" data-sitekey="6LeDz4UUAAAAAPb-CcOMtvOG4oDBBigtdDcoDAoh"></div>
+        <div id='one'>
+            <div class="container-fluid" id="main-container">
+                <!--
+                <div class='login_logo_holder'>
+                    <img src='img/enigma_logo.png' class='enigma_logo'/>
+                </div>
+                -->
+                <div class='row'>
+                    <div class='col-12' id='heading-login'>
+                        <h5>Register and be a part of the mystery</h5>
+                    </div>
+                </div>
+                {% if registered %}
+                    <h1>Thank you for Registering</h1>
+                    <a href="{% url 'index' %}">Click Here to Go Back</a>
+                {% else %}
+                    <h1>Please enter the following details to sign up</h1>
 
-        <input type="submit" value="Signup">
-    </form>
-{% endif %}
+                    <form method="post" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                        <p>Please make sure that the password follows the following criteria:</p>
+                        <ul>
+                            <li>Password should be atleast 8 characters</li>
+                            <li>Password should not be too similar to other information</li>
+                            <li>Password should not be all numeric</li>
+                        </ul>
+                        {{ user_form.as_p }}
+
+                        <script src="https://google.com/recaptcha/api.js"></script>
+                        <div class="g-recaptcha" data-sitekey="6LeDz4UUAAAAAPb-CcOMtvOG4oDBBigtdDcoDAoh"></div>
+
+                        <input type="submit" value="Signup">
+                    </form>
+                    <div class="container" id="p-box">
+                            <p>Already have an account?</p>
+
+                            <!-- for the modal only
+                            <a class="btn btn-secondary" href="#signUpModal" data-toggle="modal">Log In</a>
+                            -->
+                            <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#login">Log In</a>
+                    </div>
+                {% endif %}
+{#                <div class="row">#}
+{#                    <div class="col-12">#}
+{#                        <div class="container" id="login-box">#}
+{#                            <form method="get" id="form-box">#}
+{#                                <input type="email" placeholder="Email" id="input-box" required>#}
+{#                                <input type="password" placeholder="Password" id="input-box" required>#}
+{#                                <input type="password" placeholder="Confirm Password" id="input-box" required>#}
+{#                                <input type="text" placeholder="Registration Number" id="input-box" required>#}
+{#                                <div id="sign-in">#}
+{#                                    <a class="btn btn-secondary" href="#">Sign Up</a>#}
+{#                                </div>#}
+{#                            </form>#}
+{#                        </div>#}
+{#                        <div class="container" id="p-box">#}
+{#                            <p>Already have an account?</p>#}
+{##}
+{#                            <!-- for the modal only#}
+{#                            <a class="btn btn-secondary" href="#signUpModal" data-toggle="modal">Log In</a>#}
+{#                            -->#}
+{#                            <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#login">Log In</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Log into your account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                        <input type="email" placeholder="Email" id="input-box" required>
+                        <input type="password" placeholder="Password" id="input-box" required>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Log In</button>
+                </div>
+            </div>
+            </div>
+      </div>
 </body>
 </html>
