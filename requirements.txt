@@ -3,3 +3,5 @@ requests==2.21.0
 djongo==1.2.30
 django_recaptcha==2.0.2
 psycopg2
+django-session-timeout
+
