@@ -1,1 +1,1 @@
-web:gunicorn Enigma:application
+web: gunicorn Enigma.wsgi
