@@ -1,1 +1,1 @@
-gunicorn  Enigma:application
+web: gunicorn  Enigma:application
