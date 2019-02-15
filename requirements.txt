@@ -6,3 +6,5 @@ psycopg2-binary
 django-session-timeout
 gunicorn
 django-heroku
+django[argon2]
+bcrypt
