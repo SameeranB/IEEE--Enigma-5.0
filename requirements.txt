@@ -3,8 +3,12 @@ requests==2.21.0
 djongo==1.2.30
 django_recaptcha==2.0.2
 psycopg2-binary
-django-session-timeout
+django-session-timeout==0.0.3
 gunicorn
-django-heroku
-django[argon2]
-bcrypt
+django-heroku==0.3.1
+argon2-cffi==18.3.0
+bcrypt==3.1.4
+dj-database-url==0.5.0
+django-extensions==2.1.4
+pymongo==3.7.2
+sqlparse==0.2.4
