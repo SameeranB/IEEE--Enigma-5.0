@@ -62,7 +62,7 @@ def signup_view(request):
                 'token': account_activation_token.make_token(user),
             })
             email_from = settings.EMAIL_HOST_USER
-            to_email = user_form.cleaned_data.get('email')
+            to_email = [user_form.cleaned_data.get('email')]
             send_mail(subject, message, email_from, to_email)
 
             # email = EmailMessage(mail_subject, message, to=[to_email])
