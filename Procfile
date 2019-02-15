@@ -1,1 +1,1 @@
-web: gunicorn Enigma.wsgi --log-file -
+web: gunicorn Enigma.wsgi

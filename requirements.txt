@@ -5,4 +5,4 @@ django_recaptcha==2.0.2
 psycopg2
 django-session-timeout
 gunicorn
-whitenoise
+django-heroku

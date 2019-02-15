@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -76,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ''
 ]
 
 ROOT_URLCONF = 'Enigma.urls'
@@ -187,7 +189,7 @@ LOGIN_URL = '/'
 
 # SESSION SETTINGS
 
-SESSION_EXPIRE_SECONDS = 1800
+SESSION_EXPIRE_SECONDS = 18000
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+django_heroku.settings(locals())
