@@ -27,7 +27,7 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 EMAIL_USE_TLS = True
 ALLOWED_HOSTS = ['https://enigma5.herokuapp.com/']
@@ -44,8 +44,8 @@ EMAIL_PORT = 587
 
 
 
-RECAPTCHA_PUBLIC_KEY = "6Le0p5EUAAAAABE--mN9qZLF72HqVTh5RHZx7JFi"
-RECAPTCHA_PRIVATE_KEY = "6Le0p5EUAAAAADhxlpEKBqei9EyctizTN9kk--Dp"
+RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 
 
 
