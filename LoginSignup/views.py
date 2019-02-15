@@ -35,6 +35,7 @@ class IndexView(TemplateView):
 
 def signup_view(request):
     registered = False
+    trigger = False
     if request.method == "POST":
         user_form = UserForm(data=request.POST)
 
@@ -62,17 +63,12 @@ def signup_view(request):
             email.send()
             registered = True
             # return HttpResponse('please confirm your email address by activating')
-
-        else:
-            # print(user_form.errors)
-            # return render(request, 'LoginSignup/Signup.html',
-            #               {'registered': registered, 'errors': user_form.errors})
-
+        trigger = True
     else:
         user_form = UserForm()
 
     return render(request, 'LoginSignup/Signup.html',
-                  {'registered': registered, 'user_form': user_form, 'errors': user_form})
+                  {'registered': registered, 'user_form': user_form, 'errors': user_form.errors, 'trigger': trigger})
 
 
 def activate(request, uidb64, token):
@@ -119,3 +115,4 @@ class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect(reverse('index'))
+

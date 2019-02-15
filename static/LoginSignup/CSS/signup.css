@@ -80,6 +80,30 @@ body{
     height: auto;
 }
 
+.modal-body p{
+    color: #fff !important;
+    font-size: 12px;
+}
+
+.errorlist{
+    margin: 0;
+    list-style: none;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding-left: 0 ;
+    color: red;
+}
+
+#heading-login{
+    display: block;
+    padding-bottom: 48px !important;
+}
+
+#heading-login h5{
+    display: block;
+    padding-bottom: 48px !important;
+}
 #one{
     height: 100vh;
     width: auto;
@@ -159,10 +183,11 @@ body{
     width: 100%;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: rgba(255,255,255,20%);
+    background-color: rgba(255,255,255,0.2);
     transition: 0.1s ease-in;
     font-family: 'Titillium Web', sans-serif;
     font-size: 12px;
+    margin-left: 0;
     font-weight: 800;
     font-style: normal;
     font-stretch: normal;
@@ -178,7 +203,7 @@ body{
 }
 
 #input-box:hover {
-    background-color: rgba(255,255,255,33%);
+    background-color: rgba(255,255,255,0.33);
 }
 
 #input-box:focus {

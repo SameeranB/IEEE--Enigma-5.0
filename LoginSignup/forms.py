@@ -8,13 +8,14 @@ class UserForm(forms.ModelForm):
     BotCatcher = forms.CharField(required=False, widget=forms.HiddenInput, label = '')
     class Meta:
         model = CustomUser
-        fields = ('username', 'first_name','email', 'password')
+        fields = ('username', 'first_name','email', 'password', 'University')
 
 
 
     username = forms.CharField(widget=forms.TextInput(attrs={'id':'input-box','placeholder': 'Username'}), label='')
     first_name = forms.CharField(widget=forms.TextInput(attrs={'id': 'input-box', 'placeholder': 'Name'}), label='')
     email = forms.EmailField(widget=forms.TextInput(attrs={'id': 'input-box', 'placeholder': 'Email'}), label='')
+    University = forms.CharField(widget=forms.TextInput(attrs={'id': 'input-box', 'placeholder': 'University'}), label='')
     password = forms.CharField(widget=forms.PasswordInput(attrs={'id': 'input-box', 'placeholder': 'Password'}), label='')
     captcha = ReCaptchaField(widget=ReCaptchaV3, label='')
 

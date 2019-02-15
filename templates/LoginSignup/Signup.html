@@ -44,12 +44,6 @@
                     <form method="post" enctype="multipart/form-data" >
                         {% csrf_token %}
                         {{ user_form.as_p }}
-
-
-{#                        <div id="captcha-holder">#}
-{#                            <script src="https://google.com/recaptcha/api.js"></script>#}
-{#                            <div class="g-recaptcha" data-sitekey="6LeDz4UUAAAAAPb-CcOMtvOG4oDBBigtdDcoDAoh"></div>#}
-{#                        </div>#}
                         <input class="btn btn-secondary" type="submit" value="Sign Up">
                     </form>
                     </div>
@@ -84,30 +78,38 @@
             <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="email-conf-modal">Congratulations!</h5>
+                <h5 class="modal-title" id="email-conf-modal">
+
+                    {% if registered %}
+                    Congratulations!
+                    {% else %}
+                        Oops!
+                    {% endif %}
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="color: #fff">
                     {% if registered %}
                     <p>You have successfully registered! Please check your email, and follow the verification instructions.</p>
                     {% else %}
-                    {{ errors }}
+                    <p>You dumbfuck, can't even fill a god damn form properly, how tf you gon' play enigma fam? Go fuck a dog, cuntbag.</p>
                     {% endif %}
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay, I'm in.</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay</button>
                 </div>
             </div>
             </div>
       </div>
-{#    {% if successful_submit %}#}
-{#    <script type="text/javascript">#}
-{#        $(document).ready(function(){#}
-{#            $("#email-conf").modal('show');#}
-{#        });#}
-{#    </script>#}
-{#    {% endif %}#}
+
+    {% if trigger %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#email-conf").modal('show');
+        });
+    </script>
+    {% endif %}
 </body>
 </html>
