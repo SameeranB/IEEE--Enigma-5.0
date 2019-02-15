@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 EMAIL_USE_TLS = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://enigma5.herokuapp.com/']
 
 
 
