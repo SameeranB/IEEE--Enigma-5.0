@@ -56,11 +56,12 @@ def signup_view(request):
             # Sending activation link in terminal
             # user.email_user(subject, message)
             subject = 'Activate Your enigma account!!'
-            message = render_to_string('LoginSignup/acc_active_email.html', {
+            ctx = {
                 'user': user, 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 'token': account_activation_token.make_token(user),
-            })
+            }
+            message = render_to_string('LoginSignup/acc_active_email.html', ctx)
             email_from = settings.EMAIL_HOST_USER
             to_email = [user_form.cleaned_data.get('email')]
             send_mail(subject, message, email_from, to_email)
