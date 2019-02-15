@@ -1,1 +1,1 @@
-web: gunicorn Enigma.wsgi
+gunicorn  Enigma:application -b 0.0.0.0:$PORT
