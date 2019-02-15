@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ['https://enigma5.herokuapp.com/']
 
 
 #Setting up email config
-EMAIL_BACKEND = django.core.mail.backends.smtp.EmailBackend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
