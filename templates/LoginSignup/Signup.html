@@ -33,69 +33,29 @@
 
         <div id='one'>
             <div class="container-fluid" id="main-container">
-                <!--
-                <div class='login_logo_holder'>
-                    <img src='img/enigma_logo.png' class='enigma_logo'/>
-                </div>
-                -->
                 <div class='row'>
                     <div class='col-12' id='heading-login'>
-                        <h5>Register and be a part of the mystery</h5>
-                    </div>
-                </div>
-                {% if registered %}
+                                        {% if registered %}
                     <h1>Thank you for Registering</h1>
                     <a href="{% url 'index' %}">Click Here to Go Back</a>
                 {% else %}
-                    <h1>Please enter the following details to sign up</h1>
+                    <h5>Register to be a part of this mystery</h5>
 
                     <form method="post" enctype="multipart/form-data" >
                         {% csrf_token %}
-                        <p>Please make sure that the password follows the following criteria:</p>
-                        <ul>
-                            <li>Password should be atleast 8 characters</li>
-                            <li>Password should not be too similar to other information</li>
-                            <li>Password should not be all numeric</li>
-                        </ul>
                         {{ user_form.as_p }}
 
-                        <script src="https://google.com/recaptcha/api.js"></script>
-                        <div class="g-recaptcha" data-sitekey="6LeDz4UUAAAAAPb-CcOMtvOG4oDBBigtdDcoDAoh"></div>
 
-                        <input type="submit" value="Signup">
+{#                        <div id="captcha-holder">#}
+{#                            <script src="https://google.com/recaptcha/api.js"></script>#}
+{#                            <div class="g-recaptcha" data-sitekey="6LeDz4UUAAAAAPb-CcOMtvOG4oDBBigtdDcoDAoh"></div>#}
+{#                        </div>#}
+                        <input class="btn btn-secondary" type="submit" value="Sign Up">
                     </form>
-                    <div class="container" id="p-box">
-                            <p>Already have an account?</p>
-
-                            <!-- for the modal only
-                            <a class="btn btn-secondary" href="#signUpModal" data-toggle="modal">Log In</a>
-                            -->
-                            <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#login">Log In</a>
                     </div>
+                </div>
+
                 {% endif %}
-{#                <div class="row">#}
-{#                    <div class="col-12">#}
-{#                        <div class="container" id="login-box">#}
-{#                            <form method="get" id="form-box">#}
-{#                                <input type="email" placeholder="Email" id="input-box" required>#}
-{#                                <input type="password" placeholder="Password" id="input-box" required>#}
-{#                                <input type="password" placeholder="Confirm Password" id="input-box" required>#}
-{#                                <input type="text" placeholder="Registration Number" id="input-box" required>#}
-{#                                <div id="sign-in">#}
-{#                                    <a class="btn btn-secondary" href="#">Sign Up</a>#}
-{#                                </div>#}
-{#                            </form>#}
-{#                        </div>#}
-{#                        <div class="container" id="p-box">#}
-{#                            <p>Already have an account?</p>#}
-{##}
-{#                            <!-- for the modal only#}
-{#                            <a class="btn btn-secondary" href="#signUpModal" data-toggle="modal">Log In</a>#}
-{#                            -->#}
-{#                            <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#login">Log In</a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
             </div>
         </div>
 
@@ -119,5 +79,35 @@
             </div>
             </div>
       </div>
+
+                <div class="modal fade" id="email-conf" tabindex="-1" role="dialog" aria-labelledby="email-conf" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="email-conf-modal">Congratulations!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    {% if registered %}
+                    <p>You have successfully registered! Please check your email, and follow the verification instructions.</p>
+                    {% else %}
+                    {{ errors }}
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay, I'm in.</button>
+                </div>
+            </div>
+            </div>
+      </div>
+{#    {% if successful_submit %}#}
+{#    <script type="text/javascript">#}
+{#        $(document).ready(function(){#}
+{#            $("#email-conf").modal('show');#}
+{#        });#}
+{#    </script>#}
+{#    {% endif %}#}
 </body>
 </html>

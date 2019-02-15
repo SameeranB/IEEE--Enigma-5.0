@@ -15,6 +15,20 @@ body{
     height: auto;
 }
 
+#captcha-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    margin: 12px 0;
+}
+
+
+.g-recaptcha div{
+    width: 0px;
+    height: 0px;
+}
 
 .login_logo_holder{
     width:100%;
@@ -69,10 +83,10 @@ body{
 #one{
     height: 100vh;
     width: auto;
-    background-image: url('./img/Man2.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    /*background-image: url('./img/Man2.png');*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: contain;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -213,5 +227,12 @@ body{
         width: 96%;
         margin-left: 13px;
 
+    }
+}
+
+@media (min-width: 992px) {
+    /*dESKTOP*/
+    #main-container{
+        width: 30%;
     }
 }

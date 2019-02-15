@@ -1,30 +1,35 @@
 from django import forms
 from users.models import CustomUser
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV3
 
 class UserForm(forms.ModelForm):
 
-    confirm_email_id = forms.EmailField(required=True)
-    password = forms.CharField(widget=forms.PasswordInput())
-    BotCatcher = forms.CharField(required=False, widget=forms.HiddenInput)
-
+    BotCatcher = forms.CharField(required=False, widget=forms.HiddenInput, label = '')
     class Meta:
         model = CustomUser
-        fields = ('username', 'first_name', 'last_name', 'email', 'password')
+        fields = ('username', 'first_name','email', 'password')
+
+
+
+    username = forms.CharField(widget=forms.TextInput(attrs={'id':'input-box','placeholder': 'Username'}), label='')
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'id': 'input-box', 'placeholder': 'Name'}), label='')
+    email = forms.EmailField(widget=forms.TextInput(attrs={'id': 'input-box', 'placeholder': 'Email'}), label='')
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'id': 'input-box', 'placeholder': 'Password'}), label='')
+    captcha = ReCaptchaField(widget=ReCaptchaV3, label='')
 
     def clean(self):
         all_clean_data = super().clean()
-        email = all_clean_data['email']
-        confirm_email_id = all_clean_data['confirm_email_id']
         botcatcher = all_clean_data['BotCatcher']
         if len(botcatcher) > 0:
             raise forms.ValidationError("BOT CAUGHT")
 
-        if email != confirm_email_id:
-            raise forms.ValidationError("Email-IDs don't match!")
+
 
 
 class LoginForm(forms.Form):
-    Username = forms.CharField(max_length=200)
-    Password = forms.CharField(widget=forms.PasswordInput())
+
+    Username = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'id' : 'input-box', 'placeholder' : 'Username'}), label='')
+    Password = forms.CharField(widget=forms.PasswordInput(attrs={'id' : 'input-box', 'placeholder' : 'Password'}), label='')
 
 

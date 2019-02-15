@@ -41,7 +41,11 @@ EMAIL_PORT = 587
 
 # Google Recaptcha Credentials
 
-GOOGLE_RECAPTCHA_SECRET_KEY = os.environ.get('GOOGLE_RECAPTCHA_SECRET_KEY')
+
+
+RECAPTCHA_PUBLIC_KEY = '6Le0p5EUAAAAABE--mN9qZLF72HqVTh5RHZx7JFi'
+RECAPTCHA_PRIVATE_KEY = '6Le0p5EUAAAAADhxlpEKBqei9EyctizTN9kk--Dp'
+
 
 
 
@@ -57,6 +61,7 @@ INSTALLED_APPS = [
     'LoginSignup',
     'Questions',
     'users',
+    'captcha',
 
 ]
 

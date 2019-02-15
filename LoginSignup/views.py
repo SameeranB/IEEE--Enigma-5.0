@@ -54,28 +54,6 @@ def signup_view(request):
                 'token': account_activation_token.make_token(user),
             })
 
-
-
-
-
-            # BEGIN RECAPTCHA VALIDATION
-            recaptcha_response = request.POST.get('g-recaptcha-response')
-            values = {
-                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-                'response': recaptcha_response
-            }
-
-            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data= values)
-            result = r.json()
-            #recapctha ends
-
-            if result['success']:
-                user_form.save()
-                messages.success(request, 'New comment added with success!')
-            else:
-                messages.error(request, 'Invalid reCAPTCHA. Please try again.')
-
-
             # Sending activation link in terminal
             # user.email_user(subject, message)
             mail_subject = 'Activate Your enigma account!!'
@@ -83,16 +61,18 @@ def signup_view(request):
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
             registered = True
-            return HttpResponse('please confirm your email address by activating')
+            # return HttpResponse('please confirm your email address by activating')
 
         else:
+            # print(user_form.errors)
+            # return render(request, 'LoginSignup/Signup.html',
+            #               {'registered': registered, 'errors': user_form.errors})
 
-            return HttpResponse("Invalid!")
     else:
         user_form = UserForm()
 
     return render(request, 'LoginSignup/Signup.html',
-                  {'registered': registered, 'user_form': user_form})
+                  {'registered': registered, 'user_form': user_form, 'errors': user_form})
 
 
 def activate(request, uidb64, token):

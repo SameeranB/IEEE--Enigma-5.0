@@ -46,9 +46,9 @@
                     <div class="col-12">
                         <div class="container" id="login-box">
                             <form action="{% url 'LoginSignup:Login' %}" method="POST" id="form-box">
-				{% csrf_token %}
-    {{ LoginForm.as_p }}
-    <input type="submit" value="Login">
+				                {% csrf_token %}
+                                {{ LoginForm.as_p }}
+                                <input type="submit" value="Login">
                                 <!--<input type="email" placeholder="Email" id="input-box" required>
                                 <br/>
                                 <input type="password" placeholder="Password" id="input-box" required>
