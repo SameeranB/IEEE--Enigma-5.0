@@ -23,6 +23,7 @@ body{
 }
 
 #logo{
+    margin-top: 128px;
     width: 300px;
 }
 
@@ -39,7 +40,7 @@ body{
 }
 
 .bg-custom {
-    background-color: transparent;
+    background-color: #1b191d;
 }
 
 .navbar-dark .navbar-nav .nav-link{
@@ -184,6 +185,7 @@ body{
 #ieee{
     width: 156px;
     height: auto;
+    display: none;
 }
 
 #input-box{
@@ -219,6 +221,12 @@ body{
 
 #input-box:focus {
     outline: none !important;
+}
+
+#enigma-logo-modal {
+    width: 156px;
+    height: auto;
+    display: block;
 }
 
 #contact-head {
@@ -272,6 +280,14 @@ body{
 
 @media only screen and (min-width: 760px) and (max-height: 1024px) {
 
+    .bg-custom {
+        background-color: transparent;
+    }
+
+    #ieee {
+        display: block;
+    }
+
     #two{
         padding: 0 20vh;
     }
@@ -282,9 +298,7 @@ body{
 
     #logo{
         margin-left: 16px;
-
         margin-top: 128px;
-        width: 300px;
     }
 
 }
