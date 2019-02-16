@@ -1,65 +1,10 @@
-{#{% autoescape off %}#}
-<!DOCTYPE html>
-
-    {% load staticfiles %}
-<html lang="en">
-
-<body>
-    <style>
-    #content{
-        background-image: linear-gradient(172deg,#1b191d,#360033);
-        padding: 18px;
-        color: #fff;
-        font-family: 'Titillium Web', sans-serif;
-        text-align: center;
-        display: inline-block;
-
-    }
-
-    img{
-        width: 300px;
-        height: auto;
-    }
-
-    #ieee-logo{
-        width: 100px;
-        height: auto;
-        margin-top: 50px;
-        }
-
-    button{
-        padding: 12px 16px;
-        background-color: rgba(255,255,255,0.2);
-        color: #fff;
-        border-radius: 4px;
-        border: none;
-
-    }
-    </style>
+{% autoescape off %}
 
 
-    <div id='content'>
-    <img src="{% static 'LoginSignup/img/ENIGMA_logo.png' %}"/>
-    <h4>Hi {{ user.username }},</h4>
+Thank you for registering for Enigma 5.0!
+Click on the below link to confirm your registration.
 
-    <h5>
-        Thank you for registering for Enigma 5.0.
-    </h5>
-
-    <p>
-
-        Click the button below to confirm your registration
-    </p>
-
-        <button onclick={window.open({{ domain }}{% url 'activate' uidb64=uid token=token %})}>Confirm</button>
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
 
 
-
-    <footer>
-        <img id="ieee-logo" src="{% static 'LoginSignup/img/ieee_logo.png' %}"/>
-    </footer>
-
-    </div>
-</body>
-</html>
-{#{% endautoescape %}#}
+{% endautoescape %}

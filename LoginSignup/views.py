@@ -14,7 +14,6 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from users.models import CustomUser
 from django.template.loader import render_to_string
-from django.core.mail import send_mail
 
 import requests
 from django.contrib import messages
@@ -55,19 +54,20 @@ def signup_view(request):
 
             # Sending activation link in terminal
             # user.email_user(subject, message)
-            subject = 'Activate Your enigma account!!'
-            ctx = {
-                'user': user, 'domain': current_site.domain,
+            mail_subject = 'Activate Your enigma account!!'
+            message = render_to_string('LoginSignup/acc_active_email.html', {
+                'user': user,
+                'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 'token': account_activation_token.make_token(user),
-            }
-            message = render_to_string('LoginSignup/acc_active_email.html', ctx)
-            email_from = settings.EMAIL_HOST_USER
+            })
+            # email_from = settings.EMAIL_HOST_USER
             to_email = [user_form.cleaned_data.get('email')]
-            send_mail(subject, message, email_from, to_email)
+            # send_mail(subject, message, email_from, to_email)
 
-            # email = EmailMessage(mail_subject, message, to=[to_email])
-            # email.send()
+            email = EmailMessage(mail_subject, message, to=[to_email])
+            email.content_subtype = 'html'
+            email.send()
             registered = True
             # return HttpResponse('please confirm your email address by activating')
         trigger = True

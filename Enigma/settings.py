@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
-import django.core.mail.backends.smtp
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,20 +35,19 @@ ALLOWED_HOSTS = ['https://enigma5.herokuapp.com/', 'enigma.ieeevit.com']
 
 
 
-#Setting up email config
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#Setting up email confi
 EMAIL_USE_SSL = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'ieee.enigma@gmail.com' # os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = 'jsmhkqvesmdecaep'  # os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 465
 
 # Google Recaptcha Credentials
 
 
 
-RECAPTCHA_PUBLIC_KEY =   os.environ.get('RECAPTCHA_PUBLIC_KEY') # "6Le0p5EUAAAAABE--mN9qZLF72HqVTh5RHZx7JFi"
-RECAPTCHA_PRIVATE_KEY =  os.environ.get('RECAPTCHA_PRIVATE_KEY') #  #"6Le0p5EUAAAAADhxlpEKBqei9EyctizTN9kk--Dp"
+RECAPTCHA_PUBLIC_KEY =     "6Le0p5EUAAAAABE--mN9qZLF72HqVTh5RHZx7JFi" # os.environ.get('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = "6Le0p5EUAAAAADhxlpEKBqei9EyctizTN9kk--Dp" # os.environ.get('RECAPTCHA_PRIVATE_KEY') #  #
 
 
 
