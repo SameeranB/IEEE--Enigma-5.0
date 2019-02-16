@@ -23,7 +23,6 @@ body{
 }
 
 #logo{
-    margin-top: 128px; 
     width: 300px;
 }
 
@@ -283,5 +282,9 @@ body{
 
     #logo{
         margin-left: 16px;
+
+        margin-top: 128px;
+        width: 300px;
     }
+
 }
