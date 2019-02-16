@@ -28,26 +28,26 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = ['https://enigma5.herokuapp.com/', 'enigma.ieeevit.com']
+ALLOWED_HOSTS = ['enigma5.herokuapp.com/', 'enigma.ieeevit.com']
 
 
 
 #Setting up email confi
 EMAIL_USE_SSL = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = 'ieee.enigma@gmail.com' # os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = 'jsmhkqvesmdecaep'  # os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') #'ieee.enigma@gmail.com' #
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD') # 'jsmhkqvesmdecaep'
 EMAIL_PORT = 465
 
 # Google Recaptcha Credentials
 
 
 
-RECAPTCHA_PUBLIC_KEY =     "6Le0p5EUAAAAABE--mN9qZLF72HqVTh5RHZx7JFi" # os.environ.get('RECAPTCHA_PUBLIC_KEY')
-RECAPTCHA_PRIVATE_KEY = "6Le0p5EUAAAAADhxlpEKBqei9EyctizTN9kk--Dp" # os.environ.get('RECAPTCHA_PRIVATE_KEY') #  #
+RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY') # "6Le0p5EUAAAAABE--mN9qZLF72HqVTh5RHZx7JFi"
+RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY') # "6Le0p5EUAAAAADhxlpEKBqei9EyctizTN9kk--Dp" #  #  #
 
 
 
