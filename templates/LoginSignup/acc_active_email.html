@@ -1,22 +1,59 @@
 {% autoescape off %}
+{% load staticfiles %}
 
+<div style="background-image: linear-gradient(172deg,#1b191d,#360033);
+        padding: 5px;
+        color: #fff;
+        font-family: 'Titillium Web', sans-serif;
+        text-align: center;
+        display: inline-block;
+        justify-content: center;
+        align-content: center;">
 
-    <p>Hi {{ user }},</p>
-<h2>Thank you for registering for Enigma 5.0!</h2>
+    <div style="justify-content: center;
+        align-content: center;
+        border: 2px solid white;
+        padding: 5px;
+        background-image: url('{% static "LoginSignup/img/Man2.png" %}');
+    background-position: right;">
 
-<p>Enigma will begin on the 22nd of February. More details will be available soon.</p>
-    <p></p>
+        <img style="align-self: center;
+        margin-top: 30px;
+        width: 250px;
+        height: auto;" src="{% static 'LoginSignup/img/layer-0.png' %}"/>
 
+        <h2 style=" margin-top: 50px;">Hi {{ user }},</h2>
 
-    <h4>Click the button below to confirm your registration for Enigma 5.0</h4>
-<a type="button" href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Confirm Registration</a>
-<p></p>
-    <p></p>
-    <p></p>
-      <p>We hope to see you there.</p>
-    <p></p>
-    <p></p>
-    <p></p>
-<p>Regards,</p>
-    <p>IEEE VIT Student Chapter</p>
+        <p style="padding: 10px;
+        font-family: 'Titillium Web', sans-serif;
+        -ms-word-wrap: break-word;
+        word-wrap: break-word;
+        text-align: center;
+        justify-content: center;
+        font-size: 18px;
+        word-spacing: 3px;
+        text-space: 5px;
+        line-height: 26px;">
+            Thank you for registering for Enigma 5.0.
+            <br/>
+            Click the button below to confirm your registration
+        </p>
+
+        <a style="margin-top: 5px;
+        padding: 12px 16px;
+        background-color: rgba(255,255,255,0.2);
+        color: #fff;
+        border-radius: 4px;
+        border: none;" href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Confirm</a>
+        <footer>
+
+            <img style="width: 100px;
+        height: auto;
+        margin-top: 50px;" src="{% static 'LoginSignup/img/ieee_logo.png' %}"/>
+
+        </footer>
+    </div>
+</div>
+
 {% endautoescape %}
+
