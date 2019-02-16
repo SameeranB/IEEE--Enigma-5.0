@@ -26,7 +26,7 @@
                   <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
                     <li class="nav-item">
                         <!-- this a tag should have href to the home page -->
-                      <a class="nav-link" href="#">Home</a>
+                      <a class="nav-link" href="{% url 'index' %}">Home</a>
                     </li>
                   </ul>
                 </div>
@@ -41,13 +41,13 @@
                 <div class="row">
                     <div class="col-12" id="regis-holder">
                         <h2>Thank you for Registering</h2>
-                        <h3>Click below to go back</h3>
+                        <h3>Click the button below to go to Home</h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12" id="go-back-holder">
                         <div id="btn-login">
-                            <a href="{% url 'index' %}">Back</a>
+                            <a href="{% url 'index' %}">Go Back</a>
                         </div>
                     </div>
                 </div>
