@@ -1,13 +1,16 @@
 {% autoescape off %}
 
 
-<h1>Thank you for registering for Enigma 5.0!</h1>
+    <p>Hi {{ user }},</p>
+<h2>Thank you for registering for Enigma 5.0!</h2>
 
 <h3>Enigma will begin on the 22nd of February. More details will be available soon</h3>
     <p></p>
-    <p></p>
-<h4>Click the button below to confirm your registration for Enigma 5.0</h4>
+    <p>We hope to see you there.</p>
+
+    <h4>Click the button below to confirm your registration for Enigma 5.0</h4>
 <a type="button" href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Confirm Registration</a>
 
-
+<p>Regards,</p>
+    <p>IEEE VIT Student Chapter</p>
 {% endautoescape %}
