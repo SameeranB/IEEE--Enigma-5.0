@@ -44,7 +44,7 @@
                     <form method="post" enctype="multipart/form-data" >
                         {% csrf_token %}
                         {{ user_form.as_p }}
-                        <input class="btn btn-secondary" type="submit" value="Sign Up">
+                        <input class="btn btn-secondary" type="submit" value="Register">
                     </form>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                     {% if registered %}
                     <p>You have successfully registered! Please check your email, and follow the verification instructions.</p>
                     {% else %}
-                    <p>You dumbfuck, can't even fill a god damn form properly, how tf you gon' play enigma fam? Go fuck a dog, cuntbag.</p>
+                    <p>There are a few errors in your Registeration form, please resolve them and register again</p>
                     {% endif %}
                 </div>
                 <div class="modal-footer">
