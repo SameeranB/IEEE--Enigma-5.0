@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['enigma5.herokuapp.com/', 'enigma.ieeevit.com']
+ALLOWED_HOSTS = ['enigma5.herokuapp.com', 'enigma.ieeevit.com']
 
 
 
