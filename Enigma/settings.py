@@ -155,7 +155,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # email unique
 
-CustomUser._meta.local_fields[4].__dict__['_unique'] = True
+#CustomUser._meta.local_fields[4].__dict__['_unique'] = True
+# Dosen't work, app crashes
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
