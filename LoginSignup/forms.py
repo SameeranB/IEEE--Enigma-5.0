@@ -25,6 +25,13 @@ class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'id': 'input-box', 'placeholder': 'Password'}), label='')
     captcha = ReCaptchaField(widget=ReCaptchaV3, label='')
 
+    def mailcheck(self):
+        email = super().clean()['email']
+        exists = CustomUser.objects.filter(email=email)
+        if exists:
+            raise ValidationError(
+                "Email address %s has already registered, please check your inbox for the confirmation mail" % email)
+
     def clean(self):
         all_clean_data = super().clean()
         email = all_clean_data['email']
@@ -33,9 +40,6 @@ class UserForm(forms.ModelForm):
         if len(botcatcher) > 0:
             raise forms.ValidationError("BOT CAUGHT")
 
-        exists = CustomUser.objects.filter(email=email)
-        if exists:
-            raise ValidationError("Email address %s has already registered, please check your inbox for the confirmation mail" % email)
 
 
 
