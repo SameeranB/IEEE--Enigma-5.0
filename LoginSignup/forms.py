@@ -31,7 +31,7 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError("BOT CAUGHT")
         exists = CustomUser.objects.filter(email=email)
         if exists:
-            raise ValidationError("Email address %s has already registered, please check your inbox for the confirmation mail")
+            raise ValidationError("Email address %s has already registered, please check your inbox for the confirmation mail" % email)
 
 
 
