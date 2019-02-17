@@ -1,4 +1,6 @@
 from django import forms
+from django.core.exceptions import ValidationError
+
 from users.models import CustomUser
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV3
@@ -21,10 +23,13 @@ class UserForm(forms.ModelForm):
 
     def clean(self):
         all_clean_data = super().clean()
+        email = all_clean_data['email']
         botcatcher = all_clean_data['BotCatcher']
         if len(botcatcher) > 0:
             raise forms.ValidationError("BOT CAUGHT")
-
+        exists = CustomUser.objects.filter(email=email)
+        if exists:
+            raise ValidationError("Email address %s has already registered, please check your inbox for the confirmation mail")
 
 
 
