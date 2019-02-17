@@ -52,7 +52,7 @@ body{
 }
 
 .bg-custom {
-    background-color: #1b191d;
+    background-color: transparent;
 }
 
 .navbar-dark .navbar-nav .nav-link{
@@ -244,6 +244,11 @@ body{
     text-decoration: none;
     border-bottom: 2px solid #fff;
     border-top: 2px solid #fff;
+}
+
+#go-back {
+    text-decoration: none;
+    font-weight: 800;
 }
 
 
