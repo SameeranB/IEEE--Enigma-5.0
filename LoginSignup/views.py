@@ -50,6 +50,7 @@ def signup_view(request):
             user.set_password(user.password)
             user.is_active = False
             current_site = get_current_site(request)
+            user.save()
 
 
             # Sending activation link in terminal
