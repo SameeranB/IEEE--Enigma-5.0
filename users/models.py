@@ -9,7 +9,7 @@ from django.contrib.postgres.fields import ArrayField
 
 class CustomUser(AbstractUser):
 
-
+    email = models.EmailField(unique=True)
     University = models.CharField(max_length=100)
     CurrentQuestion = models.IntegerField(default=1)
     Answer = models.TextField()
