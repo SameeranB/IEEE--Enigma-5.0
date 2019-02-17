@@ -40,10 +40,7 @@ class UserForm(forms.ModelForm):
         if len(botcatcher) > 0:
             raise forms.ValidationError("BOT CAUGHT")
 
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 
 
 
