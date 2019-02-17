@@ -14,7 +14,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
-# from users.models import CustomUser
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -153,10 +152,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# email unique
-
-#CustomUser._meta.local_fields[4].__dict__['_unique'] = True
-# Dosen't work, app crashes
 
 
 # Internationalization
