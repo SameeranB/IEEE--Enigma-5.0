@@ -18,7 +18,7 @@ class UserForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'id':'input-box','placeholder': 'Username'}), label='')
     first_name = forms.CharField(widget=forms.TextInput(attrs={'id': 'input-box', 'placeholder': 'Name'}), label='')
     email = forms.EmailField(widget=forms.TextInput(attrs={'id': 'input-box', 'placeholder': 'Email'}), label='',
-                             validators=validators.EmailValidator)
+                             validators=[validators.EmailValidator])
     University = forms.CharField(widget=forms.TextInput(attrs={'id': 'input-box', 'placeholder': 'University / '
                                                                                                  'Organization'}),
                                  label='')
