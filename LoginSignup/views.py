@@ -71,6 +71,9 @@ def signup_view(request):
             email.send()
             registered = True
 
+        else:
+            pass
+
         trigger = True
     else:
         user_form = UserForm()
