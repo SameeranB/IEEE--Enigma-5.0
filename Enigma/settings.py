@@ -14,6 +14,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -196,3 +198,11 @@ SESSION_EXPIRE_SECONDS = 18000
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 
 django_heroku.settings(locals())
+
+
+
+# Sentry Settings
+sentry_sdk.init(
+    dsn="https://57d6d1c4e7e64314a3cdf96169decbdd@sentry.io/1396016",
+    integrations=[DjangoIntegration()]
+)
