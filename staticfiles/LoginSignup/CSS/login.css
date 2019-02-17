@@ -1,0 +1,230 @@
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.enigma_logo{
+    width: 300px;
+    height: auto;
+}
+
+
+.login_logo_holder{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 36px;
+    margin-top: 100px;
+}
+
+#heading-login{
+    margin-top: 350px;
+    color: #fff;
+    text-align: center;
+}
+.navbar{
+    position: fixed;
+    z-index: 1050;
+    width: 100%;
+    font-size: 12px;
+}
+
+.bg-custom {
+    background-color: transparent;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: #fff;
+    font-weight: 800;
+}
+
+.nav-item{
+    margin: 2px 12px;
+    border-bottom: 2px solid rgba(0,0,0,0);
+}
+
+.nav-item:hover{
+    border-bottom: 2px solid #fff;
+}
+
+#ieee{
+    width: 156px;
+    height: auto;
+}
+
+#one{
+    height: 100vh;
+    width: auto;
+    background-image: url('../../img/Man2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content{
+    background-color: #110c22;
+}
+
+.modal-title{
+    color: #fff;
+}
+
+.modal-header{
+    border: none;
+}
+
+.modal-footer{
+    border-top: none;
+    justify-content: center;
+}
+
+
+
+.btn-secondary{
+    background: none;
+    border-color: rgba(0,0,0,0);
+    font-weight: bold;
+    border-radius: 0;
+    font-size: 16px;
+}
+
+.btn-secondary:hover{
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    border-left-color: rgba(0,0,0,0);
+    border-right-color: rgba(0,0,0,0);
+    background: none; 
+}
+
+.btn-secondary:focus{
+    box-shadow: none;
+}
+
+.close{
+    color: #fff;
+    text-shadow: none;
+}
+
+#login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#form-box {
+    padding: 0px;
+    display: block;
+    justify-content: center;
+    width: 320px;
+    text-align: center;
+}
+
+#input-box{
+    border: none;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 5px;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgba(255,255,255,20%);
+    transition: 0.1s ease-in;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
+}
+
+::placeholder{
+    color: #D3D3D3;
+    font-weight: 100;
+}
+
+#input-box:hover {
+    background-color: rgba(255,255,255,33%);
+}
+
+#input-box:focus {
+    outline: none !important;
+}
+
+#sign-in{
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#sign-in a{
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px #000;
+    transition: 0.1s ease-in;
+    padding: 6px 8px;
+}
+
+#sign-in a:hover{
+    text-decoration: none;
+    border-bottom: 2px solid #fff;
+    border-top: 2px solid #fff;
+}
+
+#p-box {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+    margin-bottom: -60px;
+}
+
+#sign-up{
+    text-align: center;
+    padding: 6px;
+    margin-top: -5px;
+
+    color: white;
+    font-size: 16px;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px #000;
+    transition: 0.1s ease-in;
+    align-self: center;
+}
+
+#sign-up:hover{
+    text-decoration: none;
+    border-bottom: 2px solid #fff;
+    border-top: 2px solid #fff;
+}
+
+
+@media only screen and (min-width: 760px) and (max-height: 1024px) {
+
+    #input-box{
+        width: 96%;
+        margin-left: 13px;
+
+    }
+}
