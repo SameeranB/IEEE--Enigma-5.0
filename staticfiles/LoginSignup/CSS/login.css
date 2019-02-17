@@ -69,7 +69,6 @@ body{
 #one{
     height: 100vh;
     width: auto;
-    background-image: url('../../img/Man2.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -144,7 +143,7 @@ body{
     width: 100%;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: rgba(255,255,255,20%);
+    background-color: rgba(255,255,255,0.2);
     transition: 0.1s ease-in;
     font-family: 'Titillium Web', sans-serif;
     font-size: 12px;
@@ -163,7 +162,7 @@ body{
 }
 
 #input-box:hover {
-    background-color: rgba(255,255,255,33%);
+    background-color: rgba(255,255,255,0.33);
 }
 
 #input-box:focus {

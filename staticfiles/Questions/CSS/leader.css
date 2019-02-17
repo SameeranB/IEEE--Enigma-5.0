@@ -103,7 +103,7 @@ thead>tr {
     padding: 100px;
     object-fit: contain;
     border-radius: 20px;
-    background-color: rgba(255,255,255, 16%);
+    background-color: rgba(255,255,255,0.16);
 }
 
 thead>tr>td{
