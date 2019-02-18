@@ -77,7 +77,7 @@
 
                 <div class='row' id='login-row'>
                         {% if user.is_authenticated %}
-                            <a class="btn btn-secondary" href='{% url "Questions:Question_Solver" %}' data-toggle="modal" data-target="#login">START</a>
+                            <a class="btn btn-secondary" href='{% url "Questions:Question_Solver" %}' >START</a>
 
                         {% else %}
                             <a class="btn btn-secondary" href='{% url "LoginSignup:Login" %}' data-toggle="modal" data-target="#login">Log In</a>
