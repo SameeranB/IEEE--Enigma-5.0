@@ -1,6 +1,5 @@
 from smtplib import SMTPAuthenticationError
 
-from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from .forms import UserForm, LoginForm
 from django.http import HttpResponseRedirect
@@ -9,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, View, FormView
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from .tokens import account_activation_token
 from django.http import HttpResponse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -45,9 +44,15 @@ def signup_view(request):
 
         # Check if the forms are valid
         if user_form.is_valid():
-            user = user_form.save()
-            current_site = get_current_site(request)
 
+
+
+            # Hashing the password
+            user = user_form.save()
+            user.set_password(user.password)
+            user.is_active = False
+            current_site = get_current_site(request)
+            user.save()
 
 
             # Sending activation link in terminal
@@ -62,23 +67,14 @@ def signup_view(request):
 
             to_email = [user_form.cleaned_data.get('email')]
 
-
-            send_mail(mail_subject, message, 'sameeranbandishti@ieee.org' ,[to_email], fail_silently=False)
-
-            registered = True
+            email = EmailMessage(mail_subject, message, 'sameeranbandishti@ieee.org', to=[to_email])
+            email.content_subtype = 'html'
 
             try:
                 email.send()
             except SMTPAuthenticationError:
-                user.delete()
                 return render(request, 'SMTPError.html')
-            else:
-                # Hashing the password
-                user = user_form.save()
-                user.set_password(user.password)
-                user.is_active = False
-                user.save()
-                registered = True
+            registered = True
 
         else:
             pass
@@ -139,10 +135,13 @@ class LogoutView(LoginRequiredMixin, View):
 
 
 def SendRem(request):
-    usrs = CustomUser.objects.filter(is_active=False)
+    # usrs = CustomUser.objects.filter(is_active=False)
     mail_subject = 'Activate Your enigma account!!'
-    message = render_to_string('LoginSignup/acc_active_email.html')
+    message = render_to_string('LoginSignup/reminder.html')
+    to_email = ['sameeranbandishti93@gmail.com']
 
+    email = EmailMessage(mail_subject, message, to=[to_email])
+    email.content_subtype = 'html'
 
+    email.send()
 
-    send_mail(mail_subject, message, 'sameeranbandishti@ieee.org', usrs, fail_silently=False)
