@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, View, FormView
 from django.conf import settings
-from django.core.mail import EmailMessage
+from django.core.mail import send_mail
 from .tokens import account_activation_token
 from django.http import HttpResponse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -66,9 +66,8 @@ def signup_view(request):
             to_email = [user_form.cleaned_data.get('email')]
 
 
-            email = EmailMessage(mail_subject, message, to=[to_email])
-            email.content_subtype = 'html'
-            email.send()
+            send_mail(mail_subject, message, 'sameeranbandishti@ieee.org' ,[to_email], fail_silently=False)
+
             registered = True
 
         else:
