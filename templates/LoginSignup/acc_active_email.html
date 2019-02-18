@@ -8,14 +8,16 @@
         text-align: center;
         display: inline-block;
         justify-content: center;
-        align-content: center;">
+        align-content: center;
+        padding-bottom: 0;">
 
     <div style="justify-content: center;
         align-content: center;
         border: 2px solid white;
         padding: 5px;
         background-image: url('https://i.imgur.com/3cEcHYa.png');
-    background-position: right;">
+    background-position: right;
+        padding-bottom: 0;">
 
         <img style="align-self: center;
         margin-top: 30px;
@@ -80,15 +82,41 @@
         color: #fff;
         border-radius: 4px;
         border: none;" href="https://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Confirm</a>
-        <footer>
-
-
-
+        <div style="
+        padding: 5px;
+        color: #fff;
+        font-family: 'Titillium Web', sans-serif;
+        text-align: center;
+        display: inline-block;
+        justify-content: center;
+        align-content: center;
+        display: block;">
             <img style="width: 100px;
         height: auto;
         margin-top: 50px;" src="https://i.imgur.com/lk8vHYh.png"/>
+        </div>
+
+
+        <footer style="display: block;
+                        background-color: #1b191d;
+                        text-align: justify;
+                        padding: 5px;
+                        position: relative;
+                        bottom: 0;">
+            <pre
+            style="
+            margin-bottom: 0;
+            font-family: 'Titillium Web', sans-serif;
+            text-align: center;
+            font-size: 12px;
+            ">
+<strong>IEEE-VIT | VIT Vellore</strong>
+Vellore Institute Of Technology,
+Gorbachev Rd, Vellore, Tamil Nadu
+            </pre>
 
         </footer>
+
     </div>
 </div>
 
