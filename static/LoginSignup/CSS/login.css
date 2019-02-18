@@ -67,7 +67,7 @@ body{
 }
 
 #one{
-    height: 100vh;
+    height: 100%;
     width: auto;
     background-position: center;
     background-repeat: no-repeat;
