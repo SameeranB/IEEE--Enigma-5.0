@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from .forms import UserForm, LoginForm
 from django.http import HttpResponseRedirect
@@ -68,7 +69,14 @@ def signup_view(request):
 
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.content_subtype = 'html'
-            email.send()
+
+            try:
+                email.send()
+            except ValidationError as e:
+                raise ValidationError(e)
+
+
+
             registered = True
 
         else:
@@ -126,4 +134,5 @@ class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect(reverse('index'))
+
 
