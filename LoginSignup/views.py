@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, View, FormView
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from .tokens import account_activation_token
 from django.http import HttpResponse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -45,10 +45,8 @@ def signup_view(request):
         # Check if the forms are valid
         if user_form.is_valid():
 
-
-            current_site = get_current_site(request)
             user = user_form.save()
-
+            current_site = get_current_site(request)
 
             # Sending activation link in terminal
             # user.email_user(subject, message)
@@ -59,21 +57,23 @@ def signup_view(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 'token': account_activation_token.make_token(user),
             })
-
             to_email = [user_form.cleaned_data.get('email')]
 
+            email = EmailMessage(mail_subject, message, to=[to_email])
+            email.content_subtype = 'html'
+
             try:
-                send_mail(mail_subject, message, 'sameeranbandishti@ieee.org' ,[to_email], fail_silently=False)
+                email.send()
             except SMTPAuthenticationError:
+                user.delete()
                 return render(request, 'SMTPAuthError.html')
-
-            # Hashing the password
-            user = user_form.save()
-            user.set_password(user.password)
-            user.is_active = False
-
-            user.save()
-
+            else:
+                # Hashing the password
+                user = user_form.save()
+                user.set_password(user.password)
+                user.is_active = False
+                user.save()
+                registered = True
             registered = True
 
         else:
