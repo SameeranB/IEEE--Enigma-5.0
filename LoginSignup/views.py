@@ -71,15 +71,13 @@ def signup_view(request):
             except SMTPAuthenticationError:
                 user.delete()
                 return render(request, 'SMTPError.html')
-
-            # Hashing the password
-            user = user_form.save()
-            user.set_password(user.password)
-            user.is_active = False
-
-            user.save()
-
-            registered = True
+            else:
+                # Hashing the password
+                user = user_form.save()
+                user.set_password(user.password)
+                user.is_active = False
+                user.save()
+                registered = True
 
         else:
             pass
