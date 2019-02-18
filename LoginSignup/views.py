@@ -48,12 +48,6 @@ def signup_view(request):
 
 
 
-            # Hashing the password
-            user = user_form.save()
-            user.set_password(user.password)
-            user.is_active = False
-            current_site = get_current_site(request)
-            user.save()
 
 
             # Sending activation link in terminal
@@ -77,7 +71,12 @@ def signup_view(request):
             except SMTPAuthenticationError:
                 return render(request, 'SMTPError.html')
 
-
+            # Hashing the password
+            user = user_form.save()
+            user.set_password(user.password)
+            user.is_active = False
+            current_site = get_current_site(request)
+            user.save()
 
             registered = True
 
