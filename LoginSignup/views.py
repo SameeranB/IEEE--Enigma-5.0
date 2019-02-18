@@ -126,3 +126,13 @@ class LogoutView(LoginRequiredMixin, View):
         logout(request)
         return HttpResponseRedirect(reverse('index'))
 
+
+
+def SendRem(request):
+    usrs = CustomUser.objects.filter(is_active=False)
+    mail_subject = 'Activate Your enigma account!!'
+    message = render_to_string('LoginSignup/acc_active_email.html')
+
+
+
+    send_mail(mail_subject, message, 'sameeranbandishti@ieee.org', usrs, fail_silently=False)
