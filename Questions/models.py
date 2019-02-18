@@ -11,6 +11,7 @@ class QuestionInfo(models.Model):
     Image = models.URLField(blank= True)
     Answer = ArrayField(models.CharField(max_length=1000), size=10)
     CloseAnswer = ArrayField(models.CharField(max_length=1000), size=20)
+    MediumAnswer = ArrayField(models.CharField(max_length=1000,default=''), size=20, default=list)
 
 
 class Achievements(models.Model):
