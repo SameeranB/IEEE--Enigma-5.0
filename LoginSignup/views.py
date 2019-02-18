@@ -1,3 +1,5 @@
+from smtplib import SMTPAuthenticationError
+
 from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from .forms import UserForm, LoginForm
@@ -72,8 +74,8 @@ def signup_view(request):
 
             try:
                 email.send()
-            except ValidationError as e:
-                raise ValidationError(e)
+            except SMTPAuthenticationError:
+                return render(request, 'SMTPError.html')
 
 
 
