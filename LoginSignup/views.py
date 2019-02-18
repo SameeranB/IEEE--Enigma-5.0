@@ -138,9 +138,8 @@ def SendRem(request):
     usrs = CustomUser.objects.filter(is_active=False).values_list('email', flat=True)
     mail_subject = 'Activate Your enigma account!!'
     message = render_to_string('LoginSignup/reminder.html')
-    to_email = ['sameeranbandishti93@gmail.com']
 
-    email = EmailMessage(mail_subject, message, usrs, to=[to_email])
+    email = EmailMessage(mail_subject, message, 'sameeranbandishti@ieee.org', to=usrs)
     email.content_subtype = 'html'
 
     email.send()
