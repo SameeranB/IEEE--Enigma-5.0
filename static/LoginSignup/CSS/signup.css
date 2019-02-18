@@ -106,7 +106,7 @@ body{
     padding-bottom: 48px !important;
 }
 #one{
-    height: 100vh;
+    height: 100%;
     width: auto;
 
     display: flex;
