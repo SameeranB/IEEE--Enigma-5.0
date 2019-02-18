@@ -45,7 +45,7 @@ def signup_view(request):
 
         # Check if the forms are valid
         if user_form.is_valid():
-            user = user_form.commit()
+            user = user_form.save()
             current_site = get_current_site(request)
 
 
@@ -69,6 +69,7 @@ def signup_view(request):
             try:
                 email.send()
             except SMTPAuthenticationError:
+                user.delete()
                 return render(request, 'SMTPError.html')
 
             # Hashing the password
