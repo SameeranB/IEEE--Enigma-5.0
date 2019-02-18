@@ -1,3 +1,6 @@
+from smtplib import SMTPAuthenticationError
+
+from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from .forms import UserForm, LoginForm
 from django.http import HttpResponseRedirect
@@ -42,15 +45,9 @@ def signup_view(request):
 
         # Check if the forms are valid
         if user_form.is_valid():
-
-
-
-            # Hashing the password
             user = user_form.save()
-            user.set_password(user.password)
-            user.is_active = False
             current_site = get_current_site(request)
-            user.save()
+
 
 
             # Sending activation link in terminal
@@ -69,6 +66,19 @@ def signup_view(request):
             send_mail(mail_subject, message, 'sameeranbandishti@ieee.org' ,[to_email], fail_silently=False)
 
             registered = True
+
+            try:
+                email.send()
+            except SMTPAuthenticationError:
+                user.delete()
+                return render(request, 'SMTPError.html')
+            else:
+                # Hashing the password
+                user = user_form.save()
+                user.set_password(user.password)
+                user.is_active = False
+                user.save()
+                registered = True
 
         else:
             pass
