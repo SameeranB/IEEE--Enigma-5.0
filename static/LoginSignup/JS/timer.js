@@ -18,10 +18,11 @@ var countDownDate = new Date("Feb 23, 2019 15:37:25").getTime();
 
   // Display the result in the element with following ids as
   // day, hour, min, sec given in the html file
-  document.getElementById("day").innerHTML = days + "D";
-  document.getElementById("hour").innerHTML = hours + "H";
-  document.getElementById("min").innerHTML = minutes + "M";
-  document.getElementById("sec").innerHTML = seconds + "S";
+  
+  // document.getElementById("day").innerHTML = days + "D";
+  // document.getElementById("hour").innerHTML = hours + "H";
+  // document.getElementById("min").innerHTML = minutes + "M";
+  // document.getElementById("sec").innerHTML = seconds + "S";
 
   // If the count down is finished, write some text
   //This is the condition after the clock reaches 0
