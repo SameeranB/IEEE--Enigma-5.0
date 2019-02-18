@@ -136,7 +136,6 @@ class LogoutView(LoginRequiredMixin, View):
 
 def SendRem(request):
     usrs = CustomUser.objects.filter(is_active=False).values_list('email', flat=True)
-    usrs =
     mail_subject = 'Activate Your enigma account!!'
     message = render_to_string('LoginSignup/reminder.html')
     to_email = ['sameeranbandishti93@gmail.com']
