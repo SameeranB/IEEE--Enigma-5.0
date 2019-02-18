@@ -45,8 +45,8 @@ def signup_view(request):
 
         # Check if the forms are valid
         if user_form.is_valid():
-
-
+            user = user_form.commit()
+            current_site = get_current_site(request)
 
 
 
@@ -75,7 +75,7 @@ def signup_view(request):
             user = user_form.save()
             user.set_password(user.password)
             user.is_active = False
-            current_site = get_current_site(request)
+
             user.save()
 
             registered = True
