@@ -57,7 +57,7 @@ def signup_view(request):
 
             # Sending activation link in terminal
             # user.email_user(subject, message)
-            mail_subject = 'Activate Your enigma account!!'
+            mail_subject = 'Activate Your Enigma Account | IEEE VIT'
             message = render_to_string('LoginSignup/acc_active_email.html', {
                 'user': user.username,
                 'domain': current_site.domain,
@@ -67,7 +67,7 @@ def signup_view(request):
 
             to_email = [user_form.cleaned_data.get('email')]
 
-            email = EmailMessage(mail_subject, message, 'sameeranbandishti@ieee.org', to=[to_email])
+            email = EmailMessage(mail_subject, message, to=[to_email])
             email.content_subtype = 'html'
 
             try:
@@ -136,7 +136,7 @@ class LogoutView(LoginRequiredMixin, View):
 
 def SendRem(request):
     usrs = CustomUser.objects.filter(is_active=False).values_list('email', flat=True)
-    mail_subject = 'Activate Your enigma account!!'
+    mail_subject = 'Activate Your Enigma Account | IEEE VIT'
     message = render_to_string('LoginSignup/reminder.html')
 
     email = EmailMessage(mail_subject, message, 'sameeranbandishti@ieee.org', to=usrs)
