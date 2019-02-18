@@ -60,7 +60,7 @@ def signup_view(request):
             mail_subject = 'Activate Your enigma account!!'
             message = render_to_string('LoginSignup/acc_active_email.html', {
                 'user': user.username,
-                'domain': current_site.domain,
+                'domain': 'enigma5.herokuapp.com',
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 'token': account_activation_token.make_token(user),
             })
