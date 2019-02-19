@@ -51,7 +51,8 @@ class QuestionView(LoginRequiredMixin, FormView):
         context['Image'] = question_info[0].Image
         context['Question'] = question_info[0].QText
         context['AnswerForm'] = AnswerForm
-        context['Attempts'] = self.request.user.AttemptLog[self.request.user.CurrentQuestion]
+        onn = self.request.user.CurrentQuestion
+        context['Attempts'] = self.request.user.AttemptLog[onn]
         return context
 
 class DashboardView(LoginRequiredMixin, TemplateView):

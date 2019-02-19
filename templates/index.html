@@ -3,7 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <iframe width="0" height="0" src="https://www.youtube.com/embed/Xby4DOsGIvQ?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
+    <iframe width="0" height="0" src="{% static '/audio/audio.mp3' %}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="{% static 'LoginSignup/img/favicon.png' %}"/>
@@ -41,28 +41,29 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">About</a>
                     </li>
-                    <li class="nav-item">
-                        {% if user.is_authenticated %}
-{#                        <a class="nav-link" href="{% url 'LoginSignup:Logout' %}" >Log Out</a>#}
-                        {% else %}
-{#                        <a class="nav-link" href="{% url 'LoginSignup:Signup' %}">Sign Up</a>#}
-                        {% endif %}
-                    </li>
-{#                    {% if user.is_authenticated %}#}
-{#                        <li class="nav-item">#}
-{##}
-{#                            <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">Leaderboards</a>#}
-{##}
-{#                        </li>#}
-{#                        <li class="nav-item">#}
-{##}
-{#                            <a class="nav-link" href="{% url 'Questions:Question_Solver' %}">Question View</a>#}
-{##}
-{#                        </li>#}
-{#                    {% endif %}#}
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">Leaderboards</a>
+
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{% url 'Questions:Question_Solver' %}">Question View</a>
+
+                        </li>
+                    {% endif %}
                     <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact Us</a>
                     </li>
+                      <li class="nav-item">
+                        {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'LoginSignup:Logout' %}" >Log Out</a>
+                        {% else %}
+                        <a class="nav-link" href="{% url 'LoginSignup:Signup' %}">Sign Up</a>
+                        {% endif %}
+                        </li>
                   </ul>
                 </div>
         </nav>
@@ -76,11 +77,11 @@
 
                 <div class='row' id='login-row'>
                         {% if user.is_authenticated %}
-                            <h2>Thank You For Registering</h2>
-                            <h3>Enigma 5.0 will begin on the 23rd of February</h3>
+                            <a class="btn btn-secondary" href='{% url "Questions:Question_Solver" %}' >START</a>
+
                         {% else %}
-{#                        <a class="btn btn-secondary" href='#' data-toggle="modal" data-target="#login">Log In</a>#}
-                           <a class="btn btn-secondary" href="{% url 'LoginSignup:Signup' %}">Register</a>
+                            <a class="btn btn-secondary" href='{% url "LoginSignup:Login" %}' data-toggle="modal" data-target="#login">Log In</a>
+{#                           <a class="btn btn-secondary" href="{% url 'LoginSignup:Signup' %}">Register</a>#}
 
                         {% endif %}
                 </div>
@@ -97,12 +98,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-{#                        <form action="{% url 'LoginSignup:Login' %}" method="post">#}
-{#                            {%  csrf_token %}#}
-{#                            {{ LoginForm.as_p }}#}
-{#                             <input type="submit" class="btn btn-secondary" value="Login">#}
-{##}
-{#                        </form>#}
+                        <form action="{% url 'LoginSignup:Login' %}" method="post">
+                            {%  csrf_token %}
+                            {{ LoginForm.as_p }}
+                             <input type="submit" class="btn btn-secondary" value="Login">
+
+                        </form>
 
 {#                        <input type="email" placeholder="Email" id="input-box" required>#}
 {#                        <input type="password" placeholder="Password" id="input-box" required>#}
@@ -193,43 +194,5 @@
                 </div>
             </div>
         </div>
-
-
-
-<!-- this is the code for the timer....very basic timer... do include the js on the head section
-
-                <div class="row">
-                    <div class="container">
-                        <div id="timer-head">
-                            <h3 id="timer-head-text">Starts In</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-1">
-                        <div id="timer-holder">
-                            <h3 id="day">#</h3>
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <div id="timer-holder">
-                            <h3 id="hour">#</h3>
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <div id="timer-holder">
-                            <h3 id="min">#</h3>
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <div id="timer-holder">
-                            <h3 id="sec">#</h3>
-                        </div>
-                    </div>
-                    <div class="col-4"></div>
-                </div>
-
-                -->
 </body>
 </html>

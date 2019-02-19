@@ -67,7 +67,7 @@ def signup_view(request):
 
             to_email = [user_form.cleaned_data.get('email')]
 
-            email = EmailMessage(mail_subject, message, to=[to_email])
+            email = EmailMessage(mail_subject, message, 'sameeranbandishti@ieee.org', to=[to_email])
             email.content_subtype = 'html'
 
             try:
