@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^LoginSignup/', include('LoginSignup.urls')),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
-    url(r'^incorrectly_sent/^', views.IncorrectSent.as_view(), name='IncorrectSent'),
+    url(r'^incorrectly_sent/$', views.IncorrectSent.as_view(), name='IncorrectSent'),
 
     # url(r'^remindpeeps/$', views.SendRem, name='rem'),
     #
