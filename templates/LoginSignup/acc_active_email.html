@@ -1,125 +1,41 @@
 {% autoescape off %}
 
 
-<div style="background-image: linear-gradient(172deg,#1b191d,#360033);
-        padding: 5px;
-        color: #fff;
-        font-family: 'Titillium Web', sans-serif;
-        text-align: center;
-        display: inline-block;
-        justify-content: center;
-        align-content: center;
-        padding-bottom: 0;">
+<div style="
+color: #fff;
+background-color: #66004b;
+padding: 12px;
+text-align: center;
+">
+    <img src="https://i.imgur.com/t8XNz32.png"
+        style="width:200px;margin: 12px;"/>
+    <h3>Hello, {{ user }} !</h3>
+    <h5>Thank you for registering for VIT's biggest Online Cryptic Hunt - Enigma 5.0</h5>
+    <h5>Enigma will begin on 22<sup>nd</sup> of February,2019.</h5>
+    <h5>Confirm your participation by clicking the button below.</h5>
 
-    <div style="justify-content: center;
-        align-content: center;
-        border: 2px solid white;
-        padding: 5px;
-        background-image: url('https://i.imgur.com/3cEcHYa.png');
-    background-position: right;
-        padding-bottom: 0;">
-
-        <img style="align-self: center;
-        margin-top: 30px;
-        width: 250px;
-        height: auto;" src="https://i.imgur.com/t8XNz32.png"/>
-
-        <h2 style=" margin-top: 50px;">Hi {{ user }},</h2>
-
-        <p style="padding: 10px;
-        font-family: 'Titillium Web', sans-serif;
-        -ms-word-wrap: break-word;
-        word-wrap: break-word;
-        text-align: center;
-        justify-content: center;
-        font-size: 18px;
-        word-spacing: 3px;
-        text-space: 5px;
-        line-height: 26px;
-        color: white;">
-            Thank you for registering for Enigma 5.0.
-            <br/>
-
-        </p>
-
-         <p style="padding: 10px;
-        font-family: 'Titillium Web', sans-serif;
-        -ms-word-wrap: break-word;
-        word-wrap: break-word;
-        text-align: center;
-        justify-content: center;
-        font-size: 10px;
-        word-spacing: 3px;
-        text-space: 5px;
-        line-height: 26px;
-        color: white;">
-            Enigma will begin on the 22nd of February. More details will be available soon.
-            <br/>
-             <br/>
-             <br/>
-
-        </p>
-
-        <p style="padding: 10px;
-        font-family: 'Titillium Web', sans-serif;
-        -ms-word-wrap: break-word;
-        word-wrap: break-word;
-        text-align: center;
-        justify-content: center;
-        font-size: 10px;
-        word-spacing: 3px;
-        text-space: 5px;
-        line-height: 26px;
-        color: white;">
-            Click the button below to confirm your registration
-            <br/>
-
-        </p>
-
-        <a style="margin-top: 5px;
-        padding: 12px 16px;
-        background-color: rgba(255,255,255,0.2);
-        color: #fff;
+    <a style="
+        padding: 8px 12px;
         border-radius: 4px;
-        border: none;" href="https://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Confirm</a>
-        <div style="
-        padding: 5px;
+        border: none;
+        background-color: rgba(255,255,255,0.4);
         color: #fff;
-        font-family: 'Titillium Web', sans-serif;
-        text-align: center;
-        display: inline-block;
-        justify-content: center;
-        align-content: center;
-        display: block;">
-            <img style="width: 100px;
-        height: auto;
-        margin-top: 50px;" src="https://i.imgur.com/lk8vHYh.png"/>
-        </div>
-
         <h5>If you didn't create this account, <a href="{% url 'IncorrectSent' %}">please notify us</a>.</h5>
-
-
-        <footer style="display: block;
-                        background-color: #1b191d;
-                        text-align: justify;
-                        padding: 5px;
-                        position: relative;
-                        bottom: 0;">
-            <pre
-            style="
-            margin-bottom: 0;
-            font-family: 'Titillium Web', sans-serif;
-            text-align: center;
-            font-size: 12px;
-            ">
-<strong>IEEE-VIT | VIT Vellore</strong>
-Vellore Institute Of Technology,
-Gorbachev Rd, Vellore, Tamil Nadu
-            </pre>
-
-        </footer>
-
-    </div>
+        font-weight: bolder;
+        text-decoration: none;
+    "
+    href="https://{{ domain }}{% url 'activate' uidb64=uid token=token %}"
+    >
+        Verify account
+    </a>
+    <footer style="font-size: 12px;margin-top: 72px;">
+    <p>
+        <strong>IEEE-VIT | VIT,Vellore</strong><br/>
+        Vellore Institute of Technology<br/>
+        Gorbachev Rd, Vellore, Tamil Nadu<br/>
+        Vellore - 632 014
+    </p>
+    </footer>
 </div>
 
 {% endautoescape %}
