@@ -144,3 +144,11 @@ def SendRem(request):
 
     email.send()
 
+
+class IncorrectSent(TemplateView):
+    template_name = 'LoginSignup/IncorrectSent.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
