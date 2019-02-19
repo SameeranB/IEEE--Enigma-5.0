@@ -88,32 +88,32 @@
             </div>
         </div>
 
-        <div class="modal fade" style="text-align: center" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalScrollableTitle">Log into your account</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{% url 'LoginSignup:Login' %}" method="post">
-                            {%  csrf_token %}
-                            {{ LoginForm.as_p }}
-                             <input type="submit" class="btn btn-secondary" value="Login">
-
-                        </form>
-
+{#        <div class="modal fade" style="text-align: center" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">#}
+{#            <div class="modal-dialog modal-dialog-scrollable" role="document">#}
+{#                <div class="modal-content">#}
+{#                    <div class="modal-header">#}
+{#                        <h5 class="modal-title" id="exampleModalScrollableTitle">Log into your account</h5>#}
+{#                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#                            <span aria-hidden="true">&times;</span>#}
+{#                        </button>#}
+{#                    </div>#}
+{#                    <div class="modal-body">#}
+{#                        <form action="{% url 'LoginSignup:Login' %}" method="post">#}
+{#                            {%  csrf_token %}#}
+{#                            {{ LoginForm.as_p }}#}
+{#                             <input type="submit" class="btn btn-secondary" value="Login">#}
+{##}
+{#                        </form>#}
+{##}
 {#                        <input type="email" placeholder="Email" id="input-box" required>#}
 {#                        <input type="password" placeholder="Password" id="input-box" required>#}
-                    </div>
+{#                    </div>#}
 {#                    <div class="modal-footer">#}
 {#                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Log In</button>#}
 {#                    </div>#}
-                </div>
-            </div>
-        </div>
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
 
 
         <div class="modal fade" style="text-align: center" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
