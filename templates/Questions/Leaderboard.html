@@ -60,9 +60,9 @@
                              {% for leader in Leaderboard %}
                             <tr>
 
-                                    <td>Rank</td>
+                                    <td>{{ forloop.counter }}</td>
                                     <td>{{ leader.username }}</td>
-                                    <td>University</td>
+                                    <td>{{ leader.University }}</td>
                                     <td>{{ leader.Points }}</td>
                                     <td>{{ leader.CurrentQuestion|add:"-1" }} </td>
 

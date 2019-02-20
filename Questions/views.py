@@ -97,6 +97,9 @@ class Leaderboard(ListView):
     ordering = ['Points']
 
 
+
+
+
 # class QuestionMakerList(ListView):
 #     context_object_name = 'AllQuestions'
 #     model = QuestionInfo
