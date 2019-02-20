@@ -12,6 +12,7 @@ class QuestionInfo(models.Model):
     Answer = ArrayField(models.CharField(max_length=1000), size=10)
     CloseAnswer = ArrayField(models.CharField(max_length=1000), size=20)
     MediumAnswer = ArrayField(models.CharField(max_length=1000,default=''), size=20, default=list)
+    Solved = ArrayField(models.CharField(max_length=100, blank=True), blank=True)
 
 
 class Achievements(models.Model):
