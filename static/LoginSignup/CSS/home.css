@@ -51,7 +51,7 @@ body{
 }
 
 .bg-custom {
-    background-color: transparent;
+    background-color: rgba( 92, 22, 72, 0.4);
 }
 
 .navbar-dark .navbar-nav .nav-link{
@@ -316,9 +316,6 @@ body{
 
 @media only screen and (min-width: 760px) and (max-height: 1024px) {
 
-    .bg-custom {
-        background-color: transparent;
-    }
 
     #ieee {
         display: block;
