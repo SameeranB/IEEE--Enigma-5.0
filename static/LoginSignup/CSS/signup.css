@@ -52,7 +52,7 @@ body{
 }
 
 .bg-custom {
-    background-color: rgba( 92, 22, 72, 0.4);
+    background-color: transparent;
 }
 
 .navbar-dark .navbar-nav .nav-link{
@@ -106,7 +106,7 @@ body{
     padding-bottom: 48px !important;
 }
 #one{
-    height: 100%;
+    height: 100vh;
     width: auto;
 
     display: flex;
@@ -259,10 +259,6 @@ body{
     }
     #ieee {
         display: block;
-    }
-
-    .bg-custom {
-        background-color: rgba( 92, 22, 72, 0.4);
     }
 
     #input-box{

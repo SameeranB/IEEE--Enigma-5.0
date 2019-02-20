@@ -34,7 +34,7 @@ li{
 }
 
 .bg-custom {
-    background-color: rgba( 92, 22, 72, 0.4);
+    background-color: rgba(17,12,34,0.4);
 }
 
 .navbar-dark .navbar-nav .nav-link{
@@ -58,8 +58,6 @@ li{
 }
 
 #one{
-    height: auto;
-    width: auto;
     background: transparent;
     background-size: contain;
     display: flex;
