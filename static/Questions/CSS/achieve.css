@@ -58,7 +58,7 @@ li{
 }
 
 #one{
-    height: auto;
+    height: 100vh;
     width: auto;
     background: transparent;
     background-size: contain;
@@ -130,7 +130,6 @@ li{
 }
 
 @media only screen and (min-width: 760px) and (max-height: 1024px) {
-
 
     #main-container{
         display: block;

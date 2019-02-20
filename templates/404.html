@@ -78,6 +78,11 @@ li{
     justify-content: center;
     align-items: center;
 }
+
+#main-container {
+    margin-top: 50vh;
+}
+
 #error
 {
 	color:white;
@@ -88,8 +93,9 @@ li{
 }
 #text
 {
-	font-size: 100px;
-	text-shadow: 2px 2px 4px #000;
+	font-size: 80px;
+    text-shadow: 1px 1px 2px black, 0 0 1em rgb(151,70,20), 0 0 0.2em rgb(151,70,20);
+
 }
 
 #statement
@@ -98,6 +104,7 @@ li{
 	font-weight:800;
 	text-align:center;
 	bottom-margin:10px;
+
 }
 
 
@@ -112,13 +119,7 @@ li{
                   <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
                   <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
                     <li class="nav-item">
-                      <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="signup.html">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact Us</a>
+                      <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">Home</a>
                     </li>
                   </ul>
                 </div>
@@ -131,7 +132,7 @@ li{
             <div class='row'>
                 <div class="col-12" id='error_holder'>
                     <div>
-                        <div id='error'><h1 id = "text">ERROR 400!</h1></div>
+                        <div id='error'><h1 id = "text">ERROR 404!</h1></div>
                         <div id = 'statement'><h2>Resource not found</h2></div>
                         <div id = 'statement'><h2>No mystery here!</h2></div>
                     </div>
