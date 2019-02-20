@@ -13,6 +13,7 @@ body{
 #ieee{
     width: 156px;
     height: auto;
+    display: none;
 }
 
 .navbar-toggler{
@@ -127,4 +128,11 @@ thead>tr>td{
         width: 100%;
         height: auto;
     }
+
+
+#ieee{
+    width: 156px;
+    height: auto;
+    display: block;
+}
 }
