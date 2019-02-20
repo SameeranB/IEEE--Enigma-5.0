@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Questions</title>
+</head>
+<body>
+<ul>
+    {% for question in AllQuestions %}
+        <li><a href="{{ question.QID }}" >{{ question.QID }}     ---     {{ question.QText }}</a></li>
+    {% endfor %}
+
+</ul>
+</body>
+</html>

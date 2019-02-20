@@ -1,15 +1,12 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, View, FormView, ListView, DetailView
-from django.http import HttpResponseRedirect, HttpResponse
+from django.views.generic import TemplateView,FormView, ListView, DetailView
+from django.http import HttpResponse
 from Questions.forms import AnswerForm
 from Questions.models import QuestionInfo
-from django.contrib.auth.models import User
-from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
 from Questions.models import Achievements
 from users.models import CustomUser
-from .ExtraFunctions import achievement_check
+from .ExtraFunctions import achievement_check, rank_check
 # Create your views here.
 
 class QuestionView(LoginRequiredMixin, FormView):
@@ -27,19 +24,19 @@ class QuestionView(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         user_answer = form.cleaned_data['Answer']
         profile = self.request.user
-        qno = profile.CurrentQuestion
-        profile.AttemptLog[qno] += 1
+        profile.AttemptLog += 1
         profile.save()
 
         question = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
 
         if user_answer in question[0].Answer:
-
+            pointsscored = rank_check(profile)
             profile.CurrentQuestion += 1
+            profile.AttemptLog = 0
             achievement_check(profile)
 
             profile.save()
-            return render(self.request, 'Questions/Question_Correct.html')
+            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored})
         elif user_answer in question[0].CloseAnswer:
             return HttpResponse("You're Close")
         else:
@@ -51,8 +48,7 @@ class QuestionView(LoginRequiredMixin, FormView):
         context['Image'] = question_info[0].Image
         context['Question'] = question_info[0].QText
         context['AnswerForm'] = AnswerForm
-        onn = self.request.user.CurrentQuestion
-        context['Attempts'] = self.request.user.AttemptLog[onn]
+        context['Attempts'] = self.request.user.AttemptLog
         return context
 
 class DashboardView(LoginRequiredMixin, TemplateView):
@@ -100,3 +96,14 @@ class Leaderboard(ListView):
     template_name = 'Questions/Leaderboard.html'
     ordering = ['Points']
 
+
+# class QuestionMakerList(ListView):
+#     context_object_name = 'AllQuestions'
+#     model = QuestionInfo
+#     template_name = 'Questions/AllQuestions.html'
+#     ordering = ['QID']
+#
+# class QuestionMakerDetail(DetailView):
+#     context_object_name = 'QuestionDetail'
+#     model = QuestionInfo
+#     template_name = 'Questions/Question_Detail.html'
