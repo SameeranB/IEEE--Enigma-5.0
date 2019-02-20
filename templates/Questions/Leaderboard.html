@@ -57,22 +57,17 @@
                                 </tr>
                         </thead>
                         <tbody>
+                             {% for leader in Leaderboard %}
                             <tr>
-                                <td>YR</td>
-                                <td>Your Name</td>
-                                <td>Your University</td>
-                                <td>Your Score</td>
-                                <td>Solved</td>
-                            </tr>
-                            <tr>
-                                {% for leader in Leaderboard %}
+
                                     <td>Rank</td>
                                     <td>{{ leader.username }}</td>
                                     <td>University</td>
                                     <td>{{ leader.Points }}</td>
                                     <td>{{ leader.CurrentQuestion|add:"-1" }} </td>
-                                {% endfor %}
+
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
