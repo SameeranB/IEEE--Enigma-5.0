@@ -59,7 +59,7 @@ body {
 }
 
 #one{
-    height: 100%;
+    height: 100vh;
     width: auto;
     background-position: center;
     background-repeat: no-repeat;
