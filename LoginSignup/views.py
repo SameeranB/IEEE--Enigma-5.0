@@ -152,10 +152,10 @@ class IncorrectSent(TemplateView):
         context = super().get_context_data(**kwargs)
         return context
 
-# class RegCounter(TemplateView):
-#     template_name = 'LoginSignup/RegCount.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['Count'] = len(CustomUser.username)
-#         return context
+class RegCounter(TemplateView):
+    template_name = 'LoginSignup/RegCount.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['Count'] = CustomUser.objects.count()
+        return context
