@@ -30,7 +30,9 @@
             }, false);
         </script>
 
+        {% if invalid == False %}
         <div id='loading' style="background-image: url('{% static '/LoginSignup/img/loading.gif' %}');"></div>
+        {% endif %}
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
                   <span class="navbar-toggler-icon"></span>
@@ -98,6 +100,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        {% if invalid %}
+                        <h5 style="color: darkred">The Username or Password is Incorrect</h5>
+                        {% endif %}
                         <form action="{% url 'LoginSignup:Login' %}" method="post">
                             {%  csrf_token %}
                             {{ LoginForm.as_p }}
@@ -111,9 +116,10 @@
 {#                    <div class="modal-footer">#}
 {#                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Log In</button>#}
 {#                    </div>#}
-                </div>
-            </div>
-        </div>
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
 
 
         <div class="modal fade" style="text-align: center" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
