@@ -41,6 +41,12 @@
                       <a class="nav-link" href="{% url 'Questions:Achievements' %}">Achievements</a>
                     </li>
 
+                      <li class="nav-item">
+
+                            <a class="nav-link" href="story.html">Story</a>
+
+                        </li>
+
                     <li class="nav-item">
                             <a class="nav-link" href="{% url 'LoginSignup:Signup' %}">Log Out</a>
                     </li>
@@ -73,10 +79,12 @@
                             <div class='row' id='login-row'>
                                 <div class="col-12" id='btn'>
                                     <div id='btn'>
-                                        <a href='#hintModal' id="hint" data-toggle="modal">
-                                        <img src="{% static '/Questions/img/light-off.png' %}" id="bulb" onclick="changeColor()">
-                                        </a>
                                         <button value="Submit" id="mover">Submit</button>
+                                        <br/>
+                                        <a href='#hintModal' id="hint" data-toggle="modal">
+                                        <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
@@ -124,11 +132,47 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- this modal is displayed only on the submission of the correct ans. for story -->
+        <div class="modal fade" id="storyModal" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto" id="hint-head">
+                            <h3 class="modal-title" id="exampleModalScrollableTitle">Hint:</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mx-auto" id="hint-body-holders">
+                                <p id="hint-text-box">
+
+                                    <!-- this is the place where the story is displayed -->
+
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                    -----------------this is hint modal--------------
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='{% static "/Questions/img/ENIGMA_logo.png" %}'/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 {#{{ Attempts }}#}
 <script>
     function changeColor()
     {
-        document.getElementById("bulb").src = "{% static '/Questions/img/light-on.png' %}";
+        document.getElementById("bulb").src = "{% static '/Questions/img/l-on.png' %}";
 
     }
 </script>
