@@ -73,10 +73,12 @@
                             <div class='row' id='login-row'>
                                 <div class="col-12" id='btn'>
                                     <div id='btn'>
-                                        <a href='#hintModal' id="hint" data-toggle="modal">
-                                        <img src="{% static '/Questions/img/light-off.png' %}" id="bulb" onclick="changeColor()">
-                                        </a>
                                         <button value="Submit" id="mover">Submit</button>
+                                        <br/>
+                                        <a href='#hintModal' id="hint" data-toggle="modal">
+                                        <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +130,7 @@
 <script>
     function changeColor()
     {
-        document.getElementById("bulb").src = "{% static '/Questions/img/light-on.png' %}";
+        document.getElementById("bulb").src = "{% static '/Questions/img/l-on.png' %}";
 
     }
 </script>
