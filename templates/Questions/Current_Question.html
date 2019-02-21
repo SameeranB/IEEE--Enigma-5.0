@@ -75,7 +75,14 @@
                         <form action="{% url 'Questions:Question_Solver' %}" method="post" id="form-box">
                             {% csrf_token %}
                             {{ AnswerForm.as_p }}
-
+                            {% if Dist == 0 %}
+                            {% elif Dist == 3 %}
+                                <p style="color: red">Naaa....</p>
+                            {% elif Dist == 2 %}
+                                <p style="color: red">You're Getting There</p>
+                            {% elif Dist == 1 %}
+                                <p style="color: red">You're So Close!</p>
+                            {% endif %}
                             <div class='row' id='login-row'>
                                 <div class="col-12" id='btn'>
                                     <div id='btn'>

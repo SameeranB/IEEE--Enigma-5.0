@@ -9,4 +9,4 @@ class AnswerForm(forms.ModelForm):
         fields = ('Answer',)
 
 
-    # Answer = forms.CharField(label='')
+    Answer = forms.CharField(widget=forms.Textarea, label='')

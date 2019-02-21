@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import TemplateView,FormView, ListView, DetailView
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from Questions.forms import AnswerForm
 from Questions.models import QuestionInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -20,7 +21,7 @@ class QuestionView(LoginRequiredMixin, FormView):
     raise_exception = True
     redirect_unauthenticated_users = True
     Attempts = 0
-
+    Dist = 0
 
 
     def form_valid(self, form):
@@ -39,9 +40,13 @@ class QuestionView(LoginRequiredMixin, FormView):
             profile.save()
             return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored})
         elif user_answer in question[0].CloseAnswer:
-            return HttpResponse("You're Close")
+            self.Dist = 1
+        elif user_answer in question[0].MediumAnswer:
+            self.Dist = 2
         else:
-            return HttpResponse("Nahh...Try Again")
+            self.Dist = 3
+
+        return render(self.request, 'Questions/Current_Question.html', {'Image': question[0].Image, 'Question': question[0].QText, 'AnswerForm': AnswerForm, 'Attempts': self.Attempts, 'Dist': self.Dist})
 
     def get_context_data(self, **kwargs):
         question_info = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
@@ -50,6 +55,7 @@ class QuestionView(LoginRequiredMixin, FormView):
         context['Question'] = question_info[0].QText
         context['AnswerForm'] = AnswerForm
         context['Attempts'] = self.Attempts
+        context['Dist'] = self.Dist
         return context
 
 class DashboardView(LoginRequiredMixin, TemplateView):
