@@ -51,6 +51,7 @@
 
         <div id='one'>
             <div class='container' id='main-container'>
+
                 <div class='row'>
                     <div class="col-12" id='ques-img-holder'>
                         <img id='ques-img' src="{{ Image }}"/>
@@ -65,29 +66,31 @@
 
                 <div class="row">
                     <div class="col-12" id="ans-box">
-                        <form action="{% url 'Questions:Question_Solver' %}" method="post">
+                        <form action="{% url 'Questions:Question_Solver' %}" method="post" id="form-box">
                             {% csrf_token %}
                             {{ AnswerForm.as_p }}
-                            <input type="submit" value="Submit">
+
+                            <div class='row' id='login-row'>
+                                <div class="col-12" id='btn'>
+                                    <div id='btn'>
+                                        <a href='#hintModal' id="hint" data-toggle="modal">
+                                        <img src="{% static '/Questions/img/light-off.png' %}" id="bulb" onclick="changeColor()">
+                                        </a>
+                                        <button value="Submit" id="mover">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
 
-                <div class='row' id='login-row'>
-                        <div class="col-12" id='btn'>
-                            <div id='btn'>
-                                <a href='#hintModal' id="hint" data-toggle="modal">
-                                    <img src="{% static '/Questions/img/light-off.png' %}" id="bulb" onclick="changeColor()">
-                                </a>
-                                <a href='#' id="mover"><- Submit -></a>
-                            </div>
 
-                        </div>
-                </div>
             </div>
         </div>
 
 
+
+        <!-- the hint for the question goes in this modal -->
         <div class="modal fade" id="hintModal" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
@@ -103,6 +106,9 @@
                         <div class="row">
                             <div class="mx-auto" id="hint-body-holders">
                                 <p id="hint-text-box">
+
+                                    <!-- this is the place where the hint is displayed -->
+
                                     -------------------------------------------------
                                     -------------------------------------------------
                                     -----------------this is hint modal--------------

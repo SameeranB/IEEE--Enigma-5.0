@@ -24,7 +24,7 @@ body{
     outline: none;
 }
 li{
-    margin-top: none;
+    margin-top: opx;
 }
 
 .navbar{
@@ -74,22 +74,22 @@ li{
 
 
 #ques-img-holder{
-    margin-top: 100px;
+    margin-bottom: -100px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #ques-img {
-    margin-top: 0px;
-    width: 300px;
+    width: 250px;
 }
 
 #ques-box {
-    margin-top: 30px;
-    display: flex;
+    margin-top: 100px;
+    display: block;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 #ques {
@@ -107,7 +107,14 @@ li{
     align-items: center;
 }
 
-#input-box{
+#form-box {
+    display: block;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+textarea {
     display: block;
     border: none;
     -webkit-border-radius: 15px;
@@ -131,18 +138,18 @@ li{
 }
 
 
-::placeholder{
+::placeholder {
     color: #D3D3D3;
     font-weight: 100;
     text-align: center;
     font-size: 18px;
 }
 
-#input-box:hover {
+textarea:hover {
     background-color: rgba(255,255,255,0.33);
 }
 
-#input-box:focus {
+textarea:focus {
     outline: none !important;
 }
 
@@ -152,22 +159,25 @@ li{
     text-align: center;
     padding: 16px;
     margin-top: 12px;
+    justify-content: center;
+    align-content: center;
 }
 
 #mover {
-    text-align: center;
-    padding: 16px;
+    display: inline-flex;
+    background-color: transparent;
     margin-top: 12px;
-}
-
-#mover {
-    margin: opx 50px;
     color: #fff;
     font-size: 16px;
     font-weight: 800;
     text-shadow: 2px 2px 4px #000;
     padding: 6px 8px;
     transition: 0.1s ease-in;
+
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent;
+    border-left: none;
+    border-right: none;
 }
 
 #mover:hover{
@@ -176,7 +186,7 @@ li{
     border-top: 2px solid #fff;
 }
 
-#hint img {
+#bulb {
     width: 50px;
     text-decoration: none;
     border: none;
