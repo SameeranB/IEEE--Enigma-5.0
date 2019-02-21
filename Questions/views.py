@@ -6,7 +6,8 @@ from Questions.models import QuestionInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
 from Questions.models import Achievements
 from users.models import CustomUser
-from .ExtraFunctions import achievement_check, rank_check
+from .ExtraFunctions import rank_check
+from django.db.models import F
 # Create your views here.
 
 class QuestionView(LoginRequiredMixin, FormView):
@@ -18,22 +19,22 @@ class QuestionView(LoginRequiredMixin, FormView):
     login_url = '/LoginSignup/Login'
     raise_exception = True
     redirect_unauthenticated_users = True
+    Attempts = 0
 
 
 
     def form_valid(self, form):
         user_answer = form.cleaned_data['Answer']
-        profile = self.request.user
-        profile.AttemptLog += 1
+        profile = CustomUser.objects.get(username=self.request.user.username)
+        self.Attempts += 1
         profile.save()
 
         question = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
 
         if user_answer in question[0].Answer:
             pointsscored = rank_check(profile)
-            profile.CurrentQuestion += 1
-            profile.AttemptLog = 0
-            achievement_check(profile)
+            profile.CurrentQuestion +=1
+            # achievement_check(profile)
 
             profile.save()
             return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored})
@@ -48,7 +49,7 @@ class QuestionView(LoginRequiredMixin, FormView):
         context['Image'] = question_info[0].Image
         context['Question'] = question_info[0].QText
         context['AnswerForm'] = AnswerForm
-        context['Attempts'] = self.request.user.AttemptLog
+        context['Attempts'] = self.Attempts
         return context
 
 class DashboardView(LoginRequiredMixin, TemplateView):
@@ -94,7 +95,7 @@ class Leaderboard(ListView):
     context_object_name = 'Leaderboard'
     model = CustomUser
     template_name = 'Questions/Leaderboard.html'
-    ordering = ['Points']
+    ordering = ['-Points']
 
 
 

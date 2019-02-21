@@ -16,7 +16,7 @@ class CustomUser(AbstractUser):
     Achievements = ArrayField(models.IntegerField(default=1), size=200)
     Points = models.IntegerField(default=0)
     TimeLog = ArrayField(models.DurationField())
-    AttemptLog = models.IntegerField(default=0)
+
 
     def __str__(self):
         return self.email

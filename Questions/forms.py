@@ -9,3 +9,4 @@ class AnswerForm(forms.ModelForm):
         fields = ('Answer',)
 
 
+    # Answer = forms.CharField(label='')
