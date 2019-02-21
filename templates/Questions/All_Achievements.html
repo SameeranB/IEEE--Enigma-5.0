@@ -1,16 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>All Achievements</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <title>Achievements</title>
+
+    <style>
+
+        html
+        {
+            scroll-behavior: smooth;
+        }
+
+        body{
+            background-image: url("bg.gif");
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Titillium Web', sans-serif;
+        }
+
+    #ieee{
+        width: 156px;
+        height: auto;
+    }
+
+    .navbar-toggler{
+        border: none;
+    }
+
+    .navbar-toggler:focus{
+        outline: none;
+    }
+    li{
+        margin-top: none;
+    }
+
+    .navbar{
+        position: fixed;
+        z-index: 1050;
+        width: 100% ;
+        font-size: 12px;
+    }
+
+    .bg-custom {
+        background-color: transparent;
+    }
+
+    .navbar-dark .navbar-nav .nav-link{
+        color: #fff;
+        font-weight: 800;
+        font-size: 16px;
+    }
+
+    .navbar-dark .navbar-nav .nav-link:hover{
+        color: #fff;
+        font-weight: 800;
+    }
+
+    .nav-item{
+        margin: 2px 12px;
+        border-bottom: 2px solid rgba(0,0,0,0);
+    }
+
+    .nav-item:hover{
+        border-bottom: 2px solid #fff;
+    }
+
+    #one{
+        height: 100vh;
+        width: auto;
+        background: transparent;
+        background-size: contain;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #main-container{
+        margin-bottom: 0px;
+    }
+
+
+    #img-holder{
+        margin-top: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #img {
+        margin-top: 0px;
+        width: 110px;
+        height: 110px;
+    }
+
+    #ach-box {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    #ach {
+        font-weight: 800;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 32px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        text-shadow: 1px 1px 2px black, 0 0 1em rgb(151,70,20), 0 0 0.2em rgb(151,70,20);
+    }
+
+    #ach-desc
+    {
+        color:white;
+        font-size: 20px;
+        padding-top: 10px;
+
+
+    }
+    #desc-box
+    {
+        align-items: center;
+        margin-top: 20px;
+        width:5%;
+        height: 10%;
+        display: flex;
+        margin-left: 20px;
+        margin-right: 20px;
+        background-color: rgba(50,50,70,0.5);
+        border-radius: 5px;
+        margin-bottom: 10px;
+        display: relative;
+        -webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(40%, transparent) , to(rgba(250,250,250, 0.4)));
+
+
+    }
+    #desc-box:hover
+    {
+        background-color: rgba(50,50,70,0.8);
+        box-shadow: 10px 10px 10px black;
+        -webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(40%, transparent) , to(rgba(250,250,250, 0.4)));
+    }
+    }
+
+    @media only screen and (min-width: 760px) and (max-height: 1024px)
+    {
+
+        #logo{
+            margin-left: 16px;
+        }
+
+        #about-text {
+            font-size: 3vh;
+        }
+    }
+</style>
 </head>
 <body>
-<h1> This is a list of all available achievements</h1>
-<ul>
-    {% for achievement in AllAchievements %}
-        <li><a href="{{ achievement.AID }}" ><img src="{{ achievement.Image }}"></a></li>
-    {% endfor %}
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
+                  <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+                    <li class="nav-item">
+                      <a class="nav-link" href="achieve.html">Question View</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leader.html">Leader Board</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Log Out</a>
+                    </li>
+                  </ul>
+                </div>
+        </nav>
 
-</ul>
+
+        <div id='one'>
+            <div class='container' id='main-container'>
+                <div class='row'>
+                    <div class="col-12" id='img-holder'>
+                        <img id='img' src='https://images.hellogiggles.com/uploads/2016/07/03011013/friends.jpg'/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12" id="ach-box">
+                        <p id="ach">How You doing?</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12" id="desc-box">
+                        <p id = "ach-desc">
+                            Joey Tribiani is chandler's best friend and is someone who you can rely to have your back.
+                            However, his loyalty is only limited to his friends as, when it comes to dating he is the guy
+                            who is a firm believer in one night stands and runs away from relationships.
+                            He loves food, and uses his classic line to charm and woo any girl  - <br>How you doin?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>
