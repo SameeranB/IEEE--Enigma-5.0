@@ -40,6 +40,13 @@
                 <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
                   <div class="navbar-brand"><a target="_blank" href='http://ieeevit.com'><img id='ieee' alt= "" src="{% static 'LoginSignup/img/ieee_logo.png' %}"/></a></div>
                   <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+
+                    <li class="nav-item">
+
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+
+                    </li>
+
                     <li class="nav-item">
                       <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">About</a>
                     </li>
@@ -47,7 +54,7 @@
                     {% if user.is_authenticated %}
                         <li class="nav-item">
 
-                            <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">Leaderboards</a>
+                            <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">Leaderboard</a>
 
                         </li>
                         <li class="nav-item">
@@ -117,9 +124,9 @@
 {#                    <div class="modal-footer">#}
 {#                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Log In</button>#}
 {#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
+                </div>
+            </div>
+        </div>
 
 
 
@@ -169,7 +176,7 @@
             </div>
         </div>
 
-        <div class="modal fade" style="text-align: center" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
+        <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
