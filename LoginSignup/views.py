@@ -107,12 +107,20 @@ def activate(request, uidb64, token):
 class LoginView(FormView):
     template_name = 'index.html'
     form_class = LoginForm
+    invalid = False
 
     def form_valid(self, form):
 
         user = authenticate(username=form.cleaned_data['Username'], password=form.cleaned_data['Password'])
-        login(self.request, user)
-        return HttpResponseRedirect(reverse('index'))
+        if user is not None:
+            if user.is_active:
+                login(self.request, user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return render(self.request, 'NotConfirmed.html')
+        else:
+            self.invalid = True
+            return render(self.request, 'index.html', context={'LoginForm':LoginForm, 'invalid':self.invalid})
 
     def get_success_url(self):
         return render(self.request, 'index.html')
@@ -120,7 +128,12 @@ class LoginView(FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['LoginForm'] = LoginForm
+        context['invalid'] = self.invalid
         return context
+
+    def form_invalid(self, form):
+        """If the form is invalid, render the invalid form."""
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class LogoutView(LoginRequiredMixin, View):
