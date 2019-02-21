@@ -39,7 +39,7 @@
 
                      <li class="nav-item">
 
-                            <a class="nav-link" href="story.html">Story</a>
+                            <a class="nav-link" href="{% url 'Questions:Story' %}">Story</a>
 
                         </li>
 
@@ -56,15 +56,15 @@
                     <h1 id="lead-text">Story</h1>
 
                     <table class="mx-auto table table-borderless table-hover">
+                        {% for story in StoryList %}
                         <thead>
-                            <th>Story</th>
+                            <th>{{ story.Title }}</th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
                                     <pre>
-bvkdbskvuudskvbdsvbjdsbvjcbdsjkbvjdbvkdvdb
-kdvhikdvikbdvbdsbvbdisbvbdsivbdisbvdbsvdbv
+                                    {{ story.Body }}
                                     </pre>
                                 </td>
                             </tr>
@@ -72,13 +72,12 @@ kdvhikdvikbdvbdsbvbdisbvbdsivbdisbvdbsvdbv
                             <tr>
                                 <td>
                                     <pre>
-sbdvkdsbvjbdskvbkdjsbvksdvbdskvbkdsbvkdvsk
-dbvdsvbjdsbvjbdsjvbdsbvdsbvdsbvjbsdjbvjdbv
-xdkvndjksbvjdsbvjkbdjvbdjbvjdbvjbdsjvbjsdv
+                                    {{ story.Hanger }}
                                     </pre>
                                 </td>
                             </tr>
                         </tbody>
+                        {% endfor %}
                     </table>
                 </div>
             </div>

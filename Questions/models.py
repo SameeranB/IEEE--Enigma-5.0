@@ -34,4 +34,6 @@ class EasterEggs(models.Model):
 
 class Story(models.Model):
     SID = models.IntegerField(primary_key=True)
-    Title = models.TextField()
+    Title = models.TextField(blank=True)
+    Body = models.TextField(blank=True)
+    Hanger = models.TextField(blank=True)

@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from Questions.forms import AnswerForm
 from Questions.models import QuestionInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
-from Questions.models import Achievements
+from Questions.models import Achievements, Story
 from users.models import CustomUser
 from .ExtraFunctions import rank_check
 from django.db.models import F
@@ -106,15 +106,15 @@ class Leaderboard(ListView):
 
 
 
+class StoryView(ListView):
+    context_object_name = 'StoryList'
+    def get_queryset(self):
+        return Story.objects.filter(SID__lte=self.request.user.CurrentQuestion).order_by('SID')
+    template_name = 'Questions/story.html'
 
 
-# class QuestionMakerList(ListView):
-#     context_object_name = 'AllQuestions'
-#     model = QuestionInfo
-#     template_name = 'Questions/AllQuestions.html'
-#     ordering = ['QID']
-#
-# class QuestionMakerDetail(DetailView):
-#     context_object_name = 'QuestionDetail'
-#     model = QuestionInfo
-#     template_name = 'Questions/Question_Detail.html'
+
+
+
+
+
