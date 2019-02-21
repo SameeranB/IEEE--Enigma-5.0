@@ -108,7 +108,7 @@
                     </div>
                     <div class="modal-body">
                         {% if invalid %}
-                        <h5 style="color: darkred">The Username or Password is Incorrect</h5>
+                        <h5 style="color: darkred">The Username or Password is Incorrect<br/>OR, you may have not activated your account.<br/> <a href="{% url 'LoginSignup:NotConf' %}">Click Here</a> for more information. </h5>
                         {% endif %}
                         <form action="{% url 'LoginSignup:Login' %}" method="post">
                             {%  csrf_token %}
