@@ -15,22 +15,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel='stylesheet' type='text/css' href='{% static "Questions/CSS/leader.css" %}'>
 
-    <title>Enigma 5.0 | Leaderboard</title>
+    <title>Enigma 5.0 | Story</title>
 </head>
 <body style="background-image: url('{% static "Questions/img/BG.gif" %}')">
-        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
-                  <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
-                  <div class="navbar-brand">
-
-                      <img id='ieee' alt="" src='{% static "Questions/img/ieee_logo.png" %}'/>
-
-                  </div>
-                  <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
-                    <li class="nav-item">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
+        <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
+        <div class="navbar-brand"><img id='ieee' src='img/ieee_logo.png'/></div>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+            <li class="nav-item">
                         <a class="nav-link" href="{% url 'index' %}">Home</a>
                     </li>
 
@@ -50,37 +46,38 @@
                     <li class="nav-item">
                             <a class="nav-link" href="{% url 'LoginSignup:Logout' %}">Log Out</a>
                     </li>
-                  </ul>
-                </div>
-        </nav>
+        </ul>
+    </div>
+</nav>
 
         <div id="one">
             <div class="container-fluid" id="main-container">
                 <div class="mx-auto table-responsive-md">
-                    <h1 id="lead-text">LEADER BOARD</h1>
+                    <h1 id="lead-text">Story</h1>
 
                     <table class="mx-auto table table-borderless table-hover">
                         <thead>
-                                <tr>
-                                        <td>Rank</td>
-                                        <td>Name</td>
-                                        <td>University</td>
-                                        <td>Score</td>
-                                        <td>Solved</td>
-                                </tr>
+                            <th>Story</th>
                         </thead>
                         <tbody>
-                             {% for leader in Leaderboard %}
                             <tr>
-
-                                    <td>{{ forloop.counter }}</td>
-                                    <td>{{ leader.username }}</td>
-                                    <td>{{ leader.University }}</td>
-                                    <td>{{ leader.Points }}</td>
-                                    <td>{{ leader.CurrentQuestion|add:"-1" }} </td>
-
+                                <td>
+                                    <pre>
+bvkdbskvuudskvbdsvbjdsbvjcbdsjkbvjdbvkdvdb
+kdvhikdvikbdvbdsbvbdisbvbdsivbdisbvdbsvdbv
+                                    </pre>
+                                </td>
                             </tr>
-                            {% endfor %}
+
+                            <tr>
+                                <td>
+                                    <pre>
+sbdvkdsbvjbdskvbkdjsbvksdvbdskvbkdsbvkdvsk
+dbvdsvbjdsbvjbdsjvbdsbvdsbvdsbvjbsdjbvjdbv
+xdkvndjksbvjdsbvjkbdjvbdjbvjdbvjbdsjvbjsdv
+                                    </pre>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
