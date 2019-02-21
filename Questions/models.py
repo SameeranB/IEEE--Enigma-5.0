@@ -13,6 +13,7 @@ class QuestionInfo(models.Model):
     Answer = ArrayField(models.CharField(max_length=1000), size=10)
     CloseAnswer = ArrayField(models.CharField(max_length=1000), size=20)
     MediumAnswer = ArrayField(models.CharField(max_length=1000,default=''), size=20)
+    Hints = ArrayField(models.CharField(max_length=10000, default=''), blank=True)
 
 
 
@@ -31,3 +32,6 @@ class EasterEggs(models.Model):
 
 
 
+class Story(models.Model):
+    SID = models.IntegerField(primary_key=True)
+    Title = models.TextField()

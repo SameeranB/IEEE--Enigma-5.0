@@ -23,14 +23,13 @@ class QuestionView(LoginRequiredMixin, FormView):
     Attempts = 0
     Dist = 0
 
-
     def form_valid(self, form):
         user_answer = form.cleaned_data['Answer']
         profile = CustomUser.objects.get(username=self.request.user.username)
         self.Attempts += 1
         profile.save()
-
         question = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
+
 
         if user_answer in question[0].Answer:
             pointsscored = rank_check(profile)
@@ -56,6 +55,8 @@ class QuestionView(LoginRequiredMixin, FormView):
         context['AnswerForm'] = AnswerForm
         context['Attempts'] = self.Attempts
         context['Dist'] = self.Dist
+        context['Hint'] = question_info[0].Hints[0]
+
         return context
 
 class DashboardView(LoginRequiredMixin, TemplateView):
