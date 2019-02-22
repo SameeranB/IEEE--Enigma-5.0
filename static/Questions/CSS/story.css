@@ -1,0 +1,154 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.dropdown-menu.show{
+    background: rgba(255,255,255, 0.1);
+    margin-top: 20px;
+}
+
+.dropdown-menu.show li {
+    border: none;
+}
+
+body{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#ieee{
+    width: 156px;
+    height: auto;
+    display: none;
+}
+
+.navbar-toggler{
+    border: none;
+}
+
+.navbar-toggler:focus{
+    outline: none;
+}
+li{
+    margin-top: none;
+}
+
+.navbar{
+    position: fixed;
+    z-index: 1050;
+    width: 100% ;
+    font-size: 12px;
+}
+
+.bg-custom {
+    background-color: rgba(17,12,34,0.4);
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: #fff;
+    font-weight: 800;
+}
+
+.nav-item{
+    margin: 2px 12px;
+    border-bottom: 2px solid rgba(0,0,0,0);
+}
+
+.nav-item:hover{
+    border-bottom: 2px solid #fff;
+}
+
+#one{
+    background: transparent;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+}
+
+#main-container{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#lead-text {
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    text-shadow: 4px 2px 20px purple;
+}
+
+.table {
+    word-break: break-word;
+}
+
+thead {
+    border-spacing: 50px 50px;
+}
+
+tr {
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+thead tr {
+    padding: 100px;
+    object-fit: contain;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.16);
+}
+
+thead tr td{
+    color: white;
+}
+
+table tbody p {
+    word-break: break-word;
+    text-align: justify;
+    padding: 0px;
+}
+
+
+
+
+@media only screen and (min-width: 760px) {
+
+
+    #main-container{
+        display: block;
+        justify-content: center;
+        align-items: center;
+        margin: 150px 300px 0px 300px;
+        width: 100%;
+    }
+
+    .row {
+        margin-top: 100px;
+        width: 100%;
+        height: auto;
+    }
+
+
+#ieee{
+    width: 156px;
+    height: auto;
+    display: block;
+}
+
+}
