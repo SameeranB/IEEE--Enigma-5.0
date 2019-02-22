@@ -1,17 +1,16 @@
 from django.shortcuts import render
-from django.urls import reverse
-from django.views.generic import TemplateView,FormView, ListView, DetailView
-from django.http import HttpResponse, HttpResponseRedirect
-from ratelimit.decorators import ratelimit
+
+from django.views.generic import TemplateView,FormView, ListView
+
 from ratelimit.mixins import RatelimitMixin
 
 from Questions.forms import AnswerForm
 from Questions.models import QuestionInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
-from Questions.models import Achievements, Story
+from Questions.models import Story
 from users.models import CustomUser
 from .ExtraFunctions import rank_check
-from django.db.models import F
+
 # Create your views here.
 
 import pymongo
@@ -90,52 +89,52 @@ class QuestionView(LoginRequiredMixin, FormView):
         context['Score'] = self.request.user.Points
         return context
 
-
-class DashboardView(LoginRequiredMixin, TemplateView):
-
-    template_name = 'Questions/Dashboard.html'
-
-    # Login-Required Settings:
-    login_url = '/'
-    raise_exception = False
-    redirect_unauthenticated_users = True
-
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['username'] = self.request.user.username
-        context['fname'] = self.request.user.first_name
-        context['lname'] = self.request.user.last_name
-        context['mail'] = self.request.user.email
-        return context
+#
+# class DashboardView(LoginRequiredMixin, TemplateView):
+#
+#     template_name = 'Questions/Dashboard.html'
+#
+#     # Login-Required Settings:
+#     login_url = '/'
+#     raise_exception = False
+#     redirect_unauthenticated_users = True
+#
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['username'] = self.request.user.username
+#         context['fname'] = self.request.user.first_name
+#         context['lname'] = self.request.user.last_name
+#         context['mail'] = self.request.user.email
+#         return context
 
 
 class UnderDevelopment(TemplateView):
     template_name = 'Under_Development.html'
 
 
-class AllAchievements( LoginRequiredMixin, ListView):
-    login_url = '/'
-    raise_exception = False
-    redirect_unauthenticated_users = True
-
-    context_object_name = 'AllAchievements'
-    model = Achievements
-    template_name = 'Questions/All_Achievements.html'
-
-    # def get(self, request, *args, **kwargs):
-    #     collected = request.user.Achievements
-    #     return HttpResponse(collected)
-
-
-class AchievementDetail(DetailView):
-    login_url = '/'
-    raise_exception = False
-    redirect_unauthenticated_users = True
-
-    context_object_name = 'AchievementDetail'
-    model = Achievements
-    template_name = 'Questions/Achievement_Detail.html'
+# class AllAchievements( LoginRequiredMixin, ListView):
+#     login_url = '/'
+#     raise_exception = False
+#     redirect_unauthenticated_users = True
+#
+#     context_object_name = 'AllAchievements'
+#     model = Achievements
+#     template_name = 'Questions/All_Achievements.html'
+#
+#     # def get(self, request, *args, **kwargs):
+#     #     collected = request.user.Achievements
+#     #     return HttpResponse(collected)
+#
+#
+# class AchievementDetail(DetailView):
+#     login_url = '/'
+#     raise_exception = False
+#     redirect_unauthenticated_users = True
+#
+#     context_object_name = 'AchievementDetail'
+#     model = Achievements
+#     template_name = 'Questions/Achievement_Detail.html'
 
 
 class Leaderboard(LoginRequiredMixin,RatelimitMixin, ListView):

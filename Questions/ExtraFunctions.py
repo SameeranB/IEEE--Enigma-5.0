@@ -5,7 +5,8 @@ from Questions.models import QuestionInfo
 def rank_check(user, hint):
     ques = QuestionInfo.objects.get(QID__exact=user.CurrentQuestion)
     obj = ques.QuesSolved
-    pointsscored = 0
+
+
     if obj <= 20:
         pointsscored = 100
 

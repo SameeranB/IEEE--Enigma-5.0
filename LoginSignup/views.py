@@ -7,20 +7,16 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, View, FormView
-from django.conf import settings
-from django.core.mail import send_mail, EmailMessage
+from django.core.mail import EmailMessage
 from .tokens import account_activation_token
 from django.http import HttpResponse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.contrib.sites.shortcuts import get_current_site
+
 from django.utils.encoding import force_bytes, force_text
 from users.models import CustomUser
 from django.template.loader import render_to_string
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 
-import requests
-from django.contrib import messages
+
 
 
 
@@ -30,12 +26,12 @@ from django.contrib import messages
 
 
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+# class IndexView(TemplateView):
+#     template_name = 'index.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context
 
 
 def signup_view(request):
@@ -53,12 +49,12 @@ def signup_view(request):
             user = user_form.save()
             user.set_password(user.password)
             user.is_active = False
-            current_site = get_current_site(request)
+
             user.save()
 
 
             # Sending activation link in terminal
-            # user.email_user(subject, message)
+
             mail_subject = 'Activate Your Enigma Account | IEEE VIT'
             message = render_to_string('LoginSignup/acc_active_email.html', {
                 'user': user.username,
@@ -99,7 +95,7 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-       # login(request, user)
+
         return render(request, 'LoginSignup/after_signup_f.html')
     else:
         return HttpResponse('Activation link is invalid!')
@@ -148,16 +144,16 @@ class LogoutView(LoginRequiredMixin, View):
         return HttpResponseRedirect(reverse('index'))
 
 
-
-def SendRem(request):
-    usrs = CustomUser.objects.filter(is_active=False).values_list('email', flat=True)
-    mail_subject = 'Enigma Has Begun | IEEE VIT'
-    message = render_to_string('Started.html')
-
-    email = EmailMessage(mail_subject, message, 'sameeranbandishti@ieee.org', to=usrs)
-    email.content_subtype = 'html'
-
-    email.send()
+#
+# def SendRem(request):
+#     usrs = CustomUser.objects.filter(is_active=False).values_list('email', flat=True)
+#     mail_subject = 'Enigma Has Begun | IEEE VIT'
+#     message = render_to_string('Started.html')
+#
+#     email = EmailMessage(mail_subject, message, 'sameeranbandishti@ieee.org', to=usrs)
+#     email.content_subtype = 'html'
+#
+#     email.send()
 
 
 class IncorrectSent(TemplateView):
@@ -174,13 +170,3 @@ class NotConf(TemplateView):
         context = super().get_context_data(**kwargs)
         return context
 
-def handler404(request, exception, *args, **argv):
-    response = render_to_response("404.html")
-    response.status_code = 404
-    return response
-
-
-def handler500(request, exception, *args, **argv):
-    response = render_to_response("500.html")
-    response.status_code = 500
-    return response
