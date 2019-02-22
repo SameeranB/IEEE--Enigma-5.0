@@ -36,7 +36,15 @@ body{
 #logo{
     margin-top: 80px;
     width: 300px;
+    /*
+    transition: 0.5s ease-in;*/
 }
+
+/*
+#logo:hover {
+    width: 350px;
+}
+*/
 
 #logo-holder{
     display: flex;

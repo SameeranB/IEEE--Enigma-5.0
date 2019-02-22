@@ -37,15 +37,24 @@
                         <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">LeaderBoard</a>
                     </li>
 
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'Questions:Achievements' %}">Achievements</a>
-                    </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'Questions:Question_Solver' %}">Questrion View</a>
+                      </li>
+
+
+{#                    <li class="nav-item">#}
+{#                      <a class="nav-link" href="{% url 'Questions:Achievements' %}">Achievements</a>#}
+{#                    </li>#}
 
                       <li class="nav-item">
 
                             <a class="nav-link" href="{% url 'Questions:Story' %}">Story</a>
 
                         </li>
+
+                      <li class="nav-item">
+                          <a class="nav-link" href="#" data-toggle="modal" data-traget="#rules">Rules</a>
+                      </li>
 
                     <li class="nav-item">
                             <a class="nav-link" href="{% url 'LoginSignup:Signup' %}">Log Out</a>
@@ -124,6 +133,38 @@
                                 <p id="hint-text-box">
 
                                     {{ Hint }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='{% static "/Questions/img/ENIGMA_logo.png" %}'/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- the rule goes in this modal -->
+        <div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto" id="hint-head">
+                            <h3 class="modal-title" id="exampleModalScrollableTitle">Hint:</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mx-auto" id="hint-body-holders">
+                                <p id="hint-text-box">
+                                    djhvidbvifvbldbv;bdbvidbvbdibvidsv
+                                    dvbhdbvudbvbdsubvdsbvujbdsbvjsdbvj
+                                    vbdsjbvjdbsvbdsjbvdsbvjdsbjvbdsjvb
+                                    vbdbhvbdshvhjsdvhdsvbdsbvdsvbdshvh
                                 </p>
                             </div>
                         </div>
