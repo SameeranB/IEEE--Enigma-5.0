@@ -13,25 +13,6 @@ from .ExtraFunctions import rank_check, logger
 
 # Create your views here.
 
-import pymongo
-from datetime import datetime
-
-URI = 'mongodb://Sameeran:Caronex1203@ds347665.mlab.com:47665/logger'
-# URI = "mongodb://alphaindia:QzMGC0sOC1b04DbH7y0MaBPvRGT1E5cNEsgfDJ9nQSosQYBNBzlL93fCNtl60Rt843mZisuAn86OlYlj9vIKUQ==@alphaindia.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
-
-myclient = pymongo.MongoClient(URI)
-
-db = myclient['logger']
-
-logs = db.logs
-
-# def log_answers(log):
-#     try:
-#         logs.insert_one(log)
-#     except:
-#         print("DB Error")
-#
-#     # d = {'username':'ayush', 'answer':'anything', 'question':'1', 'time':datetime.now()}
 
 class QuestionView(LoginRequiredMixin, FormView):
 
@@ -142,7 +123,7 @@ class Leaderboard(LoginRequiredMixin, ListView):
 
     ratelimit_key = 'ip'
     ratelimit_rate = '10/m'
-    ratelimit_block = False
+    ratelimit_block = True
     ratelimit_method = 'GET'
 
 
@@ -180,9 +161,6 @@ class StoryView(LoginRequiredMixin, ListView):
         context['Score'] = self.request.user.Points
         logger(self.request, 1, "", "Story")
         return context
-
-
-
 
 
 
