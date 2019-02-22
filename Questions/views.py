@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import TemplateView,FormView, ListView, DetailView
 from django.http import HttpResponse, HttpResponseRedirect
+from ratelimit.decorators import ratelimit
+from ratelimit.mixins import RatelimitMixin
+
 from Questions.forms import AnswerForm
 from Questions.models import QuestionInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -47,7 +50,7 @@ class QuestionView(LoginRequiredMixin, FormView):
         else:
             self.Dist = 3
 
-        return render(self.request, 'Questions/Current_Question.html', {'Image': question[0].Image, 'Question': question[0].QText, 'AnswerForm': AnswerForm, 'Attempts': self.Attempts, 'Dist': self.Dist})
+        return render(self.request, 'Questions/Current_Question.html', {'Image': question[0].Image, 'Question': question[0].QText, 'AnswerForm': AnswerForm, 'Attempts': self.Attempts, 'Dist': self.Dist, 'Hint':question[0].Hints[0]})
 
 
 
@@ -112,15 +115,23 @@ class AchievementDetail(DetailView):
     template_name = 'Questions/Achievement_Detail.html'
 
 
-class Leaderboard(LoginRequiredMixin, ListView):
+class Leaderboard(LoginRequiredMixin,RatelimitMixin, ListView):
+
+    ratelimit_key = 'ip'
+    ratelimit_rate = '10/m'
+    ratelimit_block = False
+    ratelimit_method = 'GET'
+
+
     login_url = '/'
     raise_exception = False
     redirect_unauthenticated_users = True
 
+    queryset = CustomUser.objects.order_by('-Points')[:100]
     context_object_name = 'Leaderboard'
-    model = CustomUser
     template_name = 'Questions/Leaderboard.html'
-    ordering = ['-Points']
+
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
