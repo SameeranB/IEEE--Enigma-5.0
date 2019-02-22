@@ -9,16 +9,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
     <script src="../static/LoginSignup/JS/timer.js"></script>
-
     <link rel='stylesheet' type='text/css' href="{% static 'LoginSignup/CSS/home.css' %}">
-
     <title>Enigma 5.0 | Home</title>
+
 </head>
 <body style="background-image: url('{% static '/LoginSignup/img/BG.gif' %}');">
         <script>
@@ -133,8 +131,37 @@
                 </div>
             </div>
         </div>
+{#This modal should stay always open#}
+         <div class="modal fade" style="text-align: center" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">Log into your account</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {% if invalid %}
+                        <h5 style="color: darkred">The Username or Password is Incorrect<br/>OR, you may have not activated your account.<br/> <a href="{% url 'LoginSignup:NotConf' %}">Click Here</a> for more information. </h5>
+                        {% endif %}
+                        <form action="{% url 'LoginSignup:Login' %}" method="post">
+                            {%  csrf_token %}
+                            {{ LoginForm.as_p }}
+                             <input type="submit" class="btn btn-secondary" value="Login">
 
+                        </form>
+                        <p><br/><br/><a href="{% url 'reset_password' %}">Forgot Password?</a></p>
 
+{#                        <input type="email" placeholder="Email" id="input-box" required>#}
+{#                        <input type="password" placeholder="Password" id="input-box" required>#}
+                    </div>
+{#                    <div class="modal-footer">#}
+{#                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Log In</button>#}
+{#                    </div>#}
+                </div>
+            </div>
+        </div>
 
         <div class="modal fade" style="text-align: center" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -214,5 +241,12 @@
                 </div>
             </div>
         </div>
+    {% if invalid %}
+    <script>
+        $(window).on('load',function(){
+            $("#login").modal({ show : true })
+        });
+    </script>
+    {% endif %}
 </body>
 </html>
