@@ -90,7 +90,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-12" id="ans-box">
+                    <div class="col-2"></div>
+                    <div class="col-8" id="ans-box">
                         <form action="{% url 'Questions:Question_Solver' %}" method="post" id="form-box">
                             {% csrf_token %}
                             {{ AnswerForm.as_p }}
@@ -115,6 +116,7 @@
                             </div>
                         </form>
                     </div>
+                    <div class="col-2"></div>
                 </div>
 
 
