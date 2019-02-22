@@ -62,7 +62,7 @@ body{
 }
 
 .bg-custom {
-    background-color: transparent;
+    background-color: rgba(17,12,34,0.4);
 }
 
 .navbar-dark .navbar-nav .nav-link{
