@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="Resource.css">
+    <meta charset="UTF-8">
+    <link rel="icon" href="{% static 'LoginSignup/img/favicon.ico' %}"/>
+    <iframe width="0" height="0" src="{% static '/audio/audio.mp3' %}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <title>Not Found</title>
+    <style>
+        #bg{
+                background-image: linear-gradient(172deg, #110c22 33%, #681450);
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                font-family: 'Titillium Web', sans-serif;
+            }
+
+
+
+.navbar-toggler{
+    border: none;
+}
+
+.navbar-toggler:focus{
+    outline: none;
+}
+li{
+    margin-top: none;
+}
+.navbar{
+    position: fixed;
+    z-index: 1050;
+    width: 100% ;
+}
+
+.bg-custom {
+    background-color: transparent;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: #fff;
+    font-weight: 800;
+}
+
+.nav-item{
+    margin: 2px 12px;
+    border-bottom: 2px solid rgba(0,0,0,0);
+}
+
+.nav-item:hover{
+    border-bottom: 2px solid #fff;
+}
+
+#one
+{
+	background-image: purple;
+	height: 100vh;
+    width: auto;
+	background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-container {
+    margin-top: 50vh;
+}
+
+#error
+{
+	color:white;
+	font-weight:800;
+	text-align:center;
+	margin-top: -20%;
+	bottom-margin:10px;
+}
+#text
+{
+	font-size: 80px;
+    text-shadow: 1px 1px 2px black, 0 0 1em rgb(151,70,20), 0 0 0.2em rgb(151,70,20);
+
+}
+
+#statement
+{
+	color:white;
+	font-weight:800;
+	text-align:center;
+	bottom-margin:10px;
+
+}
+
+
+    </style>
+</head>
+<body id = "bg">
+	<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-custom">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" role='collapse' id="navbarTogglerDemo01">
+                  <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
+                  <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">Home</a>
+                    </li>
+                  </ul>
+                </div>
+        </nav>
+
+
+
+	<div id='one'>
+        <div class='container-fluid' id='main-container'>
+            <div class='row'>
+                <div class="col-12" id='error_holder'>
+                    <div>
+                        <div id='error'><h1 id = "text">ERROR 404!</h1></div>
+                        <div id = 'statement'><h2>Resource not found</h2></div>
+                        <div id = 'statement'><h2>No mystery here!</h2></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    setTimeout(function(){
+        window.location.reload(1);
+    }, 1);
+</script>
+</body>
+</html>
