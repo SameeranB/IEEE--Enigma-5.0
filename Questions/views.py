@@ -14,6 +14,26 @@ from .ExtraFunctions import rank_check
 from django.db.models import F
 # Create your views here.
 
+import pymongo
+from datetime import datetime
+
+# URI = 'mongodb://Sameeran:Caronex1203@ds347665.mlab.com:47665/logger'
+URI = "mongodb://alphaindia:QzMGC0sOC1b04DbH7y0MaBPvRGT1E5cNEsgfDJ9nQSosQYBNBzlL93fCNtl60Rt843mZisuAn86OlYlj9vIKUQ==@alphaindia.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
+
+myclient = pymongo.MongoClient(URI)
+
+db = myclient['logger']
+
+logs = db.logs
+
+def log_answers(log):
+    try:
+        logs.insert_one()
+    except:
+        print("DB Error")
+
+    # d = {'username':'ayush', 'answer':'anything', 'question':'1', 'time':datetime.now()}
+
 class QuestionView(LoginRequiredMixin, FormView):
 
     template_name = 'Questions/Current_Question.html'
@@ -28,7 +48,10 @@ class QuestionView(LoginRequiredMixin, FormView):
     HintPressed = 'False'
 
     def form_valid(self, form):
+
         user_answer = form.cleaned_data['Answer']
+        log = {'username': self.request.user.username, 'Answer':user_answer, 'question':QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion), 'time': datetime.now()}
+        log_answers(log)
         profile = CustomUser.objects.get(username=self.request.user.username)
         self.Attempts += 1
         profile.save()

@@ -37,3 +37,4 @@ class Story(models.Model):
     Title = models.TextField(blank=True)
     Body = models.TextField(blank=True)
     Hanger = models.TextField(blank=True)
+
