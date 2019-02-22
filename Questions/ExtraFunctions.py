@@ -31,5 +31,5 @@ def rank_check(user, hint):
 
 def logger(req, type):
     if type = 1:
-        obj = logs
+        obj = logs.objects
     else:
