@@ -2,6 +2,16 @@ html{
     scroll-behavior: smooth;
 }
 
+.dropdown-menu.show{
+    background: rgba(255,255,255, 0.1);
+    margin-top: 20px;
+}
+
+.dropdown-menu.show li {
+    border: none;
+}
+
+
 body{
     background-attachment: fixed;
     background-position: center;
