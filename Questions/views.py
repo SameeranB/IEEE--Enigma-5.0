@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.views.generic import TemplateView,FormView, ListView, DetailView
 from django.http import HttpResponse, HttpResponseRedirect
 from ratelimit.decorators import ratelimit
+from ratelimit.mixins import RatelimitMixin
 
 from Questions.forms import AnswerForm
 from Questions.models import QuestionInfo
@@ -113,8 +114,15 @@ class AchievementDetail(DetailView):
     model = Achievements
     template_name = 'Questions/Achievement_Detail.html'
 
-@ratelimit(key='ip', rate='1000/h')
-class Leaderboard(LoginRequiredMixin, ListView):
+
+class Leaderboard(LoginRequiredMixin,RatelimitMixin, ListView):
+
+    ratelimit_key = 'ip'
+    ratelimit_rate = '10/m'
+    ratelimit_block = False
+    ratelimit_method = 'GET'
+
+
     login_url = '/'
     raise_exception = False
     redirect_unauthenticated_users = True
