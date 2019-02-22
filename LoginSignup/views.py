@@ -121,7 +121,7 @@ class LoginView(FormView):
             return render(self.request, 'index.html', context={'LoginForm':LoginForm, 'invalid':self.invalid})
 
     def get_success_url(self):
-        return render(self.request, 'index.html', context={'Name':self.request.user.username})
+        return render(self.request, 'index.html', context={'Name':self.request.user.username, 'Score':self.request.user.Points})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

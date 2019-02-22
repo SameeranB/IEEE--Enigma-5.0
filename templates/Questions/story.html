@@ -35,7 +35,7 @@
                     </li>
 
                       <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">LeaderBoard</a>
+                        <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">Leaderboard</a>
                     </li>
 
                       <li class="nav-item">
@@ -61,7 +61,10 @@
                           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profile</a>
                           <ul class="dropdown-menu dropdown-menu-right">
                               <li class="nav-item">
-                                  <a class="nav-link" href="#">Your name</a>
+                                  <a class="nav-link" href="#">{{ Name }}</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="#">Score: {{ Score }}</a>
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link" href="{% url 'LoginSignup:Logout' %}">Log Out</a>
@@ -126,11 +129,13 @@
                         <div class="row">
                             <div class="mx-auto" id="hint-body-holders">
                                 <p id="hint-text-box">
-                                    The first 20 users who solve the questions without using hint get 100 points.
-                                    If you are 21-50 user who solved it you get 80 points.
-                                    Then users from 51-100 who solve it get 60 points.
-                                    The rest get only 50 points.
-                                    Also, remember using hint means you lose 50% of the points the question can offer you.
+                                    The Rules for Enigma are as Follows:<br>
+                                    First 20 People to solve a Question -- 100 Points<br>
+                                    Between 21 to 50 -- 80 Points<br>
+                                    Between 51 to 100 -- 60 Points<br>
+                                    Not in the first 100 -- 50 Points<br>
+                                    <p style="color: darkred">Note:<br><p/>
+                                    If you use the hint, you lose 50% of the points you would obtain otherwise.
                                 </p>
                             </div>
                         </div>

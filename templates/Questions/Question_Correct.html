@@ -34,7 +34,7 @@
                     </li>
 
                       <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">LeaderBoard</a>
+                        <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">Leaderboard</a>
                     </li>
 
 {#                    <li class="nav-item">#}
@@ -55,7 +55,10 @@
                           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profile</a>
                           <ul class="dropdown-menu dropdown-menu-right">
                               <li class="nav-item">
-                                  <a class="nav-link" href="#">Your name</a>
+                                  <a class="nav-link" href="#">{{ Name }}</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="#">Score: {{ Score }}</a>
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link" href="{% url 'LoginSignup:Logout' %}">Log Out</a>
@@ -79,17 +82,17 @@
 
                 <div class="row">
                     <div class="col-12" id="ques-box">
-                        <p id="ques">Congratulations On Getting That one Right!
+                        <p id="ques">Congratulations, You Got It Right!
                             <br/>
-                            You Scored {{ scored }} Points
+                            You Scored {{ scored }} Points.
                             <br/>
                             {% if Hint == "True" %}
                                 You Used a Hint
                             {% else %}
-                                And You didn't even need the hint!
+                                And You didn't even use the hint!
                             {% endif %}
                             <br/>
-                            Now, you're onto the next chapter of Shade's Story
+                            You've unlocked the next chapter of Shade's story. Click below to read or continue to the next question.
                         </p>
 
                     </div>
@@ -100,8 +103,8 @@
                             <div class='row' id='login-row'>
                                 <div class="col-12" id='btn'>
                                     <div id='btn'>
-                                        <a id="mover" href="{% url 'Questions:Question_Solver' %}">Next Question</a>
                                         <a id="mover" href="{% url 'Questions:Story' %}">Story</a>
+                                        <a id="mover" href="{% url 'Questions:Question_Solver' %}">Next Question</a>
                                     </div>
                                 </div>
                             </div>

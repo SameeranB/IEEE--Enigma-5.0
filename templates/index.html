@@ -64,6 +64,9 @@
                         </li>
 
                     {% endif %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="#" data-toggle="modal" data-target="#rules">Rules</a>
+                      </li>
 
                     <li class="nav-item">
                       <a class="nav-link" href="#" data-toggle="modal" data-target="#aboutModal">About</a>
@@ -74,21 +77,34 @@
                     </li>
                         {% if user.is_authenticated %}
 
-                            <li class="dropdown nav-item">
-                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profile</a>
-                          <ul class="dropdown-menu dropdown-menu-right">
+{#                            <li class="dropdown nav-item">#}
+{#                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profile</a>#}
+{#                          <ul class="dropdown-menu dropdown-menu-right">#}
 {#                              <li class="nav-item">#}
-{#                                  <a class="nav-link" href="#">{{ Name }}</a>#}
+{#                                  <a class="nav-link" href="#">#}
+{#                                      {% if user.is_authenticated %}#}
+{#                                          {{ Name }}#}
+{#                                      {% else %}#}
+{#                                          Name#}
+{#                                      {% endif %}#}
+{#                                  </a>#}
 {#                              </li>#}
 {#                              <li class="nav-item">#}
-{#                                  <a class="nav-link" href="#">Score: {{ Score }}</a>#}
+{#                                  <a class="nav-link" href="#">Score:#}
+{#                                  {% if user.is_authenticated %}#}
+{#                                          {{ Score }}#}
+{#                                      {% else %}#}
+{#                                          0#}
+{#                                      {% endif %}#}
+
+{#                                  </a>#}
 {#                              </li>#}
                               <li class="nav-item">
                                   <a class="nav-link" href="{% url 'LoginSignup:Logout' %}">Log Out</a>
                               </li>
-                          </ul>
+{#                          </ul>#}
 
-                            </li>
+{#                            </li>#}
 
                         {% else %}
                             <li class="nav-item">
@@ -224,6 +240,38 @@
                     </div>
                     <div class="modal-footer">
                         <div class="mx-auto"><img id='enigma-logo-modal' src="{% static 'LoginSignup/img/ENIGMA_logo.png' %}" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto" id="hint-head">
+                            <h3 class="modal-title" id="exampleModalScrollableTitle">Rule:</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mx-auto" id="hint-body-holders">
+                                <p id="hint-text-box">
+                                    The Rules for Enigma are as Follows:<br>
+                                    First 20 People to solve a Question -- 100 Points<br>
+                                    Between 21 to 50 -- 80 Points<br>
+                                    Between 51 to 100 -- 60 Points<br>
+                                    Not in the first 100 -- 50 Points<br>
+                                    <p style="color: darkred">Note:<br><p/>
+                                    If you use the hint, you lose 50% of the points you would obtain otherwise.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='{% static "/Questions/img/ENIGMA_logo.png" %}'/></div>
                     </div>
                 </div>
             </div>
