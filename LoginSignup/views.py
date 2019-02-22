@@ -145,15 +145,15 @@ class LogoutView(LoginRequiredMixin, View):
 
 
 #
-# def SendRem(request):
-#     usrs = CustomUser.objects.filter(is_active=False).values_list('email', flat=True)
-#     mail_subject = 'Enigma Has Begun | IEEE VIT'
-#     message = render_to_string('Started.html')
-#
-#     email = EmailMessage(mail_subject, message, 'sameeranbandishti@ieee.org', to=usrs)
-#     email.content_subtype = 'html'
-#
-#     email.send()
+def SendRem(request):
+    usrs = CustomUser.objects.values_list('email', flat=True)
+    mail_subject = 'Enigma is Back Online | IEEE VIT'
+    message = render_to_string("We're_Back.html")
+
+    email = EmailMessage(mail_subject, message, 'sameeranbandishti@ieee.org', to=usrs)
+    email.content_subtype = 'html'
+
+    email.send()
 
 
 class IncorrectSent(TemplateView):
