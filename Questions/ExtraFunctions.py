@@ -29,7 +29,7 @@ def rank_check(user, hint):
     return pointsscored
 
 
-def logger(req, type):
-    if type = 1:
-        obj = logs.objects
-    else:
+# def logger(req, type):
+#     if type = 1:
+#         obj = logs.objects
+#     else:
