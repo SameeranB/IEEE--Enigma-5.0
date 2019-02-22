@@ -113,7 +113,7 @@ class AchievementDetail(DetailView):
     model = Achievements
     template_name = 'Questions/Achievement_Detail.html'
 
-@ratelimit(key='ip', rate='100/h')
+@ratelimit(key='ip', rate='1000/h')
 class Leaderboard(LoginRequiredMixin, ListView):
     login_url = '/'
     raise_exception = False
