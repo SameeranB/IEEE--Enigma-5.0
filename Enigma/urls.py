@@ -22,7 +22,7 @@ handler404 = 'LoginSignup.views.handler404'
 handler500 = 'LoginSignup.views.handler500'
 
 urlpatterns = [
-    url(r'^/$', views.StaticPage, name='Page'),
+    url(r'^$', views.StaticPage, name='Page'),
     # url(r'admin/', admin.site.urls),
     # url(r'^$', views.LoginView.as_view(), name='index'),
     # url(r'^LoginSignup/', include('LoginSignup.urls')),
