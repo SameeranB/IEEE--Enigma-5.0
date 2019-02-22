@@ -28,7 +28,7 @@ logs = db.logs
 
 def log_answers(log):
     try:
-        logs.insert_one()
+        logs.insert_one(log)
     except:
         print("DB Error")
 
