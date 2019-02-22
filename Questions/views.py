@@ -16,8 +16,8 @@ from .ExtraFunctions import rank_check
 import pymongo
 from datetime import datetime
 
-# URI = 'mongodb://Sameeran:Caronex1203@ds347665.mlab.com:47665/logger'
-URI = "mongodb://alphaindia:QzMGC0sOC1b04DbH7y0MaBPvRGT1E5cNEsgfDJ9nQSosQYBNBzlL93fCNtl60Rt843mZisuAn86OlYlj9vIKUQ==@alphaindia.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
+URI = 'mongodb://Sameeran:Caronex1203@ds347665.mlab.com:47665/logger'
+# URI = "mongodb://alphaindia:QzMGC0sOC1b04DbH7y0MaBPvRGT1E5cNEsgfDJ9nQSosQYBNBzlL93fCNtl60Rt843mZisuAn86OlYlj9vIKUQ==@alphaindia.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
 
 myclient = pymongo.MongoClient(URI)
 
