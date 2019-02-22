@@ -22,7 +22,7 @@ class QuestionView(LoginRequiredMixin, FormView):
     redirect_unauthenticated_users = True
     Attempts = 0
     Dist = 0
-    HintPressed = False
+    HintPressed = 'False'
 
     def form_valid(self, form):
         user_answer = form.cleaned_data['Answer']
@@ -30,15 +30,16 @@ class QuestionView(LoginRequiredMixin, FormView):
         self.Attempts += 1
         profile.save()
         question = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
+        self.HintPressed = form.cleaned_data['HintUsed']
 
 
         if user_answer in question[0].Answer:
-            pointsscored = rank_check(profile)
+            pointsscored = rank_check(profile, self.HintPressed)
             profile.CurrentQuestion +=1
             # achievement_check(profile)
 
             profile.save()
-            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored})
+            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored, 'Hint':self.HintPressed})
         elif user_answer in question[0].CloseAnswer:
             self.Dist = 1
         elif user_answer in question[0].MediumAnswer:
@@ -48,8 +49,7 @@ class QuestionView(LoginRequiredMixin, FormView):
 
         return render(self.request, 'Questions/Current_Question.html', {'Image': question[0].Image, 'Question': question[0].QText, 'AnswerForm': AnswerForm, 'Attempts': self.Attempts, 'Dist': self.Dist})
 
-    def post(self, request, *args, **kwargs):
-        self.HintPressed = True
+
 
     def get_context_data(self, **kwargs):
         question_info = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)

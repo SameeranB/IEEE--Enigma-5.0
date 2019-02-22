@@ -2,23 +2,27 @@ from Questions.models import Achievements
 from django_postgres_extensions.models.functions import *
 from Questions.models import QuestionInfo
 
-def rank_check(user):
+def rank_check(user, hint):
     ques = QuestionInfo.objects.get(QID__exact=user.CurrentQuestion)
     obj = ques.QuesSolved
+    pointsscored = 0
+    if obj <= 20:
+        pointsscored = 100
 
-    if obj<=20:
-        user.Points += 100
-        ques.QuesSolved += 1
-        return 100
     elif obj>20 and obj<=50:
-        user.Points += 80
-        ques.QuesSolved += 1
-        return 80
+        pointsscored = 80
+
     elif obj>50 and obj<=100:
-        user.Points +=60
-        ques.QuesSolved += 1
-        return 60
+        pointsscored = 60
+
     else:
-        user.Points +=50
-        ques.QuesSolved += 1
-        return 50
+        pointsscored = 50
+
+
+    if hint == "True":
+        pointsscored = pointsscored/2
+
+    user.Points += pointsscored
+    ques.QuesSolved += 1
+
+    return pointsscored

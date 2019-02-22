@@ -10,3 +10,4 @@ class AnswerForm(forms.ModelForm):
 
 
     Answer = forms.CharField(widget=forms.Textarea, label='')
+    HintUsed = forms.CharField(widget=forms.HiddenInput(attrs={'id': 'check'}), label='')

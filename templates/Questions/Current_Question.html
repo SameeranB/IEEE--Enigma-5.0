@@ -97,9 +97,10 @@
                                     <div id='btn'>
                                         <button value="Submit" id="mover">Submit</button>
                                         <br/>
-                                        <a href='#hintModal' id="hint" data-toggle="modal">
+                                        <a href='#hintModal' id="hint" data-toggle="modal" >
                                         <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">
                                         </a>
+
 
                                     </div>
                                 </div>
@@ -215,8 +216,7 @@
     function changeColor()
     {
         document.getElementById("bulb").src = "{% static '/Questions/img/l-on.png' %}";
-
-
+        document.getElementById("check").value = "True";
 
     }
 </script>

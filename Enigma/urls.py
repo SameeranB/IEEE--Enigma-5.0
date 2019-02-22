@@ -18,7 +18,8 @@ from django.conf.urls import url, include
 from LoginSignup import views
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 
-
+handler404 = 'LoginSignup.views.handler404'
+handler500 = 'LoginSignup.views.handler500'
 
 urlpatterns = [
     url(r'admin/', admin.site.urls),
