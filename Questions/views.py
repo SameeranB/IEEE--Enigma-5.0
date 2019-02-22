@@ -60,8 +60,10 @@ class QuestionView(LoginRequiredMixin, FormView):
         context['Attempts'] = self.Attempts
         context['Dist'] = self.Dist
         context['Hint'] = question_info[0].Hints[0]
-
+        context['Name'] = self.request.user.username
+        context['Score'] = self.request.user.Points
         return context
+
 
 class DashboardView(LoginRequiredMixin, TemplateView):
 
@@ -120,6 +122,11 @@ class Leaderboard(LoginRequiredMixin, ListView):
     template_name = 'Questions/Leaderboard.html'
     ordering = ['-Points']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['Name'] = self.request.user.username
+        context['Score'] = self.request.user.Points
+        return context
 
 
 class StoryView(LoginRequiredMixin, ListView):
@@ -132,6 +139,11 @@ class StoryView(LoginRequiredMixin, ListView):
         return Story.objects.filter(SID__lt=self.request.user.CurrentQuestion).order_by('SID')
     template_name = 'Questions/story.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['Name'] = self.request.user.username
+        context['Score'] = self.request.user.Points
+        return context
 
 
 
