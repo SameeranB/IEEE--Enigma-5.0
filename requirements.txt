@@ -14,3 +14,4 @@ pymongo==3.7.2
 sqlparse==0.2.4
 sentry-sdk
 django_postgres_extensions
+django-ratelimit

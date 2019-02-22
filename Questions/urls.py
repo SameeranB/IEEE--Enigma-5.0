@@ -8,7 +8,7 @@ urlpatterns=[
     url(r'^UnderDevelopment/$', views.UnderDevelopment.as_view(), name='Under_Dev'),
     url(r'^Achievements/$', views.AllAchievements.as_view(), name='Achievements'),
     url(r'^Achievements/(?P<pk>[-\w+])/$', views.AchievementDetail.as_view(), name='Achievement_Details'),
-    # url(r'^Leaderboard/$', views.Leaderboard.as_view(), name='Leaderboard'),
+    url(r'^Leaderboard/$', views.Leaderboard.as_view(), name='Leaderboard'),
     url(r'^Story/$', views.StoryView.as_view(), name='Story'),
 
 ]
