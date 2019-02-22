@@ -29,6 +29,7 @@ def rank_check(user, hint):
 
     user.Points += pointsscored
     ques.QuesSolved += 1
+    ques.save()
 
     return pointsscored
 
