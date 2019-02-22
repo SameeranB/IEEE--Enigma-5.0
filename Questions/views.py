@@ -9,7 +9,7 @@ from Questions.models import QuestionInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
 from Questions.models import Story
 from users.models import CustomUser
-from .ExtraFunctions import rank_check
+from .ExtraFunctions import rank_check, logger
 
 # Create your views here.
 
@@ -25,13 +25,13 @@ db = myclient['logger']
 
 logs = db.logs
 
-def log_answers(log):
-    try:
-        logs.insert_one(log)
-    except:
-        print("DB Error")
-
-    # d = {'username':'ayush', 'answer':'anything', 'question':'1', 'time':datetime.now()}
+# def log_answers(log):
+#     try:
+#         logs.insert_one(log)
+#     except:
+#         print("DB Error")
+#
+#     # d = {'username':'ayush', 'answer':'anything', 'question':'1', 'time':datetime.now()}
 
 class QuestionView(LoginRequiredMixin, FormView):
 
@@ -49,8 +49,8 @@ class QuestionView(LoginRequiredMixin, FormView):
     def form_valid(self, form):
 
         user_answer = form.cleaned_data['Answer']
-        log = {'username': self.request.user.username, 'Answer':user_answer, 'question':QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion), 'time': datetime.now()}
-        log_answers(log)
+        logger(self.request, 1, form.cleaned_data['Answer'], "QuestionView")
+
         profile = CustomUser.objects.get(username=self.request.user.username)
         self.Attempts += 1
         profile.save()
@@ -87,6 +87,7 @@ class QuestionView(LoginRequiredMixin, FormView):
         context['Hint'] = question_info[0].Hints[0]
         context['Name'] = self.request.user.username
         context['Score'] = self.request.user.Points
+
         return context
 
 #
@@ -139,10 +140,10 @@ class UnderDevelopment(TemplateView):
 
 class Leaderboard(LoginRequiredMixin, ListView):
 
-    # ratelimit_key = 'ip'
-    # ratelimit_rate = '10/m'
-    # ratelimit_block = False
-    # ratelimit_method = 'GET'
+    ratelimit_key = 'ip'
+    ratelimit_rate = '10/m'
+    ratelimit_block = False
+    ratelimit_method = 'GET'
 
 
     login_url = '/'
@@ -159,6 +160,7 @@ class Leaderboard(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['Name'] = self.request.user.username
         context['Score'] = self.request.user.Points
+        logger(self.request, 1, "", "Leaderboard")
         return context
 
 
@@ -176,6 +178,7 @@ class StoryView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['Name'] = self.request.user.username
         context['Score'] = self.request.user.Points
+        logger(self.request, 1, "", "Story")
         return context
 
 

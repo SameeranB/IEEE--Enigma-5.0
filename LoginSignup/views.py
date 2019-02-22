@@ -16,7 +16,7 @@ from django.utils.encoding import force_bytes, force_text
 from users.models import CustomUser
 from django.template.loader import render_to_string
 
-
+from Questions.ExtraFunctions import logger
 
 
 
@@ -157,16 +157,20 @@ class LogoutView(LoginRequiredMixin, View):
 
 
 class IncorrectSent(TemplateView):
+
+
     template_name = 'LoginSignup/IncorrectSent.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        logger(self.request, 2, "", "IncorrectSent")
         return context
 
 class NotConf(TemplateView):
     template_name = 'NotConfirmed.html'
 
     def get_context_data(self, **kwargs):
+        logger(self.request, 2, "", "NoConf")
         context = super().get_context_data(**kwargs)
         return context
 

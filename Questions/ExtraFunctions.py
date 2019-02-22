@@ -1,6 +1,10 @@
+from datetime import timezone, datetime
+
 from Questions.models import Achievements
 from django_postgres_extensions.models.functions import *
 from Questions.models import QuestionInfo
+from LoginSignup.models import logs
+from ipware import get_client_ip
 
 def rank_check(user, hint):
     ques = QuestionInfo.objects.get(QID__exact=user.CurrentQuestion)
@@ -29,7 +33,17 @@ def rank_check(user, hint):
     return pointsscored
 
 
-# def logger(req, type):
-#     if type = 1:
-#         obj = logs.objects
-#     else:
+def logger(req, type, ans, VN):
+    if type == 1:
+        obj = logs()
+        obj.username = req.user.username
+        obj.IPAdd = get_client_ip(req)
+        obj.AnswerSub = ans
+        obj.TimeStamp = datetime.now()
+        obj.ViewName = VN
+        obj.save()
+    else:
+        obj = logs()
+        obj.IPAdd = get_client_ip(req)
+        obj.TimeStamp = datetime.now()
+        obj.save()
