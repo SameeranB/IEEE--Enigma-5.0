@@ -131,8 +131,8 @@ class LoginView(FormView):
         context = super().get_context_data(**kwargs)
         context['LoginForm'] = LoginForm
         context['invalid'] = self.invalid
-        context['Name'] = self.request.user.username
-        context['Score'] = self.request.user.Points
+        # context['Name'] = self.request.user.username
+        # context['Score'] = self.request.user.Points
         return context
 
     def form_invalid(self, form):
