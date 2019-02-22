@@ -24,13 +24,13 @@ text-align: center;
         font-weight: bolder;
         text-decoration: none;
     "
-    href="https://{{ domain }}{% url 'activate' uidb64=uid token=token %}"
+    href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}"
     >
         Verify account
     </a>
     <p style="color: darkred">Note: If the above link does not work, please un-spam the mail and try again.</p>
     <p>Or, copy and paste the link below in your browser window:</p>
-    <p>https://{{ domain }}{% url 'activate' uidb64=uid token=token %}</p>
+    <p>http://{{ domain }}{% url 'activate' uidb64=uid token=token %}</p>
      <h5>If you didn't create this account, <a href="{% url 'IncorrectSent' %}">please notify us</a>.</h5>
 
     <footer style="font-size: 12px;margin-top: 72px;">
