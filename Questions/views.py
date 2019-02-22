@@ -47,7 +47,7 @@ class QuestionView(LoginRequiredMixin, FormView):
         else:
             self.Dist = 3
 
-        return render(self.request, 'Questions/Current_Question.html', {'Image': question[0].Image, 'Question': question[0].QText, 'AnswerForm': AnswerForm, 'Attempts': self.Attempts, 'Dist': self.Dist})
+        return render(self.request, 'Questions/Current_Question.html', {'Image': question[0].Image, 'Question': question[0].QText, 'AnswerForm': AnswerForm, 'Attempts': self.Attempts, 'Dist': self.Dist, 'Hint':question[0].Hints[0]})
 
 
 
