@@ -31,24 +31,36 @@
                   </div>
                   <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+
                     </li>
 
                       <li class="nav-item">
-                      <a class="nav-link" href="{% url 'Questions:Achievements' %}">Achievements</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Questions:Question_Solver' %}">Question View</a>
+                        <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">LeaderBoard</a>
                     </li>
 
-                     <li class="nav-item">
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'Questions:Question_Solver' %}">Questrion View</a>
+                      </li>
+
+
+{#                    <li class="nav-item">#}
+{#                      <a class="nav-link" href="{% url 'Questions:Achievements' %}">Achievements</a>#}
+{#                    </li>#}
+
+                      <li class="nav-item">
 
                             <a class="nav-link" href="{% url 'Questions:Story' %}">Story</a>
 
                         </li>
 
+                      <li class="nav-item">
+                          <a class="nav-link" href="#" data-toggle="modal" data-traget="#rules">Rules</a>
+                      </li>
+
                     <li class="nav-item">
-                            <a class="nav-link" href="{% url 'LoginSignup:Logout' %}">Log Out</a>
+                            <a class="nav-link" href="{% url 'LoginSignup:Signup' %}">Log Out</a>
                     </li>
                   </ul>
                 </div>

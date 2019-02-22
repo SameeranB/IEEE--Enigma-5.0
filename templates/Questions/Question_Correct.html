@@ -1,21 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Correct!</title>
-</head>
-<body>
-<h1>Congratulations!</h1>
-<h3>Your Answer is Correct!</h3>
-<h4>You Scored {{ scored }} Points</h4>
-<h5><a href="{% url 'Questions:Dashboard' %}">Dashboard</a> </h5>
-<h5><a href="{% url 'Questions:Question_Solver' %}">Next Question</a> </h5>
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
 {% load staticfiles %}
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -30,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <link rel='stylesheet' type='text/css' href='{% static "/Questions/CSS/ques.css" %}'>
+    <link rel='stylesheet' type='text/css' href='{% static "/Questions/CSS/correct.css" %}'>
 
     <title>Enigma 5.0 | Question</title>
 </head>
@@ -54,15 +37,19 @@
                         <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">LeaderBoard</a>
                     </li>
 
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'Questions:Achievements' %}">Achievements</a>
-                    </li>
+{#                    <li class="nav-item">#}
+{#                      <a class="nav-link" href="{% url 'Questions:Achievements' %}">Achievements</a>#}
+{#                    </li>#}
 
                       <li class="nav-item">
 
                             <a class="nav-link" href="{% url 'Questions:Story' %}">Story</a>
 
                         </li>
+
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'Questions:Question_Solver' %}">Next Question</a>
+                      </li>
 
                     <li class="nav-item">
                             <a class="nav-link" href="{% url 'LoginSignup:Signup' %}">Log Out</a>
@@ -77,42 +64,31 @@
 
                 <div class='row'>
                     <div class="col-12" id='ques-img-holder'>
-                        <img id='ques-img' src="{{ Image }}"/>
+                        <img id='ques-img' src="{% static 'Questions/img/Bot.png' %}"/>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12" id="ques-box">
-                        <p id="ques">{{ Question }}</p>
+                        <p id="ques">Congratulations On Getting That one Right!
+                            <br/>
+                            You Scored {{ scored }} Points
+                                    <br/>
+                            Now, you're onto the next chapter of Shade's Story
+                        </p>
+
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12" id="ans-box">
-                        <form action="{% url 'Questions:Question_Solver' %}" method="post" id="form-box">
-                            {% csrf_token %}
-                            {{ AnswerForm.as_p }}
-                            {% if Dist == 0 %}
-                            {% elif Dist == 3 %}
-                                <p style="color: red">Naaa....</p>
-                            {% elif Dist == 2 %}
-                                <p style="color: red">You're Getting There</p>
-                            {% elif Dist == 1 %}
-                                <p style="color: red">You're So Close!</p>
-                            {% endif %}
                             <div class='row' id='login-row'>
                                 <div class="col-12" id='btn'>
                                     <div id='btn'>
-                                        <button value="Submit" id="mover">Submit</button>
-                                        <br/>
-                                        <a href='#hintModal' id="hint" data-toggle="modal">
-                                        <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">
-                                        </a>
-
+                                        <a id="mover" href="{% url 'Questions:Question_Solver' %}">Next Question</a>
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
 
@@ -121,9 +97,8 @@
         </div>
 
 
-
-        <!-- the hint for the question goes in this modal -->
-        <div class="modal fade" id="hintModal" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+        <!-- this modal is displayed only on the submission of the correct ans. for story -->
+        <div class="modal fade" id="storyModal" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -139,7 +114,13 @@
                             <div class="mx-auto" id="hint-body-holders">
                                 <p id="hint-text-box">
 
-                                    {{ Hint }}
+                                    <!-- this is the place where the story is displayed -->
+
+                                    -------------------------------------------------
+                                    -------------------------------------------------
+                                    -----------------this is story modal--------------
+                                    -------------------------------------------------
+                                    -------------------------------------------------
                                 </p>
                             </div>
                         </div>
@@ -150,42 +131,6 @@
                 </div>
             </div>
         </div>
-
-
-{#        <!-- this modal is displayed only on the submission of the correct ans. for story -->#}
-{#        <div class="modal fade" id="storyModal" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">#}
-{#            <div class="modal-dialog modal-dialog-scrollable" role="document">#}
-{#                <div class="modal-content">#}
-{#                    <div class="modal-header">#}
-{#                        <div class="container mx-auto" id="hint-head">#}
-{#                            <h3 class="modal-title" id="exampleModalScrollableTitle">Hint:</h3>#}
-{#                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
-{#                                <span aria-hidden="true">&times;</span>#}
-{#                            </button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="modal-body">#}
-{#                        <div class="row">#}
-{#                            <div class="mx-auto" id="hint-body-holders">#}
-{#                                <p id="hint-text-box">#}
-{##}
-{#                                    <!-- this is the place where the story is displayed -->#}
-{##}
-{#                                    -------------------------------------------------#}
-{#                                    -------------------------------------------------#}
-{#                                    -----------------this is hint modal--------------#}
-{#                                    -------------------------------------------------#}
-{#                                    -------------------------------------------------#}
-{#                                </p>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="modal-footer">#}
-{#                        <div class="mx-auto"><img id='ieee' src='{% static "/Questions/img/ENIGMA_logo.png" %}'/></div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
 {#{{ Attempts }}#}
 <script>
     function changeColor()
