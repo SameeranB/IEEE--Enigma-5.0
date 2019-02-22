@@ -22,6 +22,7 @@ class QuestionView(LoginRequiredMixin, FormView):
     redirect_unauthenticated_users = True
     Attempts = 0
     Dist = 0
+    HintPressed = False
 
     def form_valid(self, form):
         user_answer = form.cleaned_data['Answer']
@@ -46,6 +47,9 @@ class QuestionView(LoginRequiredMixin, FormView):
             self.Dist = 3
 
         return render(self.request, 'Questions/Current_Question.html', {'Image': question[0].Image, 'Question': question[0].QText, 'AnswerForm': AnswerForm, 'Attempts': self.Attempts, 'Dist': self.Dist})
+
+    def post(self, request, *args, **kwargs):
+        self.HintPressed = True
 
     def get_context_data(self, **kwargs):
         question_info = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
@@ -109,7 +113,7 @@ class Leaderboard(ListView):
 class StoryView(ListView):
     context_object_name = 'StoryList'
     def get_queryset(self):
-        return Story.objects.filter(SID__lte=self.request.user.CurrentQuestion).order_by('SID')
+        return Story.objects.filter(SID__lt=self.request.user.CurrentQuestion).order_by('SID')
     template_name = 'Questions/story.html'
 
 
