@@ -159,6 +159,7 @@ def SendRem(request):
 
     email.send()
 
+
 class IncorrectSent(TemplateView):
     template_name = 'LoginSignup/IncorrectSent.html'
 
