@@ -62,6 +62,7 @@
                             <a class="nav-link" href="{% url 'Questions:Story' %}">Story</a>
 
                         </li>
+
                     {% endif %}
 
                     <li class="nav-item">
@@ -71,13 +72,27 @@
                     <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact Us</a>
                     </li>
-                      <li class="nav-item">
                         {% if user.is_authenticated %}
-                        <a class="nav-link" href="{% url 'LoginSignup:Logout' %}" >Log Out</a>
+
+                            <li class="dropdown nav-item">
+                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profile</a>
+                          <ul class="dropdown-menu dropdown-menu-right">
+                              <li class="nav-item">
+                                  <a class="nav-link" href="#">Your name</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{% url 'LoginSignup:Logout' %}">Log Out</a>
+                              </li>
+                          </ul>
+
+                            </li>
+
                         {% else %}
-                        <a class="nav-link" href="{% url 'LoginSignup:Signup' %}">Register</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'LoginSignup:Signup' %}">Register</a>
+                            </li>
                         {% endif %}
-                        </li>
+
                   </ul>
                 </div>
         </nav>

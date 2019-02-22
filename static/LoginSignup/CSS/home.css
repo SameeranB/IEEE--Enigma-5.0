@@ -24,6 +24,15 @@ li{
     width: 100%;
 }
 
+.dropdown-menu.show{
+    background: rgba(255,255,255, 0.1);
+    margin-top: 20px;
+}
+
+.dropdown-menu.show li {
+    border: none;
+}
+
 
 body{
     background-attachment: fixed;
@@ -36,15 +45,8 @@ body{
 #logo{
     margin-top: 80px;
     width: 300px;
-    /*
-    transition: 0.5s ease-in;*/
 }
 
-/*
-#logo:hover {
-    width: 350px;
-}
-*/
 
 #logo-holder{
     display: flex;
@@ -56,16 +58,17 @@ body{
     position: fixed;
     z-index: 1050;
     width: 100% ;
+    font-size: 12px;
 }
 
 .bg-custom {
-    background-color: transparent;
+    background-color: rgba(17,12,34,0.4);
 }
 
 .navbar-dark .navbar-nav .nav-link{
     color: #fff;
     font-weight: 800;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover{
