@@ -137,12 +137,12 @@ class UnderDevelopment(TemplateView):
 #     template_name = 'Questions/Achievement_Detail.html'
 
 
-class Leaderboard(LoginRequiredMixin,RatelimitMixin, ListView):
+class Leaderboard(LoginRequiredMixin, ListView):
 
-    ratelimit_key = 'ip'
-    ratelimit_rate = '10/m'
-    ratelimit_block = False
-    ratelimit_method = 'GET'
+    # ratelimit_key = 'ip'
+    # ratelimit_rate = '10/m'
+    # ratelimit_block = False
+    # ratelimit_method = 'GET'
 
 
     login_url = '/'
