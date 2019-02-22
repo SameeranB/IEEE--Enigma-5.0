@@ -10,5 +10,6 @@ urlpatterns=[
     # url(r'^Achievements/(?P<pk>[-\w+])/$', views.AchievementDetail.as_view(), name='Achievement_Details'),
     url(r'^Leaderboard/$', views.Leaderboard.as_view(), name='Leaderboard'),
     url(r'^Story/$', views.StoryView.as_view(), name='Story'),
+    url(r'^QuestionSolverHint/$', views.QuestionAfterHintView.as_view(), name='Question_Solver_Hint'),
 
 ]
