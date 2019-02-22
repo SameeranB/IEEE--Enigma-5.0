@@ -8,6 +8,14 @@
 <h1>Congratulations!</h1>
 <h3>Your Answer is Correct!</h3>
 <h4>You Scored {{ scored }} Points</h4>
+<h4>
+    {% if Hint == "True" %}
+        You Used a Hint
+    {% else %}
+        And You didn't even need the hint!
+    {% endif %}
+
+</h4>
 <h5><a href="{% url 'Questions:Dashboard' %}">Dashboard</a> </h5>
 <h5><a href="{% url 'Questions:Question_Solver' %}">Next Question</a> </h5>
 </body>
