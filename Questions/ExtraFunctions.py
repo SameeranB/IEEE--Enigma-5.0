@@ -27,3 +27,9 @@ def rank_check(user, hint):
     ques.QuesSolved += 1
 
     return pointsscored
+
+
+def logger(req, type):
+    if type = 1:
+        obj = logs
+    else:

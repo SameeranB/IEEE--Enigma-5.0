@@ -22,19 +22,19 @@ handler404 = 'LoginSignup.views.handler404'
 handler500 = 'LoginSignup.views.handler500'
 
 urlpatterns = [
-    url(r'^$', views.StaticPage, name='Page'),
-    # url(r'admin/', admin.site.urls),
-    # url(r'^$', views.LoginView.as_view(), name='index'),
-    # url(r'^LoginSignup/', include('LoginSignup.urls')),
-    # url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-    #     views.activate, name='activate'),
-    # # url(r'^remindpeeps/$', views.SendRem, name='rem'),
-    # url(r'^incorrectly_sent/$',views.IncorrectSent.as_view(), name='IncorrectSent'),
-    #
-    # url(r'^Questions/', include('Questions.urls')),
-    # url(r'^reset-password/$', PasswordResetView.as_view(),{'template_name': 'LoginSignup/reset/reset_password.html', 'post_reset_redirect': 'password_reset_done'}, name='reset_password'),
-    # url(r'^reset-password/reset-password-done/$', PasswordResetDoneView.as_view(),{'template_name': 'LoginSignup/reset/reset_password_done.html'}, name='password_reset_done'),
-    # url(r'^reset-password/password_reset_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', PasswordResetConfirmView.as_view(),{'template_name': 'LoginSignup/reset/reset_password_confirm.html', 'post_reset_redirect': 'password_reset_complete'}, name='password_reset_confirm'),
-    # url(r'^reset-password/reset-password-complete/$', PasswordResetCompleteView.as_view(),{'template_name': 'LoginSignup/reset/reset_password_complete.html'}, name='password_reset_complete'),
+    # url(r'^$', views.StaticPage, name='Page'),
+    url(r'admin/', admin.site.urls),
+    url(r'^$', views.LoginView.as_view(), name='index'),
+    url(r'^LoginSignup/', include('LoginSignup.urls')),
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.activate, name='activate'),
+    # url(r'^remindpeeps/$', views.SendRem, name='rem'),
+    url(r'^incorrectly_sent/$',views.IncorrectSent.as_view(), name='IncorrectSent'),
+
+    url(r'^Questions/', include('Questions.urls')),
+    url(r'^reset-password/$', PasswordResetView.as_view(),{'template_name': 'LoginSignup/reset/reset_password.html', 'post_reset_redirect': 'password_reset_done'}, name='reset_password'),
+    url(r'^reset-password/reset-password-done/$', PasswordResetDoneView.as_view(),{'template_name': 'LoginSignup/reset/reset_password_done.html'}, name='password_reset_done'),
+    url(r'^reset-password/password_reset_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', PasswordResetConfirmView.as_view(),{'template_name': 'LoginSignup/reset/reset_password_confirm.html', 'post_reset_redirect': 'password_reset_complete'}, name='password_reset_confirm'),
+    url(r'^reset-password/reset-password-complete/$', PasswordResetCompleteView.as_view(),{'template_name': 'LoginSignup/reset/reset_password_complete.html'}, name='password_reset_complete'),
     url(r'^.*$', views.InfLoad.as_view(), name='Inf'),
 ]
