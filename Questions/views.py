@@ -18,7 +18,7 @@ class QuestionView(LoginRequiredMixin, FormView):
 
     # Login-Required Settings:
     login_url = '/LoginSignup/Login'
-    raise_exception = True
+    raise_exception = False
     redirect_unauthenticated_users = True
     Attempts = 0
     Dist = 0
@@ -31,7 +31,7 @@ class QuestionView(LoginRequiredMixin, FormView):
         profile.save()
         question = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
         self.HintPressed = form.cleaned_data['HintUsed']
-
+        user_answer = user_answer.lower()
 
         if user_answer in question[0].Answer:
             pointsscored = rank_check(profile, self.HintPressed)
@@ -68,8 +68,8 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'Questions/Dashboard.html'
 
     # Login-Required Settings:
-    login_url = '/LoginSignup/Login'
-    raise_exception = True
+    login_url = '/'
+    raise_exception = False
     redirect_unauthenticated_users = True
 
 
@@ -86,7 +86,11 @@ class UnderDevelopment(TemplateView):
     template_name = 'Under_Development.html'
 
 
-class AllAchievements(ListView):
+class AllAchievements( LoginRequiredMixin, ListView):
+    login_url = '/'
+    raise_exception = False
+    redirect_unauthenticated_users = True
+
     context_object_name = 'AllAchievements'
     model = Achievements
     template_name = 'Questions/All_Achievements.html'
@@ -97,12 +101,20 @@ class AllAchievements(ListView):
 
 
 class AchievementDetail(DetailView):
+    login_url = '/'
+    raise_exception = False
+    redirect_unauthenticated_users = True
+
     context_object_name = 'AchievementDetail'
     model = Achievements
     template_name = 'Questions/Achievement_Detail.html'
 
 
-class Leaderboard(ListView):
+class Leaderboard(LoginRequiredMixin, ListView):
+    login_url = '/'
+    raise_exception = False
+    redirect_unauthenticated_users = True
+
     context_object_name = 'Leaderboard'
     model = CustomUser
     template_name = 'Questions/Leaderboard.html'
@@ -110,7 +122,11 @@ class Leaderboard(ListView):
 
 
 
-class StoryView(ListView):
+class StoryView(LoginRequiredMixin, ListView):
+    login_url = '/'
+    raise_exception = False
+    redirect_unauthenticated_users = True
+
     context_object_name = 'StoryList'
     def get_queryset(self):
         return Story.objects.filter(SID__lt=self.request.user.CurrentQuestion).order_by('SID')

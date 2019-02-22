@@ -5,7 +5,6 @@ app_name= "Questions"
 
 urlpatterns=[
     url(r'^QuestionSolver/$',views.QuestionView.as_view(), name='Question_Solver'),
-    url(r'^Dashboard/$', views.DashboardView.as_view(), name='Dashboard'),
     url(r'^UnderDevelopment/$', views.UnderDevelopment.as_view(), name='Under_Dev'),
     url(r'^Achievements/$', views.AllAchievements.as_view(), name='Achievements'),
     url(r'^Achievements/(?P<pk>[-\w+])/$', views.AchievementDetail.as_view(), name='Achievement_Details'),
