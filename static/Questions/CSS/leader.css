@@ -120,6 +120,49 @@ thead>tr>td{
 
 
 
+.modal-content{
+    background-color: #110c22;
+}
+
+.modal-title{
+    color: #fff;
+}
+
+.modal-header{
+    border: none;
+}
+
+.modal-footer{
+    border-top: none;
+    justify-content: center;
+}
+
+#hint-head {
+    display: flex;
+    padding: 5px;
+}
+
+#hint-head h3 {
+    font-family: 'Titillium Web', sans-serif;
+    margin: 8px 0px 0px 10px;
+    font-weight: bolder;
+}
+
+#hint-body-holders {
+    margin: 20px 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+#hint-text-box {
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    padding: 20px;
+    text-align: justify;
+}
+
+
 
 @media only screen and (min-width: 760px) {
 

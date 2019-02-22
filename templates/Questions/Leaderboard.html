@@ -56,7 +56,7 @@
                         </li>
 
                       <li class="nav-item">
-                          <a class="nav-link" href="#" data-toggle="modal" data-traget="#rules">Rules</a>
+                          <a class="nav-link" href="#" data-toggle="modal" data-target="#rules">Rules</a>
                       </li>
 
                     <li class="dropdown nav-item">
@@ -109,6 +109,38 @@
             </div>
         </div>
 
+
+<!-- the rule goes in this modal -->
+        <div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto" id="hint-head">
+                            <h3 class="modal-title" id="exampleModalScrollableTitle">Rule:</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mx-auto" id="hint-body-holders">
+                                <p id="hint-text-box">
+                                    The first 20 users who solve the questions without using hint get 100 points.
+                                    If you are 21-50 user who solved it you get 80 points.
+                                    Then users from 51-100 who solve it get 60 points.
+                                    The rest get only 50 points.
+                                    Also, remember using hint means you lose 50% of the points the question can offer you.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='{% static "/Questions/img/ENIGMA_logo.png" %}'/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 </body>
