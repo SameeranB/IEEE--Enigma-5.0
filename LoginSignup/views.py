@@ -122,7 +122,7 @@ class LoginView(FormView):
                 return render(self.request, 'NotConfirmed.html')
         else:
             self.invalid = True
-            return render(self.request, 'index.html', context={'LoginForm':LoginForm, 'invalid':self.invalid, 'Name':self.request.user.username})
+            return render(self.request, 'index.html', context={'LoginForm':LoginForm, 'invalid':self.invalid})
 
     def get_success_url(self):
         return render(self.request, 'index.html', context={'Name':self.request.user.username})
@@ -131,8 +131,6 @@ class LoginView(FormView):
         context = super().get_context_data(**kwargs)
         context['LoginForm'] = LoginForm
         context['invalid'] = self.invalid
-        # context['Name'] = self.request.user.username
-        # context['Score'] = self.request.user.Points
         return context
 
     def form_invalid(self, form):
@@ -153,8 +151,8 @@ class LogoutView(LoginRequiredMixin, View):
 
 def SendRem(request):
     usrs = CustomUser.objects.filter(is_active=False).values_list('email', flat=True)
-    mail_subject = 'Activate Your Enigma Account | IEEE VIT'
-    message = render_to_string('LoginSignup/reminder.html')
+    mail_subject = 'Enigma Has Begun | IEEE VIT'
+    message = render_to_string('Started.html')
 
     email = EmailMessage(mail_subject, message, 'sameeranbandishti@ieee.org', to=usrs)
     email.content_subtype = 'html'
