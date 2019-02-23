@@ -34,7 +34,7 @@
                     </li>
 
                       <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">LeaderBoard</a>
+                        <a class="nav-link" href="{% url 'Questions:Leaderboard' %}">Leaderboard</a>
                     </li>
 
                       <li class="nav-item">
@@ -57,18 +57,22 @@
                       </li>
 
 
-                      <li class="dropdown nav-item">
-                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profile</a>
-                          <ul class="dropdown-menu dropdown-menu-right">
-                              <li class="nav-item">
-                                  <a class="nav-link" href="#">Your name</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="{% url 'LoginSignup:Logout' %}">Log Out</a>
-                              </li>
-                          </ul>
+{#                      <li class="dropdown nav-item">#}
+{#                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profile</a>#}
+{#                          <ul class="dropdown-menu dropdown-menu-right">#}
+{#                              <li class="nav-item">#}
+{#                                  <a class="nav-link" href="#">Your name</a>#}
+{#                              </li>#}
+{#                              <li class="nav-item">#}
+{#                                  <a class="nav-link" href="{% url 'LoginSignup:Logout' %}">Log Out</a>#}
+{#                              </li>#}
+{#                          </ul>#}
+{##}
+{#                        </li>#}
 
-                        </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'LoginSignup:Logout' %}">Log Out</a>
+                      </li>
                   </ul>
                 </div>
         </nav>
@@ -171,11 +175,12 @@
                         <div class="row">
                             <div class="mx-auto" id="hint-body-holders">
                                 <p id="hint-text-box">
-                                    The first 20 users who solve the questions without using hint get 100 points.
-                                    If you are 21-50 user who solved it you get 80 points.
-                                    Then users from 51-100 who solve it get 60 points.
-                                    The rest get only 50 points.
-                                    Also, remember using hint means you lose 50% of the points the question can offer you.
+                                    The rules for Enigma 5.0 are as follows:<br/>
+                                    1. The first 20 users to solve the question get 100 points each.<br/>
+                                    2. The 21st-50th users to solve the question get 80 points each.<br/>
+                                    3. Further, the 51st-100th users to solve the question get 60 points each.<br/>
+                                    4. Lastly, the rest of the users to solve the question correctly get only 50 points.<br/>
+                                    Also, using Hint means you lose 50% of the points the question can offer you.
                                 </p>
                             </div>
                         </div>
