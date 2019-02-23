@@ -112,9 +112,15 @@
                                     <div id='btn'>
                                         <button value="Submit" id="mover">Submit</button>
                                         <br/>
+                                        {% if Trig %}
                                         <a href='#hintModal' id="hint" data-toggle="modal" >
                                         <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">
                                         </a>
+                                        {% else %}
+                                         <a href='{% url "Questions:Question_Solver_Hint" %}' id="hint">
+                                        <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">
+                                        </a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -232,10 +238,18 @@
     function changeColor()
     {
         document.getElementById("bulb").src = "{% static '/Questions/img/l-on.png' %}";
-        document.getElementById("check").value = "True";
-
     }
+
 </script>
+{% if Trig %}
+    <script>
+        $(window).on('load',function(){
+            $("#hintModal").modal({ show : true })
+        });
+        changeColor();
+    </script>
+
+{% endif %}
 </body>
 </html>
 

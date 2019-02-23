@@ -13,25 +13,6 @@ from .ExtraFunctions import rank_check, logger
 
 # Create your views here.
 
-import pymongo
-from datetime import datetime
-
-URI = 'mongodb://Sameeran:Caronex1203@ds347665.mlab.com:47665/logger'
-# URI = "mongodb://alphaindia:QzMGC0sOC1b04DbH7y0MaBPvRGT1E5cNEsgfDJ9nQSosQYBNBzlL93fCNtl60Rt843mZisuAn86OlYlj9vIKUQ==@alphaindia.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
-
-myclient = pymongo.MongoClient(URI)
-
-db = myclient['logger']
-
-logs = db.logs
-
-# def log_answers(log):
-#     try:
-#         logs.insert_one(log)
-#     except:
-#         print("DB Error")
-#
-#     # d = {'username':'ayush', 'answer':'anything', 'question':'1', 'time':datetime.now()}
 
 class QuestionView(LoginRequiredMixin, FormView):
 
@@ -55,16 +36,15 @@ class QuestionView(LoginRequiredMixin, FormView):
         self.Attempts += 1
         profile.save()
         question = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
-        self.HintPressed = form.cleaned_data['HintUsed']
         user_answer = user_answer.lower()
 
         if user_answer in question[0].Answer:
-            pointsscored = rank_check(profile, self.HintPressed)
+            pointsscored = rank_check(profile, "False")
             profile.CurrentQuestion +=1
             # achievement_check(profile)
 
             profile.save()
-            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored, 'Hint':self.HintPressed})
+            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored, 'Hint': False})
         elif user_answer in question[0].CloseAnswer:
             self.Dist = 1
         elif user_answer in question[0].MediumAnswer:
@@ -72,7 +52,7 @@ class QuestionView(LoginRequiredMixin, FormView):
         else:
             self.Dist = 3
 
-        return render(self.request, 'Questions/Current_Question.html', {'Image': question[0].Image, 'Question': question[0].QText, 'AnswerForm': AnswerForm, 'Attempts': self.Attempts, 'Dist': self.Dist, 'Hint':question[0].Hints[0]})
+        return render(self.request, 'Questions/Current_Question.html', {'Image': question[0].Image, 'Question': question[0].QText, 'AnswerForm': AnswerForm, 'Attempts': self.Attempts, 'Dist': self.Dist})
 
 
 
@@ -84,11 +64,76 @@ class QuestionView(LoginRequiredMixin, FormView):
         context['AnswerForm'] = AnswerForm
         context['Attempts'] = self.Attempts
         context['Dist'] = self.Dist
+        context['Trig'] = False
+        context['Name'] = self.request.user.username
+        context['Score'] = self.request.user.Points
+
+        return context
+
+
+
+# After Hint The Following Is Used
+
+class QuestionAfterHintView(LoginRequiredMixin, FormView):
+
+    template_name = 'Questions/Current_Question.html'
+    form_class = AnswerForm
+
+    # Login-Required Settings:
+    login_url = '/LoginSignup/Login'
+    raise_exception = False
+    redirect_unauthenticated_users = True
+    Attempts = 0
+    Dist = 0
+
+
+    def form_valid(self, form):
+
+        user_answer = form.cleaned_data['Answer']
+        logger(self.request, 1, form.cleaned_data['Answer'], "QuestionView")
+
+        profile = CustomUser.objects.get(username=self.request.user.username)
+        self.Attempts += 1
+        profile.save()
+        question = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
+        user_answer = user_answer.lower()
+
+        if user_answer in question[0].Answer:
+            pointsscored = rank_check(profile, "True")
+            profile.CurrentQuestion +=1
+            # achievement_check(profile)
+
+            profile.save()
+            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored, 'Hint':"True"})
+        elif user_answer in question[0].CloseAnswer:
+            self.Dist = 1
+        elif user_answer in question[0].MediumAnswer:
+            self.Dist = 2
+        else:
+            self.Dist = 3
+
+        return render(self.request, 'Questions/Current_Question.html', {'Image': question[0].Image, 'Question': question[0].QText, 'AnswerForm': AnswerForm, 'Attempts': self.Attempts, 'Dist': self.Dist, 'Hint': question[0].Hints[0]})
+
+
+
+    def get_context_data(self, **kwargs):
+        question_info = QuestionInfo.objects.filter(QID__exact=self.request.user.CurrentQuestion)
+        context = super().get_context_data(**kwargs)
+        context['Image'] = question_info[0].Image
+        context['Question'] = question_info[0].QText
+        context['AnswerForm'] = AnswerForm
+        context['Attempts'] = self.Attempts
+        context['Dist'] = self.Dist
+        context['Trig'] = True
         context['Hint'] = question_info[0].Hints[0]
         context['Name'] = self.request.user.username
         context['Score'] = self.request.user.Points
 
         return context
+
+
+
+
 
 #
 # class DashboardView(LoginRequiredMixin, TemplateView):
@@ -142,7 +187,7 @@ class Leaderboard(LoginRequiredMixin, ListView):
 
     ratelimit_key = 'ip'
     ratelimit_rate = '10/m'
-    ratelimit_block = False
+    ratelimit_block = True
     ratelimit_method = 'GET'
 
 
@@ -183,6 +228,8 @@ class StoryView(LoginRequiredMixin, ListView):
 
 
 
+class LogView(ListView):
+    context_object_name = 'Logged'
 
-
-
+    def get_queryset(self):
+        obj = Story.objects.all().values_list('username', flat=True)
