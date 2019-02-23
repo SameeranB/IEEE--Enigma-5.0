@@ -4,7 +4,7 @@ from django.views.generic import TemplateView,FormView, ListView
 
 from ratelimit.mixins import RatelimitMixin
 
-from Questions.forms import AnswerForm
+from Questions.forms import AnswerForm, AnswerHintForm
 from Questions.models import QuestionInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
 from Questions.models import Story
@@ -25,7 +25,7 @@ class QuestionView(LoginRequiredMixin, FormView):
     redirect_unauthenticated_users = True
     Attempts = 0
     Dist = 0
-    HintPressed = 'False'
+    HintPressed = "False"
 
     def form_valid(self, form):
 
@@ -39,7 +39,7 @@ class QuestionView(LoginRequiredMixin, FormView):
         user_answer = user_answer.lower()
 
         if user_answer in question[0].Answer:
-            pointsscored = rank_check(profile, "False")
+            pointsscored = rank_check(profile, self.HintPressed)
             profile.CurrentQuestion +=1
             # achievement_check(profile)
 
@@ -77,7 +77,7 @@ class QuestionView(LoginRequiredMixin, FormView):
 class QuestionAfterHintView(LoginRequiredMixin, FormView):
 
     template_name = 'Questions/Current_Question.html'
-    form_class = AnswerForm
+    form_class = AnswerHintForm
 
     # Login-Required Settings:
     login_url = '/LoginSignup/Login'
@@ -88,7 +88,7 @@ class QuestionAfterHintView(LoginRequiredMixin, FormView):
 
 
     def form_valid(self, form):
-
+        HintPressed = "True"
         user_answer = form.cleaned_data['Answer']
         logger(self.request, 1, form.cleaned_data['Answer'], "QuestionView")
 
@@ -99,12 +99,12 @@ class QuestionAfterHintView(LoginRequiredMixin, FormView):
         user_answer = user_answer.lower()
 
         if user_answer in question[0].Answer:
-            pointsscored = rank_check(profile, "True")
+            pointsscored = rank_check(profile, HintPressed)
             profile.CurrentQuestion +=1
             # achievement_check(profile)
 
             profile.save()
-            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored, 'Hint':"True"})
+            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored, 'Hint': HintPressed})
         elif user_answer in question[0].CloseAnswer:
             self.Dist = 1
         elif user_answer in question[0].MediumAnswer:
@@ -121,7 +121,7 @@ class QuestionAfterHintView(LoginRequiredMixin, FormView):
         context = super().get_context_data(**kwargs)
         context['Image'] = question_info[0].Image
         context['Question'] = question_info[0].QText
-        context['AnswerForm'] = AnswerForm
+        context['AnswerForm'] = AnswerHintForm
         context['Attempts'] = self.Attempts
         context['Dist'] = self.Dist
         context['Trig'] = True

@@ -23,6 +23,7 @@ def rank_check(user, hint):
     else:
         pointsscored = 50
 
+    print(hint)
 
     if hint == "True":
         pointsscored = pointsscored/2
@@ -30,6 +31,7 @@ def rank_check(user, hint):
     user.Points += pointsscored
     ques.QuesSolved += 1
     ques.save()
+    user.save()
 
     return pointsscored
 

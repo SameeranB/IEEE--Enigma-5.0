@@ -95,7 +95,11 @@
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8" id="ans-box">
+                    {% if Trig %}
+                        <form action="{% url 'Questions:Question_Solver_Hint' %}" method="post" id="form-box">
+                        {% else %}
                         <form action="{% url 'Questions:Question_Solver' %}" method="post" id="form-box">
+                        {% endif %}
                             {% csrf_token %}
                             {{ AnswerForm.as_p }}
                             {% if Dist == 0 %}
@@ -111,6 +115,7 @@
                                     <div id='btn'>
                                         <button value="Submit" id="mover">Submit</button>
                                         <br/>
+
                                         {% if Trig %}
                                         <a href='#hintModal' id="hint" data-toggle="modal" >
                                         <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">
