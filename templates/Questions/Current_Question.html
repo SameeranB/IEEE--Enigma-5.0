@@ -118,15 +118,27 @@
                                         <button value="Submit" id="mover">Submit</button>
                                         <br/>
 
-                                        {% if Trig %}
+{#                                        {% if Trig %}#}
+{#                                        <a href='#hintModal' id="hint" data-toggle="modal" >#}
+{#                                        <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">#}
+{#                                        </a>#}
+{#                                        {% else %}#}
+{#                                         <a href='{% url "Questions:Question_Solver_Hint" %}' id="hint">#}
+{#                                        <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">#}
+{#                                        </a>#}
+{#                                        {% endif %}#}
+
+
+                                         {% if Trig %}
                                         <a href='#hintModal' id="hint" data-toggle="modal" >
                                         <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">
                                         </a>
                                         {% else %}
-                                         <a href='{% url "Questions:Question_Solver_Hint" %}' id="hint">
+                                         <a href='#hintReally' data-toggle="modal" id="hint" >
                                         <img src="{% static '/Questions/img/i-off.png' %}" id="bulb" onclick="changeColor()">
                                         </a>
                                         {% endif %}
+
                                     </div>
                                 </div>
                             </div>
@@ -136,6 +148,45 @@
                 </div>
 
 
+            </div>
+        </div>
+
+
+
+
+
+        <!-- the hint for the question goes in this modal -->
+        <div class="modal fade" id="hintReally" tabindex="-1" role="dialog" aria-labelledby="hintModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container mx-auto" id="hint-head">
+                            <h3 class="modal-title" id="exampleModalScrollableTitle">Are You Sure:</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mx-auto" id="hint-body-holders">
+                                <p id="hint-text-box">
+                                    If you see the hint, the awarded<br/>
+                                    marks will be cut by 50%
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mx-auto">
+                                <a id="mover" href="#" data-dismiss="modal" aria-label="Close" onclick="donotchange()">No</a>
+                                <a id="mover" href='{% url "Questions:Question_Solver_Hint" %}'>Yes</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="mx-auto"><img id='ieee' src='{% static "/Questions/img/ENIGMA_logo.png" %}'/></div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -245,6 +296,10 @@
     function changeColor()
     {
         document.getElementById("bulb").src = "{% static '/Questions/img/l-on.png' %}";
+    }
+
+    function donotchange() {
+        document.getElementById("bulb").src = "{% static '/Questions/img/i-off.png' %}"
     }
 
 </script>
