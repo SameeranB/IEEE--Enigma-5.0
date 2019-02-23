@@ -13,9 +13,9 @@ class CustomUser(AbstractUser):
     University = models.CharField(max_length=100)
     CurrentQuestion = models.IntegerField(default=1)
     Answer = models.TextField()
-    Achievements = ArrayField(models.IntegerField(default=1), size=200)
+    Achievements = models.DateTimeField(blank=True) # Stores the Time the user last answered
     Points = models.IntegerField(default=0)
-    TimeLog = models.BooleanField(default=False, blank=True)
+    TimeLog = models.BooleanField(default=False, blank=True) # Stores the Hint Used Value
 
 
     def __str__(self):

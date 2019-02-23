@@ -31,6 +31,7 @@ def rank_check(user):
     ques.QuesSolved += 1
     ques.save()
     user.TimeLog = False
+    user.Achievements = datetime.now()
     user.save()
 
     return pointsscored
