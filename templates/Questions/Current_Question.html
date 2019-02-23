@@ -170,16 +170,19 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="mx-auto" id="hint-body-holders">
-                                <p id="hint-text-box">
-                                    If you see the hint, the awarded<br/>
-                                    marks will be cut by 50%
+                                <p id="hint-text-box" style="text-align: center">
+                                <h4 style="text-align: center; color: white">Alert!</h4>
+                                <p style="text-align: center; color: white">If you use the hint, the points awarded to you will be reduced to half<br>
+                                    Are you sure you want to continue?<br>
+
                                 </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mx-auto">
-                                <a id="mover" href="#" data-dismiss="modal" aria-label="Close" onclick="donotchange()">No</a>
                                 <a id="mover" href='{% url "Questions:Question_Solver_Hint" %}'>Yes</a>
+                                <a id="mover" href="#" data-dismiss="modal" aria-label="Close" onclick="donotchange()">No</a>
+
                             </div>
                         </div>
                     </div>
