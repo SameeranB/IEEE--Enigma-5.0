@@ -25,7 +25,7 @@ class QuestionView(LoginRequiredMixin, FormView):
     redirect_unauthenticated_users = True
     Attempts = 0
     Dist = 0
-    HintPressed = "False"
+
 
     def form_valid(self, form):
 
@@ -39,12 +39,12 @@ class QuestionView(LoginRequiredMixin, FormView):
         user_answer = user_answer.lower()
 
         if user_answer in question[0].Answer:
-            pointsscored = rank_check(profile, self.HintPressed)
+            pointsscored = rank_check(profile)
             profile.CurrentQuestion +=1
             # achievement_check(profile)
 
             profile.save()
-            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored, 'Hint': False})
+            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored, 'Hint': self.request.user.TimeLog})
         elif user_answer in question[0].CloseAnswer:
             self.Dist = 1
         elif user_answer in question[0].MediumAnswer:
@@ -88,7 +88,7 @@ class QuestionAfterHintView(LoginRequiredMixin, FormView):
 
 
     def form_valid(self, form):
-        HintPressed = "True"
+
         user_answer = form.cleaned_data['Answer']
         logger(self.request, 1, form.cleaned_data['Answer'], "QuestionView")
 
@@ -99,12 +99,12 @@ class QuestionAfterHintView(LoginRequiredMixin, FormView):
         user_answer = user_answer.lower()
 
         if user_answer in question[0].Answer:
-            pointsscored = rank_check(profile, HintPressed)
+            pointsscored = rank_check(profile)
             profile.CurrentQuestion +=1
             # achievement_check(profile)
 
             profile.save()
-            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored, 'Hint': HintPressed})
+            return render(self.request, 'Questions/Question_Correct.html', context={'scored':pointsscored, 'Hint': self.request.user.TimeLog})
         elif user_answer in question[0].CloseAnswer:
             self.Dist = 1
         elif user_answer in question[0].MediumAnswer:
@@ -128,7 +128,9 @@ class QuestionAfterHintView(LoginRequiredMixin, FormView):
         context['Hint'] = question_info[0].Hints[0]
         context['Name'] = self.request.user.username
         context['Score'] = self.request.user.Points
-
+        profile = CustomUser.objects.get(username=self.request.user.username)
+        profile.TimeLog = True
+        profile.save()
         return context
 
 

@@ -15,7 +15,7 @@ class CustomUser(AbstractUser):
     Answer = models.TextField()
     Achievements = ArrayField(models.IntegerField(default=1), size=200)
     Points = models.IntegerField(default=0)
-    TimeLog = ArrayField(models.DurationField())
+    TimeLog = models.BooleanField(default=False, blank=True)
 
 
     def __str__(self):

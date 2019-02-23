@@ -6,7 +6,7 @@ from Questions.models import QuestionInfo
 from LoginSignup.models import logs
 from ipware import get_client_ip
 
-def rank_check(user, hint):
+def rank_check(user):
     ques = QuestionInfo.objects.get(QID__exact=user.CurrentQuestion)
     obj = ques.QuesSolved
 
@@ -23,14 +23,14 @@ def rank_check(user, hint):
     else:
         pointsscored = 50
 
-    print(hint)
 
-    if hint == "True":
+    if user.TimeLog:
         pointsscored = pointsscored/2
 
     user.Points += pointsscored
     ques.QuesSolved += 1
     ques.save()
+    user.TimeLog = False
     user.save()
 
     return pointsscored
