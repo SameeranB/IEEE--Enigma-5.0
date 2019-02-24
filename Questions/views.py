@@ -197,7 +197,7 @@ class Leaderboard(LoginRequiredMixin, ListView):
     raise_exception = False
     redirect_unauthenticated_users = True
 
-    queryset = CustomUser.objects.order_by('-Points', '-Achievements')[:100]
+    queryset = CustomUser.objects.order_by('-Points', 'Achievements')[:100]
     context_object_name = 'Leaderboard'
     template_name = 'Questions/Leaderboard.html'
 
