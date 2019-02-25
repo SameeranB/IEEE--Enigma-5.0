@@ -175,7 +175,7 @@ class NotConf(TemplateView):
         return context
 
 def StaticPage(request):
-    return render(request, 'saver.html')
+    return render(request, 'Done.html')
 
 
 
